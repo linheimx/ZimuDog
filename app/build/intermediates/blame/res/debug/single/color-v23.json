@@ -1,42 +1,38 @@
 [
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_color_highlight_material.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\color-v23\\abc_color_highlight_material.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color-v23\\abc_tint_edittext.xml"
     },
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\color-v23\\abc_tint_switch_thumb.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_default.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color-v23\\abc_tint_default.xml"
     },
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\color-v23\\abc_tint_switch_track.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color-v23\\abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_borderless_text_material.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color-v23\\abc_tint_switch_track.xml"
     },
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_btn_checkable.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\color-v23\\abc_tint_btn_checkable.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color-v23\\abc_tint_switch_thumb.xml"
     },
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_default.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\color-v23\\abc_tint_default.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_color_highlight_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color-v23\\abc_color_highlight_material.xml"
     },
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\color-v23\\abc_tint_spinner.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\color-v23\\abc_tint_edittext.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color-v23\\abc_tint_spinner.xml"
     },
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\color-v23\\abc_tint_seek_thumb.xml"
-    },
-    {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_text_material.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\8fff927a0d7476f6f56448c1c890761b3c50f300\\output\\res\\color-v23\\abc_btn_colored_text_material.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color-v23\\abc_tint_seek_thumb.xml"
     }
 ]

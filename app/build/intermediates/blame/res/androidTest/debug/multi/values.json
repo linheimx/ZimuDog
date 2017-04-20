@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "C:\\Users\\x1c\\.android\\build-cache\\87ccdc61c3ab2085480ad5619c04e32bf1f05337\\output\\res\\values\\values.xml",
+                    "file": "C:\\Users\\LJIAN\\.android\\build-cache\\09c48c059ac865e75fbccd8c128f5891270444e1\\output\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

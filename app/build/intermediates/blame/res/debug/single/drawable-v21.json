@@ -1,18 +1,14 @@
 [
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\8fff927a0d7476f6f56448c1c890761b3c50f300\\output\\res\\drawable-v21\\notification_action_background.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable-v21\\abc_edit_text_material.xml"
     },
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable-v21\\abc_btn_colored_material.xml"
     },
     {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\drawable-v21\\abc_btn_colored_material.xml"
-    },
-    {
-        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
-        "source": "C:\\Users\\x1c\\.android\\build-cache\\a3032d850accd118efe7afc7d0685303727668a8\\output\\res\\drawable-v21\\abc_edit_text_material.xml"
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
     }
 ]
