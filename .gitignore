@@ -42,3 +42,6 @@ captures/
 /app/build/intermediates/
 /app/build/
 /javatest/build/
+app/src/main/java/com/linheimx/zimudog/zimudog/m/
+src/main/java/com/linheimx/zimudog/m/
+src/main/java/com/linheimx/zimudog/vp/base/
