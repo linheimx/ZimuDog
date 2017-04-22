@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_launcher.png",
+        "source": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_launcher.png",
         "source": "D:\\Fight\\ZimuDog\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     }

@@ -1,7 +1,7 @@
 [
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_tint_switch_track.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
@@ -12,6 +12,82 @@
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_secondary_text_material_light.xml"
     },
     {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_search_url_text.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_tint_default.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_tint_switch_track.xml"
+    },
+    {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_tint_switch_thumb.xml"
     },
@@ -20,12 +96,12 @@
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_tint_edittext.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_tint_edittext.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
@@ -36,10 +112,6 @@
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_tint_spinner.xml"
-    },
-    {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_tint_seek_thumb.xml"
     },
@@ -48,20 +120,16 @@
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_primary_text_material_light.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_tint_switch_track.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\color\\abc_tint_spinner.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_primary_text_material_dark.xml"
-    },
-    {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\color\\abc_secondary_text_material_dark.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",

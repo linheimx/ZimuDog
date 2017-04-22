@@ -40,3 +40,5 @@ captures/
 # Intellij
 *.iml
 /app/build/intermediates/
+/app/build/
+/javatest/build/

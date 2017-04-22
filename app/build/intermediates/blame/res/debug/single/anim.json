@@ -8,12 +8,40 @@
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
     },
     {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\anim\\abc_slide_out_top.xml"
     },
     {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
@@ -24,8 +52,20 @@
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\anim\\abc_fade_in.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",

@@ -8,16 +8,20 @@
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_cab_background_internal_bg.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_track_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_seekbar_track_material.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_small_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_vector_test.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_vector_test.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_small_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_vector_test.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_vector_test.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
@@ -28,40 +32,36 @@
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_btn_colored_material.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_tab_indicator_material.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_thumb_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ratingbar_material.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_search_api_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_ic_search_api_material.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_cab_background_top_material.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_btn_borderless_material.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_ab_back_material.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ic_ab_back_material.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_list_selector_holo_light.xml"
-    },
-    {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_voice_search_api_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
@@ -72,12 +72,8 @@
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ic_search_api_material.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_btn_radio_material.xml"
-    },
-    {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
@@ -86,10 +82,6 @@
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_edit_text_material.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_edit_text_material.xml"
-    },
-    {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
@@ -104,6 +96,150 @@
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_btn_borderless_material.xml"
     },
     {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_btn_check_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ic_clear_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_ic_clear_material.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_track_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_track_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_vector_test.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_vector_test.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_small_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ratingbar_material.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_ab_back_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_ic_ab_back_material.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_ratingbar_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
+        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
+    },
+    {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_textfield_search_material.xml"
     },
@@ -116,23 +252,27 @@
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_btn_check_material.xml"
-    },
-    {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_text_cursor_material.xml"
-    },
-    {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\doge1.jpg",
+        "source": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\src\\main\\res\\drawable\\doge1.jpg"
+    },
+    {
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
     },
     {
         "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_voice_search_api_material.xml",
         "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },
     {
-        "merged": "D:\\Fight\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
-        "source": "C:\\Users\\LJIAN\\.android\\build-cache\\f14f03ad36835f78f691499a7d4e67272ae30898\\output\\res\\drawable\\abc_ic_clear_material.xml"
+        "merged": "D:\\Android\\OpenSrc\\linheimx\\ZimuDog\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
+        "source": "C:\\Users\\x1c\\.android\\build-cache\\9461c8cb6dc22e04e9cb53e184651095dacc963d\\output\\res\\drawable\\abc_btn_check_material.xml"
     }
 ]
