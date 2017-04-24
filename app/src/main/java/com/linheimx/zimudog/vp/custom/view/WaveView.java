@@ -1,4 +1,4 @@
-package com.linheimx.zimudog.vp.custview;
+package com.linheimx.zimudog.vp.custom.view;
 
 import android.content.Context;
 import android.graphics.Canvas;

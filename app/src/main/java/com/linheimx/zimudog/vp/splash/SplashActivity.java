@@ -7,7 +7,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.linheimx.zimudog.MainActivity;
+import com.linheimx.zimudog.vp.main.MainActivity;
 import com.linheimx.zimudog.R;
 
 import butterknife.BindView;
@@ -34,6 +34,6 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
                 finish();
             }
-        }, 1800);
+        }, 1000);
     }
 }
