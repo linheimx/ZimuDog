@@ -1,19 +1,20 @@
 package com.linheimx.zimudog.vp.search;
 
 
-import android.graphics.Color;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.widget.RecyclerView;
-import android.text.Html;
-import android.util.Log;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.vp.base.BaseFragment;
+import com.linheimx.zimudog.vp.base.Provider;
+import com.linheimx.zimudog.vp.custom.dialog.LoadingDialog;
+import com.linheimx.zimudog.vp.custom.view.SearchBar;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -21,26 +22,59 @@ import butterknife.Unbinder;
 public class SearchFragment extends BaseFragment {
 
 
-    Unbinder unbinder;
+    Unbinder _Unbinder;
+    Provider _Provider;
+
+    @BindView(R.id.search_bar)
+    SearchBar searchBar;
 
     public SearchFragment() {
         // Required empty public constructor
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof Provider) {
+            _Provider = (Provider) context;
+        } else {
+            throw new RuntimeException("must implement Provider");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+        _Provider = null;
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-        unbinder = ButterKnife.bind(this, view);
-
+        _Unbinder = ButterKnife.bind(this, view);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        searchBar.setDrawerLayout(_Provider.provideDrawLayout(), getActivity());
+        searchBar.setSearchClickListener(new SearchBar.onSearchClickListener() {
+            @Override
+            public void onSearchClick(String searchContent) {
+                LoadingDialog dialog = new LoadingDialog();
+                dialog.show(getChildFragmentManager(), null);
+            }
+        });
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        _Unbinder.unbind();
     }
 
 
@@ -48,7 +82,6 @@ public class SearchFragment extends BaseFragment {
     public boolean onActivityBackPress() {
         return false;
     }
-
 
 
 }

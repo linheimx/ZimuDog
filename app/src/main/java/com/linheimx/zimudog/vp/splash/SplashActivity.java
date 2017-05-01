@@ -18,8 +18,6 @@ public class SplashActivity extends AppCompatActivity {
 
     @BindView(R.id.animation_view)
     LottieAnimationView animationView;
-    @BindView(R.id.tv_title)
-    TextView tvTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
 
-        tvTitle.postDelayed(new Runnable() {
+        animationView.postDelayed(new Runnable() {
             @Override
             public void run() {
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));

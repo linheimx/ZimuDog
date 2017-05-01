@@ -9,35 +9,18 @@
         android:id="@+id/animation_view"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginBottom="98dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="133dp"
         android:keepScreenOn="true"
-        app:layout_constraintBottom_toTopOf="@+id/tv_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_fileName="emoji_tongue.json"
         app:lottie_loop="true"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="177dp"
-        android:layout_height="86dp"
-        android:layout_marginBottom="58dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/app_name"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

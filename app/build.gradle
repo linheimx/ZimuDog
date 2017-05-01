@@ -39,5 +39,6 @@ dependencies {
     compile 'com.airbnb.android:lottie:2.0.0-beta4'
     compile 'com.android.support:support-vector-drawable:25.3.1'
     compile 'org.jsoup:jsoup:1.10.2'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.15'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

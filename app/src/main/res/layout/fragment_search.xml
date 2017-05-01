@@ -14,9 +14,10 @@
         android:orientation="vertical">
 
         <com.linheimx.zimudog.vp.custom.view.SearchBar
-            android:background="@color/colorPrimaryDark"
+            android:id="@+id/search_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/search_results_list"
