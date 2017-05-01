@@ -13,5 +13,5 @@ public interface ZimukuApi {
     String BASE_URL = "http://www.zimuku.net";
 
     @GET("/search?ad=1")
-    Observable<ResponseBody> searchMovie(@Query("q") String movie);
+    Observable<ResponseBody> searchMovie(@Query("q") String movie, @Query("p") int page);
 }

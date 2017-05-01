@@ -102,10 +102,11 @@ public class SearchFragment extends BaseFragment implements IContract.V {
             public void onSearchClick(String searchContent) {
                 if (!TextUtils.isEmpty(searchContent)) {
 
+                    _QuickAdapter.clearData();
                     _LoadingDialog.show(getChildFragmentManager(), "dialog");
 
                     // go
-                    _P.searchMovie(searchContent);
+                    _P.searchMovies(searchContent);
                 }
             }
         });
@@ -130,6 +131,17 @@ public class SearchFragment extends BaseFragment implements IContract.V {
         });
 
         _QuickAdapter = new QuickAdapter();
+        _QuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {
+                List<Movie> movieList = _QuickAdapter.getData();
+                if (movieList != null && movieList.size() >= 10) {
+                    _P.loadMoreMovies();
+                }else {
+                    _QuickAdapter.loadMoreEnd(true);
+                }
+            }
+        }, rv);
         rv.setAdapter(_QuickAdapter);
     }
 
@@ -153,7 +165,8 @@ public class SearchFragment extends BaseFragment implements IContract.V {
     @Override
     public void showMovies(List<Movie> movies) {
         _LoadingDialog.dismiss();
-        _QuickAdapter.setNewData(movies);
+        _QuickAdapter.addData(movies);
+        _QuickAdapter.loadMoreComplete();
         Log.e("--->", "go" + movies.size());
     }
 
@@ -161,6 +174,20 @@ public class SearchFragment extends BaseFragment implements IContract.V {
 
         public QuickAdapter() {
             super(R.layout.layout_animation);
+        }
+
+        public void addData(List<Movie> movies) {
+            if (mData == null) {
+                mData = movies;
+            } else {
+                mData.addAll(movies);
+            }
+            notifyDataSetChanged();
+        }
+
+        public void clearData() {
+            setNewData(null);
+            notifyDataSetChanged();
         }
 
         @Override

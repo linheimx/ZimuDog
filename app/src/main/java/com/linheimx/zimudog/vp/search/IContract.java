@@ -13,7 +13,9 @@ import java.util.List;
 public interface IContract {
 
     interface P {
-        void searchMovie(@NonNull String movie);
+        void searchMovies(@NonNull String movie);
+
+        void loadMoreMovies();
 
         void cancelSearch();
     }

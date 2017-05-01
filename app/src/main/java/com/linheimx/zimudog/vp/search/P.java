@@ -1,9 +1,7 @@
 package com.linheimx.zimudog.vp.search;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
-import com.google.gson.Gson;
 import com.linheimx.lspider.ParserManager;
 import com.linheimx.lspider.zimuku.bean.Movie;
 import com.linheimx.zimudog.m.net.ApiManager;
@@ -34,12 +32,26 @@ public class P extends BasePresenter implements IContract.P {
         this._V = v;
     }
 
+    String _movie;
+    int _page = 0;
+
     @Override
-    public void searchMovie(@NonNull String movie) {
+    public void searchMovies(@NonNull String movie) {
+        this._movie = movie;
+        this._page = 0;
+        loadMovies(_movie, _page);
+    }
+
+    @Override
+    public void loadMoreMovies() {
+        loadMovies(_movie, ++_page);
+    }
+
+    private void loadMovies(String movie, int page) {
 
         ApiManager.getInstence()
                 .getZimukuApi()
-                .searchMovie(movie)
+                .searchMovie(movie, page)
                 .subscribeOn(Schedulers.io())
                 .flatMap(new Function<ResponseBody, ObservableSource<List<Movie>>>() {
                     @Override
