@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.linheimx.lspider.ParserManager;
 import com.linheimx.lspider.zimuku.bean.Movie;
+import com.linheimx.lspider.zimuku.bean.Page;
 import com.linheimx.zimudog.m.net.ApiManager;
 import com.linheimx.zimudog.vp.base.BasePresenter;
 
@@ -33,12 +34,12 @@ public class P extends BasePresenter implements IContract.P {
     }
 
     String _movie;
-    int _page = 0;
+    int _page = 1;
 
     @Override
     public void searchMovies(@NonNull String movie) {
         this._movie = movie;
-        this._page = 0;
+        this._page = 1;
         loadMovies(_movie, _page);
     }
 
@@ -53,16 +54,16 @@ public class P extends BasePresenter implements IContract.P {
                 .getZimukuApi()
                 .searchMovie(movie, page)
                 .subscribeOn(Schedulers.io())
-                .flatMap(new Function<ResponseBody, ObservableSource<List<Movie>>>() {
+                .flatMap(new Function<ResponseBody, ObservableSource<Page>>() {
                     @Override
-                    public ObservableSource<List<Movie>> apply(@io.reactivex.annotations.NonNull ResponseBody responseBody) throws Exception {
-                        List<Movie> movieList =
+                    public ObservableSource<Page> apply(@io.reactivex.annotations.NonNull ResponseBody responseBody) throws Exception {
+                        Page page =
                                 ParserManager.getInstance().get_MoviesParser().parse(responseBody.string());
-                        return Observable.just(movieList);
+                        return Observable.just(page);
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<Movie>>() {
+                .subscribe(new Observer<Page>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         _Disposable_search = d;
@@ -70,8 +71,8 @@ public class P extends BasePresenter implements IContract.P {
                     }
 
                     @Override
-                    public void onNext(List<Movie> movies) {
-                        _V.showMovies(movies);
+                    public void onNext(Page page) {
+                        _V.showMovies(page.getMovieList(), page.isHasMore());
                     }
 
                     @Override

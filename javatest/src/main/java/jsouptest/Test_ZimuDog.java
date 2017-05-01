@@ -6,6 +6,7 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -87,6 +88,9 @@ public class Test_ZimuDog {
                 list_movie.add(movie);
             }
 
+            // 判断是否有更多的数据
+//            Element div_page=doc.select("div[class=pagination l clearfix]").first();
+//            Elements pageIndex_a=div_page.select("a");
 
             Gson gson = new Gson();
             System.out.print(gson.toJson(list_movie));

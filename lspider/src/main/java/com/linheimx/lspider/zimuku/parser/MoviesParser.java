@@ -4,11 +4,13 @@ import android.util.Log;
 
 import com.linheimx.lspider.IParser;
 import com.linheimx.lspider.zimuku.bean.Movie;
+import com.linheimx.lspider.zimuku.bean.Page;
 import com.linheimx.lspider.zimuku.bean.Zimu;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +23,12 @@ import java.util.List;
  * Created by x1c on 2017/5/1.
  */
 
-public class MoviesParser implements IParser<String, List<Movie>> {
+public class MoviesParser implements IParser<String, Page> {
 
     public static final String BASE_URL = "http://www.zimuku.net";
 
     @Override
-    public List<Movie> parse(String html) {
+    public Page parse(String html) {
         try {
             Document doc = Jsoup.parse(html);
 
@@ -71,7 +73,14 @@ public class MoviesParser implements IParser<String, List<Movie>> {
                 }
                 list_movie.add(movie);
             }
-            return list_movie;
+
+            // 是否有更多的数据
+            Element div_page = doc.select("div[class=pagination l clearfix]").first();
+            Elements pageIndex_a = div_page.select("a");
+            boolean hasMore = pageIndex_a == null ? false : pageIndex_a.size() > 0;
+
+            Page page = new Page(list_movie, hasMore);
+            return page;
         } catch (Exception e) {
             e.printStackTrace();
         }

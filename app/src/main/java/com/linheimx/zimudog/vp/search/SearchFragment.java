@@ -14,7 +14,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.linheimx.lspider.zimuku.bean.Movie;
@@ -134,12 +139,7 @@ public class SearchFragment extends BaseFragment implements IContract.V {
         _QuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                List<Movie> movieList = _QuickAdapter.getData();
-                if (movieList != null && movieList.size() >= 10) {
-                    _P.loadMoreMovies();
-                }else {
-                    _QuickAdapter.loadMoreEnd(true);
-                }
+                _P.loadMoreMovies();
             }
         }, rv);
         rv.setAdapter(_QuickAdapter);
@@ -163,10 +163,16 @@ public class SearchFragment extends BaseFragment implements IContract.V {
     }
 
     @Override
-    public void showMovies(List<Movie> movies) {
+    public void showMovies(List<Movie> movies, boolean hasMore) {
         _LoadingDialog.dismiss();
         _QuickAdapter.addData(movies);
-        _QuickAdapter.loadMoreComplete();
+
+        if (hasMore) {
+            _QuickAdapter.loadMoreComplete();
+        } else {
+            _QuickAdapter.loadMoreEnd();
+        }
+
         Log.e("--->", "go" + movies.size());
     }
 
@@ -192,7 +198,13 @@ public class SearchFragment extends BaseFragment implements IContract.V {
 
         @Override
         protected void convert(BaseViewHolder helper, Movie item) {
-            helper.setImageResource(R.id.img, R.drawable.animation_img1);
+//            helper.setImageResource(R.id.img, R.drawable.animation_img1);
+
+            Glide.with(SearchFragment.this)
+                    .load(item.getPic_url())
+                    .crossFade()
+                    .into((ImageView) helper.getView(R.id.img));
+
             helper.setText(R.id.tweetName, item.getName());
             helper.setText(R.id.tweetText, item.getName_alias());
         }

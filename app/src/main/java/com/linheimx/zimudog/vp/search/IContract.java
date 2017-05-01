@@ -21,6 +21,6 @@ public interface IContract {
     }
 
     interface V {
-        void showMovies(List<Movie> movies);
+        void showMovies(List<Movie> movies, boolean hasMore);
     }
 }

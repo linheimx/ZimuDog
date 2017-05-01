@@ -27,7 +27,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
             android:clipToPadding="false"
-            android:paddingTop="60dp" />
+            android:paddingTop="10dp" />
 
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
