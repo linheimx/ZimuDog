@@ -26,7 +26,7 @@ public class SearchBar extends FrameLayout {
 
     View _searchView;
     ImageView _nav;
-    EditText _et;
+    SearchInputView _et;
     ImageView _search;
 
     DrawerArrowDrawable _arrowDrawable;
@@ -53,12 +53,21 @@ public class SearchBar extends FrameLayout {
         _searchView = inflate(context, R.layout.view_search_bar, this);
 
         _nav = (ImageView) _searchView.findViewById(R.id.iv_nav);
-        _et = (EditText) _searchView.findViewById(R.id.et_text);
+        _et = (SearchInputView) _searchView.findViewById(R.id.et_text);
         _search = (ImageView) _searchView.findViewById(R.id.search);
 
         _arrowDrawable = new DrawerArrowDrawable(context);
         _nav.setImageDrawable(_arrowDrawable);
 
+
+        _et.setOnSearchKeyListener(new SearchInputView.OnKeyboardSearchKeyClickListener() {
+            @Override
+            public void onSearchKeyClicked() {
+                if (_listener != null) {
+                    _listener.onSearchClick(_et.getText().toString());
+                }
+            }
+        });
         _search.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +115,7 @@ public class SearchBar extends FrameLayout {
         this._listener = listener;
     }
 
-    public static interface onSearchClickListener {
+    public interface onSearchClickListener {
         void onSearchClick(String searchContent);
     }
 

@@ -8,6 +8,10 @@
     <color name="colorPrimaryDark">#455a64</color>
     <color name="colorAccent">#263238</color>
 
+    <color name="hard_color">#48495f</color>
+    <color name="item_bg">#FFFFFF</color>
+    <color name="bg">#F0F0F0</color>
+
     <color name="black_overlay">#66000000</color>
     <color name="happyColor">#56e2e2</color>
 
