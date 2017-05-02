@@ -1,10 +1,12 @@
 package com.linheimx.lspider.zimuku.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by x1c on 2017/5/1.
  */
 
-public class Zimu {
+public class Zimu implements Serializable {
     private String pic_url;// 字幕的头像（国家名称）
     private String name;
     private String download_page;// 下载链接的界面

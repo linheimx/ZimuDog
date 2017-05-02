@@ -1,5 +1,6 @@
 package com.linheimx.lspider.zimuku.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * Created by x1c on 2017/5/1.
  */
 
-public class Movie {
+public class Movie implements Serializable{
     private String pic_url;// 电影的头像
     private String name;// 电影的名称
     private String name_alias;// 电影的别名

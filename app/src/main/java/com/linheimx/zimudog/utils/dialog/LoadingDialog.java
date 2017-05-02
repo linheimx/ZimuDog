@@ -1,16 +1,17 @@
-package com.linheimx.zimudog.vp.custom.dialog;
+package com.linheimx.zimudog.utils.dialog;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.linheimx.zimudog.R;
+
 
 /**
  * Created by x1c on 2017/4/23.

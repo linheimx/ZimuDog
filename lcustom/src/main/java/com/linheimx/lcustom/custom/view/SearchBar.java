@@ -1,22 +1,20 @@
-package com.linheimx.zimudog.vp.custom.view;
+package com.linheimx.lcustom.custom.view;
 
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.StyleRes;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.linheimx.zimudog.R;
-import com.linheimx.zimudog.utils.Util;
+import com.linheimx.lcustom.R;
+import com.linheimx.lcustom.custom.utils.Util;
 
 /**
  * Created by x1c on 2017/4/24.

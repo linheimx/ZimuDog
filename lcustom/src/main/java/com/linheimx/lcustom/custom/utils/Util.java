@@ -1,4 +1,4 @@
-package com.linheimx.zimudog.utils;
+package com.linheimx.lcustom.custom.utils;
 
 import android.app.Activity;
 import android.content.Context;

@@ -16,7 +16,7 @@ import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.vp.about.AboutFragment;
 import com.linheimx.zimudog.vp.base.BaseFragment;
 import com.linheimx.zimudog.vp.base.Provider;
-import com.linheimx.zimudog.vp.custom.view.SearchBar;
+import com.linheimx.lcustom.custom.view.SearchBar;
 import com.linheimx.zimudog.vp.search.SearchFragment;
 
 import java.util.List;

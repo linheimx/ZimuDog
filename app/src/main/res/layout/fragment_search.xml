@@ -13,7 +13,7 @@
         android:fitsSystemWindows="true"
         android:orientation="vertical">
 
-        <com.linheimx.zimudog.vp.custom.view.SearchBar
+        <com.linheimx.lcustom.custom.view.SearchBar
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

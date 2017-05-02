@@ -1,8 +1,7 @@
-package com.linheimx.zimudog.vp.custom.view;
+package com.linheimx.lcustom.custom.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
