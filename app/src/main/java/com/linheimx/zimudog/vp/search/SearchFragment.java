@@ -86,7 +86,7 @@ public class SearchFragment extends BaseFragment implements IContract.V {
 
         /***************************** presenter **************************/
         _P = new P(this);
-
+        
         // loading dialog
         _LoadingDialog = new LoadingDialog();
         _LoadingDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -210,7 +210,7 @@ public class SearchFragment extends BaseFragment implements IContract.V {
                     .crossFade()
                     .into((ImageView) helper.getView(R.id.img));
 
-            helper.setText(R.id.tweetName, item.getName());
+            helper.setText(R.id.tv_title, item.getName());
             helper.setText(R.id.tweetText, item.getName_alias());
         }
     }

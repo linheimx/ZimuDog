@@ -1,6 +1,8 @@
 package com.linheimx.zimudog.utils.dialog;
 
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -14,12 +16,10 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.chad.library.adapter.base.animation.BaseAnimation;
-import com.chad.library.adapter.base.animation.SlideInLeftAnimation;
 import com.linheimx.lspider.zimuku.bean.Movie;
 import com.linheimx.lspider.zimuku.bean.Zimu;
 import com.linheimx.zimudog.R;
-import com.linheimx.zimudog.vp.search.SearchFragment;
+import com.linheimx.zimudog.utils.Utils;
 
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class ZimuDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         _view = inflater.inflate(R.layout.dialog_zimu, null);
-        _view.setY(-1000f);
+        _view.setY(-2500f);
         unbinder = ButterKnife.bind(this, _view);
         return _view;
     }
@@ -76,6 +76,8 @@ public class ZimuDialog extends DialogFragment {
         rv.setAdapter(_QuickAdapter);
     }
 
+    ImageView _imageView;
+
     @Override
     public void onResume() {
         super.onResume();
@@ -88,7 +90,11 @@ public class ZimuDialog extends DialogFragment {
 
         Dialog dialog = getDialog();
         if (dialog != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+            ViewGroup decor = (ViewGroup) dialog.getWindow().getDecorView();
+            _imageView = (ImageView) LayoutInflater.from(getActivity()).inflate(R.layout.layout_decor, null);
+            decor.addView(_imageView);
         }
     }
 
@@ -127,7 +133,25 @@ public class ZimuDialog extends DialogFragment {
                     .crossFade()
                     .into((ImageView) helper.getView(R.id.img));
 
-            helper.setText(R.id.tweetName, item.getName());
+            helper.setText(R.id.tv_title, item.getName());
+
+            helper.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    _imageView.setX(v.getPivotX());
+                    _imageView.setY(v.getPivotY());
+                    _imageView.setImageBitmap(Utils.getViewBitmap(v));
+
+                    _imageView.animate()
+                            .scaleX(0)
+                            .scaleY(0)
+                            .x(0)
+                            .y(0)
+                            .setDuration(1000)
+                            .start();
+                }
+            });
         }
     }
 }
