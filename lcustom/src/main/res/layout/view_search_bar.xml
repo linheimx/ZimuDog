@@ -35,6 +35,7 @@
             android:background="@color/transparent"
             android:ellipsize="end"
             android:hint="@string/abc_search_hint"
+            android:text="金刚"
             android:imeOptions="actionSearch"
             android:inputType="textNoSuggestions"
             android:longClickable="false"

@@ -1,5 +1,6 @@
 package com.linheimx.zimudog.utils.dialog;
 
+import android.animation.ValueAnimator;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -8,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.linheimx.lspider.zimuku.bean.Movie;
 import com.linheimx.lspider.zimuku.bean.Zimu;
 import com.linheimx.zimudog.R;
+import com.linheimx.zimudog.m.net.ApiManager;
 import com.linheimx.zimudog.utils.Utils;
 
 import java.util.List;
@@ -76,12 +79,11 @@ public class ZimuDialog extends DialogFragment {
         rv.setAdapter(_QuickAdapter);
     }
 
-    ImageView _imageView;
-
     @Override
     public void onResume() {
         super.onResume();
 
+        // show the view
         _view.animate()
                 .alpha(1)
                 .y(0)
@@ -91,10 +93,6 @@ public class ZimuDialog extends DialogFragment {
         Dialog dialog = getDialog();
         if (dialog != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-            ViewGroup decor = (ViewGroup) dialog.getWindow().getDecorView();
-            _imageView = (ImageView) LayoutInflater.from(getActivity()).inflate(R.layout.layout_decor, null);
-            decor.addView(_imageView);
         }
     }
 
@@ -126,7 +124,7 @@ public class ZimuDialog extends DialogFragment {
         }
 
         @Override
-        protected void convert(final BaseViewHolder helper, Zimu item) {
+        protected void convert(final BaseViewHolder helper, final Zimu item) {
 
             Glide.with(ZimuDialog.this)
                     .load(item.getPic_url())
@@ -138,18 +136,9 @@ public class ZimuDialog extends DialogFragment {
             helper.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    _imageView.setX(v.getPivotX());
-                    _imageView.setY(v.getPivotY());
-                    _imageView.setImageBitmap(Utils.getViewBitmap(v));
-
-                    _imageView.animate()
-                            .scaleX(0)
-                            .scaleY(0)
-                            .x(0)
-                            .y(0)
-                            .setDuration(1000)
-                            .start();
+                    ApiManager.getInstence()
+                            .getDownloadUrlForZimu(item.getDownload_page())
+                            .subscribe();
                 }
             });
         }

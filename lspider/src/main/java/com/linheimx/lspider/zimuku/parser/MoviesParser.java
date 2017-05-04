@@ -67,7 +67,7 @@ public class MoviesParser implements IParser<String, Page> {
                     Element td_a = td.child(1);
                     zimu.setName(td_a.attr("title"));
 
-                    String download_page = BASE_URL + td_a.attr("href");
+                    String download_page = td_a.attr("href");
                     zimu.setDownload_page(download_page);
                     movie.addZimu(zimu);
                 }

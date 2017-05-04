@@ -1,6 +1,7 @@
 package com.linheimx.lspider;
 
 import com.linheimx.lspider.zimuku.parser.MoviesParser;
+import com.linheimx.lspider.zimuku.parser.ZimuDownloadPageParser;
 
 /**
  * Created by x1c on 2017/5/1.
@@ -28,5 +29,14 @@ public class ParserManager {
             _MoviesParser = new MoviesParser();
         }
         return _MoviesParser;
+    }
+
+    ZimuDownloadPageParser _ZimuDownloadPageParser;
+
+    public ZimuDownloadPageParser get__ZimuDownloadPageParser() {
+        if (_ZimuDownloadPageParser == null) {
+            _ZimuDownloadPageParser = new ZimuDownloadPageParser();
+        }
+        return _ZimuDownloadPageParser;
     }
 }
