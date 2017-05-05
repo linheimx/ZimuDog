@@ -18,6 +18,8 @@ public interface IContract {
         void loadMoreMovies();
 
         void cancelSearch();
+
+        void onDestroy();
     }
 
     interface V {

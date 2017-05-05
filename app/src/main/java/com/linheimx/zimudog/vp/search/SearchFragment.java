@@ -2,7 +2,6 @@ package com.linheimx.zimudog.vp.search;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,13 +16,13 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.linheimx.zimudog.utils.dialog.ZimuDialog;
+import com.linheimx.lcustom.custom.utils.Util;
+import com.linheimx.lcustom.custom.view.SearchBar;
 import com.linheimx.lspider.zimuku.bean.Movie;
 import com.linheimx.zimudog.R;
+import com.linheimx.zimudog.utils.dialog.ZimuDialog;
 import com.linheimx.zimudog.vp.base.BaseFragment;
 import com.linheimx.zimudog.vp.base.Provider;
-import com.linheimx.zimudog.utils.dialog.LoadingDialog;
-import com.linheimx.lcustom.custom.view.SearchBar;
 
 import java.util.List;
 
@@ -37,18 +36,16 @@ public class SearchFragment extends BaseFragment implements IContract.V {
     Unbinder _Unbinder;
     Provider _Provider;
 
-    LoadingDialog _LoadingDialog;
-
     QuickAdapter _QuickAdapter;
-    View notDataView;
-    View errorView;
+    View _rv_LoadingView;
+    View _rv_ErrorView;
 
     IContract.P _P;
 
     @BindView(R.id.search_bar)
     SearchBar searchBar;
     @BindView(R.id.rv)
-    RecyclerView rv;
+    RecyclerView _rv;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -86,15 +83,6 @@ public class SearchFragment extends BaseFragment implements IContract.V {
 
         /***************************** presenter **************************/
         _P = new P(this);
-        
-        // loading dialog
-        _LoadingDialog = new LoadingDialog();
-        _LoadingDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                _P.cancelSearch();
-            }
-        });
 
         // search bar
         searchBar.setDrawerLayout(_Provider.provideDrawLayout(), getActivity());
@@ -102,9 +90,14 @@ public class SearchFragment extends BaseFragment implements IContract.V {
             @Override
             public void onSearchClick(String searchContent) {
                 if (!TextUtils.isEmpty(searchContent)) {
+                    // 隐藏键盘
+                    Util.closeSoftKeyboard(getActivity());
 
+                    _P.cancelSearch();
+
+                    // 处理adapter
                     _QuickAdapter.clearData();
-                    _LoadingDialog.show(getChildFragmentManager(), "dialog");
+                    _QuickAdapter.setEmptyView(_rv_LoadingView);
 
                     // go
                     _P.searchMovies(searchContent);
@@ -112,24 +105,9 @@ public class SearchFragment extends BaseFragment implements IContract.V {
             }
         });
 
-        // rv
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        notDataView = getActivity().getLayoutInflater().inflate(R.layout.empty_view, (ViewGroup) rv.getParent(), false);
-        notDataView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onRefresh();
-            }
-        });
-        errorView = getActivity().getLayoutInflater().inflate(R.layout.error_view, (ViewGroup) rv.getParent(), false);
-        errorView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onRefresh();
-            }
-        });
+        // _rv
+        _rv.setHasFixedSize(true);
+        _rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         _QuickAdapter = new QuickAdapter();
         _QuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
@@ -137,7 +115,7 @@ public class SearchFragment extends BaseFragment implements IContract.V {
             public void onLoadMoreRequested() {
                 _P.loadMoreMovies();
             }
-        }, rv);
+        }, _rv);
         _QuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -145,16 +123,32 @@ public class SearchFragment extends BaseFragment implements IContract.V {
                 Movie movie = movieList.get(position);
                 ZimuDialog zimuDialog = ZimuDialog.newInstance(movie);
                 zimuDialog.show(getChildFragmentManager(), null);
-
             }
         });
-        rv.setAdapter(_QuickAdapter);
+
+        _rv_LoadingView = getActivity().getLayoutInflater().inflate(R.layout.rv_loding_view, (ViewGroup) _rv.getParent(), false);
+        _rv_LoadingView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefresh();
+            }
+        });
+        _rv_ErrorView = getActivity().getLayoutInflater().inflate(R.layout.error_view, (ViewGroup) _rv.getParent(), false);
+        _rv_ErrorView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRefresh();
+            }
+        });
+
+        _rv.setAdapter(_QuickAdapter);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         _Unbinder.unbind();
+        _P.onDestroy();
     }
 
 
@@ -170,7 +164,6 @@ public class SearchFragment extends BaseFragment implements IContract.V {
 
     @Override
     public void showMovies(List<Movie> movies, boolean hasMore) {
-        _LoadingDialog.dismiss();
         _QuickAdapter.addData(movies);
 
         if (hasMore) {

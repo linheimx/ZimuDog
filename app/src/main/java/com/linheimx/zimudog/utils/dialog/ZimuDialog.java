@@ -1,6 +1,5 @@
 package com.linheimx.zimudog.utils.dialog;
 
-import android.animation.ValueAnimator;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -9,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +20,15 @@ import com.linheimx.lspider.zimuku.bean.Movie;
 import com.linheimx.lspider.zimuku.bean.Zimu;
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.m.net.ApiManager;
-import com.linheimx.zimudog.utils.Utils;
+import com.linheimx.zimudog.m.net.download.Downloader;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
 
 
 /**
@@ -138,7 +138,13 @@ public class ZimuDialog extends DialogFragment {
                 public void onClick(View v) {
                     ApiManager.getInstence()
                             .getDownloadUrlForZimu(item.getDownload_page())
-                            .subscribe();
+                            .subscribe(new Consumer<String>() {
+                                @Override
+                                public void accept(@NonNull String s) throws Exception {
+                                    Downloader downloader = new Downloader(s);
+                                    downloader.call();
+                                }
+                            });
                 }
             });
         }

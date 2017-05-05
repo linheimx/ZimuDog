@@ -1,4 +1,4 @@
-package com.linheimx.zimudog.m.net.downloadZimu;
+package com.linheimx.zimudog.m.net.download;
 
 import java.io.IOException;
 

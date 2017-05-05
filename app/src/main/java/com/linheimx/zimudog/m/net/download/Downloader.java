@@ -1,5 +1,9 @@
-package com.linheimx.zimudog.m.net.downloadZimu;
+package com.linheimx.zimudog.m.net.download;
 
+import android.util.Log;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.concurrent.Callable;
 
@@ -12,21 +16,30 @@ import okhttp3.Response;
  * Created by x1c on 2017/5/4.
  */
 
-public class ZimuDownloader implements Callable<Boolean> {
+public class Downloader implements Callable<Boolean> {
+
+    private String downloadUrl;
+    private File outFile;
+
+    public Downloader(String downloadUrl, File outFile) {
+        this.downloadUrl = downloadUrl;
+        this.outFile = outFile;
+    }
 
     @Override
     public Boolean call() throws Exception {
         Request request = new Request.Builder()
-                .url("https://publicobject.com/helloworld.txt")
+                .url(downloadUrl)
+                .get()
                 .build();
 
         final ProgressListener progressListener = new ProgressListener() {
             @Override
             public void update(long bytesRead, long contentLength, boolean done) {
-                System.out.println(bytesRead);
-                System.out.println(contentLength);
-                System.out.println(done);
-                System.out.format("%d%% done\n", (100 * bytesRead) / contentLength);
+                Log.e("--->", "bytesRead:" + bytesRead);
+                Log.e("--->", "contentLength:" + contentLength);
+                Log.e("--->", "done:" + done);
+                Log.e("--->", "%:" + (100 * bytesRead) / contentLength);
             }
         };
 
@@ -44,7 +57,13 @@ public class ZimuDownloader implements Callable<Boolean> {
 
         try {
             Response response = client.newCall(request).execute();
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+            if (response.isSuccessful()) {
+                Log.e("--->", "下载成功：" + outFile.getAbsolutePath());
+                FileOutputStream fileOutputStream = new FileOutputStream(outFile);
+                fileOutputStream.write(response.body().bytes());
+            } else {
+                throw new IOException("Unexpected code " + response);
+            }
         } catch (IOException e) {
             e.printStackTrace();
             return false;
