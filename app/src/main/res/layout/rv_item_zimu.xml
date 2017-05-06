@@ -3,36 +3,50 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="80dp"
     android:layout_gravity="center"
     android:foreground="?android:attr/selectableItemBackground"
     card_view:cardBackgroundColor="@color/item_bg"
     card_view:cardCornerRadius="2dp"
     card_view:cardUseCompatPadding="true">
 
-    <RelativeLayout
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_gravity="center">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/img"
-            android:layout_width="32dp"
-            android:layout_height="24dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:scaleType="fitXY" />
+        <com.linheimx.lcustom.custom.view.SnackProgressView
+            android:id="@+id/progress"
+            card_view:showTxt="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-        <TextView
-            android:id="@+id/tv_title"
-            style="@style/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/img"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="@dimen/dp_10"
-            android:text="haha" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="32dp"
+                android:layout_height="24dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/img"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="@dimen/dp_10"
+                android:text="haha" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
 </android.support.v7.widget.CardView>

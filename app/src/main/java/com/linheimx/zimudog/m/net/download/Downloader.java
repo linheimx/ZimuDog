@@ -2,10 +2,11 @@ package com.linheimx.zimudog.m.net.download;
 
 import android.util.Log;
 
+import com.linheimx.zimudog.utils.rxbus.RxBus;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.concurrent.Callable;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -16,26 +17,32 @@ import okhttp3.Response;
  * Created by x1c on 2017/5/4.
  */
 
-public class Downloader implements Callable<Boolean> {
+public class Downloader implements Runnable {
+    private String _key;
+    private String _downloadUrl;
+    private File _outFile;
 
-    private String downloadUrl;
-    private File outFile;
-
-    public Downloader(String downloadUrl, File outFile) {
-        this.downloadUrl = downloadUrl;
-        this.outFile = outFile;
+    public Downloader(String key, String downloadUrl, File outFile) {
+        this._key = key;
+        this._downloadUrl = downloadUrl;
+        this._outFile = outFile;
     }
 
     @Override
-    public Boolean call() throws Exception {
+    public void run() {
+
         Request request = new Request.Builder()
-                .url(downloadUrl)
+                .url(_downloadUrl)
                 .get()
                 .build();
 
         final ProgressListener progressListener = new ProgressListener() {
             @Override
             public void update(long bytesRead, long contentLength, boolean done) {
+
+                RxBus.getInstance()
+                        .post(new ProgressEvent(_key, bytesRead, contentLength));
+
                 Log.e("--->", "bytesRead:" + bytesRead);
                 Log.e("--->", "contentLength:" + contentLength);
                 Log.e("--->", "done:" + done);
@@ -58,17 +65,21 @@ public class Downloader implements Callable<Boolean> {
         try {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful()) {
-                Log.e("--->", "下载成功：" + outFile.getAbsolutePath());
-                FileOutputStream fileOutputStream = new FileOutputStream(outFile);
+                Log.e("--->", "下载成功：" + _outFile.getAbsolutePath());
+                FileOutputStream fileOutputStream = new FileOutputStream(_outFile);
                 fileOutputStream.write(response.body().bytes());
             } else {
-                throw new IOException("Unexpected code " + response);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
 
-        return true;
+                RxBus.getInstance()
+                        .post(new ProgressEvent(_key, true, response.message()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            RxBus.getInstance()
+                    .post(new ProgressEvent(_key, true, e.getMessage()));
+        }
     }
+
+
 }

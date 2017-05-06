@@ -1,14 +1,11 @@
 package com.linheimx.zimudog.vp.search;
 
-
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -27,14 +24,8 @@ import com.linheimx.zimudog.vp.base.Provider;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 
 public class SearchFragment extends BaseFragment implements IContract.V {
-
-    Unbinder _Unbinder;
-    Provider _Provider;
 
     QuickAdapter _QuickAdapter;
     View _rv_LoadingView;
@@ -52,46 +43,33 @@ public class SearchFragment extends BaseFragment implements IContract.V {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        if (context instanceof Provider) {
-            _Provider = (Provider) context;
-        } else {
-            throw new RuntimeException("must implement Provider");
-        }
+    public int _ProvideLayout() {
+        return R.layout.fragment_search;
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-
-        _Provider = null;
+    public void _InitPresenter() {
+        _P = new P(this);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
-        _Unbinder = ButterKnife.bind(this, view);
-        return view;
+    public boolean _OnActivityBackPress() {
+        return false;
     }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        /***************************** presenter **************************/
-        _P = new P(this);
-
         // search bar
-        searchBar.setDrawerLayout(_Provider.provideDrawLayout(), getActivity());
+        searchBar.setDrawerLayout(((Provider) _Ac).provideDrawLayout(), _Ac);
         searchBar.setSearchClickListener(new SearchBar.onSearchClickListener() {
             @Override
             public void onSearchClick(String searchContent) {
                 if (!TextUtils.isEmpty(searchContent)) {
                     // 隐藏键盘
-                    Util.closeSoftKeyboard(getActivity());
+                    Util.closeSoftKeyboard(_Ac);
 
                     _P.cancelSearch();
 
@@ -107,7 +85,7 @@ public class SearchFragment extends BaseFragment implements IContract.V {
 
         // _rv
         _rv.setHasFixedSize(true);
-        _rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        _rv.setLayoutManager(new LinearLayoutManager(_Ac));
 
         _QuickAdapter = new QuickAdapter();
         _QuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
@@ -126,14 +104,14 @@ public class SearchFragment extends BaseFragment implements IContract.V {
             }
         });
 
-        _rv_LoadingView = getActivity().getLayoutInflater().inflate(R.layout.rv_loding_view, (ViewGroup) _rv.getParent(), false);
+        _rv_LoadingView = _Ac.getLayoutInflater().inflate(R.layout.rv_loding_view, (ViewGroup) _rv.getParent(), false);
         _rv_LoadingView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onRefresh();
             }
         });
-        _rv_ErrorView = getActivity().getLayoutInflater().inflate(R.layout.error_view, (ViewGroup) _rv.getParent(), false);
+        _rv_ErrorView = _Ac.getLayoutInflater().inflate(R.layout.error_view, (ViewGroup) _rv.getParent(), false);
         _rv_ErrorView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,20 +121,6 @@ public class SearchFragment extends BaseFragment implements IContract.V {
 
         _rv.setAdapter(_QuickAdapter);
     }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        _Unbinder.unbind();
-        _P.onDestroy();
-    }
-
-
-    @Override
-    public boolean onActivityBackPress() {
-        return false;
-    }
-
 
     private void onRefresh() {
 
