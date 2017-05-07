@@ -1,14 +1,58 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.linheimx.zimudog.vp.browzimu.BrowZimuFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.github.florent37.diagonallayout.DiagonalLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:elevation="10dp"
+                app:diagonal_angle="15"
+                app:diagonal_direction="left"
+                app:diagonal_position="bottom">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="字幕被下载到了本机SD卡中的ZimuDog文件夹下"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+            </com.github.florent37.diagonallayout.DiagonalLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:text="正在下载的字幕         "
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </FrameLayout>
+    </RelativeLayout>
+
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@android:color/white"
         android:elevation="5dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
@@ -37,11 +81,12 @@
                 android:layout_toRightOf="@+id/iv_nav"
                 android:gravity="center_vertical"
                 android:text="查看字幕"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
+
 
 </FrameLayout>

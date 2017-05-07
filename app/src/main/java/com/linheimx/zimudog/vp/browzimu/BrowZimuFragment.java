@@ -1,8 +1,11 @@
 package com.linheimx.zimudog.vp.browzimu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.graphics.drawable.DrawerArrowDrawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import android.widget.ImageView;
 
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.vp.base.BaseFragment;
+import com.linheimx.zimudog.vp.base.Provider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,5 +48,16 @@ public class BrowZimuFragment extends BaseFragment {
 
         _arrowDrawable = new DrawerArrowDrawable(_Ac);
         ivNav.setImageDrawable(_arrowDrawable);
+        ivNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Provider) _Ac).provideDrawLayout().openDrawer(GravityCompat.START);
+
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("file/*");
+                startActivityForResult(intent, 1);
+            }
+        });
+
     }
 }
