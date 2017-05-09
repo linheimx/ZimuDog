@@ -4,12 +4,10 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +17,13 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.linheimx.lcustom.custom.view.SnackProgressView;
 import com.linheimx.lspider.zimuku.bean.Movie;
 import com.linheimx.lspider.zimuku.bean.Zimu;
 import com.linheimx.zimudog.App;
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.m.net.ApiManager;
 import com.linheimx.zimudog.m.net.download.DownloaderManager;
-import com.linheimx.zimudog.m.net.download.ProgressEvent;
 import com.linheimx.zimudog.utils.Utils;
-import com.linheimx.zimudog.utils.rxbus.RxBus;
 
 import java.io.File;
 import java.util.List;
@@ -37,14 +32,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import es.dmoral.toasty.Toasty;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
+import io.reactivex.Observer;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 
@@ -96,6 +86,7 @@ public class ZimuDialog extends DialogFragment {
         _QuickAdapter.openLoadAnimation();
         _QuickAdapter.addData(movie.getList_zimu());
         rv.setAdapter(_QuickAdapter);
+
     }
 
     @Override
@@ -126,17 +117,15 @@ public class ZimuDialog extends DialogFragment {
 
     public class QuickAdapter extends BaseQuickAdapter<Zimu, BaseViewHolder> {
 
-        private static final int Progress_Start = 6;
-
         public QuickAdapter() {
             super(R.layout.rv_item_zimu);
         }
 
-        public void addData(List<Zimu> movies) {
+        public void addData(List<Zimu> zimuList) {
             if (mData == null) {
-                mData = movies;
+                mData = zimuList;
             } else {
-                mData.addAll(movies);
+                mData.addAll(zimuList);
             }
             notifyDataSetChanged();
         }
@@ -148,37 +137,6 @@ public class ZimuDialog extends DialogFragment {
 
         @Override
         protected void convert(final BaseViewHolder helper, final Zimu item) {
-
-            /***********************************  进度条 ***********************************/
-            final SnackProgressView progressView = helper.getView(R.id.progress);
-            progressView.setMax(100);
-            progressView.setProgress(0);
-            Disposable oldDispose = (Disposable) progressView.getTag();
-            if (oldDispose != null) {
-                oldDispose.dispose();
-                _CompositeDisposable.delete(oldDispose);
-            }
-
-            // 观察字幕的下载状态
-            Disposable newDispose = RxBus.getInstance()
-                    .toFlowable(ProgressEvent.class)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Consumer<ProgressEvent>() {
-                        @Override
-                        public void accept(@NonNull ProgressEvent progressEvent) throws Exception {
-                            // 进度条的更新
-                            if (item.getDownload_page() != null) {
-                                if (item.getDownload_page().equals(progressEvent.getUrlKey())) {
-                                    float percent = (100 * progressEvent.getProgress()) / progressEvent.getMax();
-                                    progressView.setProgress(percent > Progress_Start ? percent : Progress_Start);
-                                }
-                            }
-                        }
-                    });
-            _CompositeDisposable.add(newDispose);
-            progressView.setTag(newDispose);
-
-
             // logo
             Glide.with(ZimuDialog.this)
                     .load(item.getPic_url())
@@ -195,34 +153,40 @@ public class ZimuDialog extends DialogFragment {
 
                     if (!Utils.isNetConnected()) {
                         Toasty.info(App.get(), "请检查您的网络！", Toast.LENGTH_SHORT, true).show();
-                        return;
-                    }
+                    } else {
+                        Toasty.success(getActivity(), "已加入下载队列", Toast.LENGTH_SHORT, true).show();
 
-                    Toasty.success(getActivity(), "已加入下载队列", Toast.LENGTH_SHORT, true).show();
-                    // 提示进度：已经开始下载啦
-                    if (progressView.getProgress() < Progress_Start) {
-                        progressView.setProgress(Progress_Start);
-                    }
-
-                    ApiManager.getInstence()
-                            .getDownloadUrlForZimu(item.getDownload_page())
-                            .observeOn(Schedulers.io())
-                            .subscribe(new Consumer<String>() {
-                                @Override
-                                public void accept(@NonNull String downloadUrl) throws Exception {
-                                    if (_Dialog != null && _Dialog.isShowing()) {     // 检测dialog 是否在显示状态
-
-                                        String filePath = Utils.getRootDirPath() + "/" + item.getName();
-
-                                        /**
-                                         *  以下载的页面为key（因为下载的url会经常变化）
-                                         */
-                                        DownloaderManager
-                                                .getInstance()
-                                                .startDownload(item.getDownload_page(), downloadUrl, new File(filePath));
+                        ApiManager.getInstence()
+                                .getDownloadUrlForZimu(item.getDownload_page())
+                                .observeOn(Schedulers.io())
+                                .subscribe(new Observer<String>() {
+                                    @Override
+                                    public void onSubscribe(Disposable d) {
+                                        _CompositeDisposable.add(d);
                                     }
-                                }
-                            });
+
+                                    @Override
+                                    public void onNext(String s) {
+                                        if (_Dialog != null && _Dialog.isShowing()) {     // 检测dialog 是否在显示状态
+                                            String filePath = Utils.getRootDirPath() + "/" + item.getName();
+
+                                            DownloaderManager
+                                                    .getInstance()
+                                                    .startDownload(item.getDownload_page(), item, s, new File(filePath));
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+                                        Toasty.error(App.get(), "网络好像有点问题哦！", Toast.LENGTH_SHORT, true).show();
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+
+                                    }
+                                });
+                    }
                 }
             });
         }

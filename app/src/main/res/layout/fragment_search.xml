@@ -6,28 +6,27 @@
     android:layout_height="match_parent"
     android:background="#d9d9d9">
 
-    <LinearLayout
-        android:id="@+id/parent_view"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <com.linheimx.lcustom.custom.view.SearchBar
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark" />
+            android:background="@color/colorPrimaryDark"
+            app:layout_scrollFlags="scroll|enterAlways|snap" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv"
-            android:scrollbars="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"
-            android:clipToPadding="false"
-            android:paddingTop="10dp" />
+    </android.support.design.widget.AppBarLayout>
 
-    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:clipToPadding="false"
+        android:paddingTop="10dp"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </android.support.design.widget.CoordinatorLayout>

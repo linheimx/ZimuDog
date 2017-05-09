@@ -134,6 +134,12 @@ public class SnackProgressView extends View {
         invalidate();
     }
 
+    public void setColor(int color) {
+        paint_pb.setColor(color);
+        invalidate();
+    }
+
+
     public float getProgress() {
         return progress;
     }

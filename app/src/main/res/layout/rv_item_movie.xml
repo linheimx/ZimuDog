@@ -44,6 +44,7 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/tv_title"
             android:layout_toRightOf="@+id/img"
+            android:layout_marginTop="10dp"
             android:paddingBottom="@dimen/dp_10"
             android:paddingLeft="@dimen/dp_10"
             android:paddingRight="@dimen/dp_10"
