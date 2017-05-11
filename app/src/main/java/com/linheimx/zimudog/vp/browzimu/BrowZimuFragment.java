@@ -11,7 +11,6 @@ import android.widget.ImageView;
 
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.vp.base.BaseFragment;
-import com.linheimx.zimudog.vp.base.Provider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,15 +19,10 @@ import butterknife.BindView;
 
 public class BrowZimuFragment extends BaseFragment {
 
-
-    @BindView(R.id.iv_nav)
-    ImageView ivNav;
     @BindView(R.id.tab)
     TabLayout tabLayout;
     @BindView(R.id.vp)
     ViewPager viewPager;
-
-    DrawerArrowDrawable _arrowDrawable;
 
     @Override
     public int _ProvideLayout() {
@@ -48,20 +42,6 @@ public class BrowZimuFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        // iv nav
-        _arrowDrawable = new DrawerArrowDrawable(_Ac);
-        ivNav.setImageDrawable(_arrowDrawable);
-        ivNav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((Provider) _Ac).provideDrawLayout().openDrawer(GravityCompat.START);
-
-//                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//                intent.setType("file/*");
-//                startActivityForResult(intent, 1);
-            }
-        });
 
         // viewpager
         DownloadingFragment downloadingFragment = new DownloadingFragment();

@@ -76,39 +76,6 @@ public class SearchBar extends FrameLayout {
         });
     }
 
-    public void setDrawerLayout(final DrawerLayout drawerLayout, final Activity activity) {
-        // 汉堡包动画
-        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-                _arrowDrawable.setProgress(slideOffset);
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                Util.closeSoftKeyboard(activity);
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-
-            }
-        });
-
-        // 展开布局
-        _nav.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-    }
-
     public void setSearchClickListener(onSearchClickListener listener) {
         this._listener = listener;
     }

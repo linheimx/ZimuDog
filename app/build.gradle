@@ -57,5 +57,6 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.GrenderG:Toasty:1.2.3'
     compile 'com.github.rubensousa:bottomsheetbuilder:1.6.0'
+    compile 'com.aurelhubert:ahbottomnavigation:2.0.6'
     annotationProcessor "com.jakewharton:butterknife-compiler:8.5.1"
 }

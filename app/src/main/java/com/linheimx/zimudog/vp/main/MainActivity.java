@@ -9,19 +9,22 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.linheimx.zimudog.App;
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.utils.Utils;
 import com.linheimx.zimudog.vp.base.BaseFragment;
-import com.linheimx.zimudog.vp.base.Provider;
 import com.linheimx.zimudog.vp.browzimu.BrowZimuFragment;
 import com.linheimx.zimudog.vp.search.SearchFragment;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -30,18 +33,13 @@ import es.dmoral.toasty.Toasty;
 import io.reactivex.functions.Consumer;
 
 
-public class MainActivity extends AppCompatActivity implements
-        NavigationView.OnNavigationItemSelectedListener,
-        Provider {
+public class MainActivity extends AppCompatActivity {
 
     public static final String F_SEARCH = "search";
     public static final String F_BROW = "about";
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout _DrawerLayout;
-    @BindView(R.id.nav_view)
-    NavigationView _NavigationView;
-
+    @BindView(R.id.bottom_navigation)
+    AHBottomNavigation bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +49,46 @@ public class MainActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        _NavigationView.setNavigationItemSelectedListener(this);
-
         if (savedInstanceState == null) {
             showFragment(F_SEARCH);
         }
 
+        initBottomNav();
+
         requestPermission();
+    }
+
+    private void initBottomNav() {
+
+        ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem("搜索", R.drawable.ic_apps_black_24dp, R.color.color_tab_1);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem("查看", R.drawable.ic_maps_local_bar, R.color.color_tab_2);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem("关于", R.drawable.ic_maps_local_restaurant, R.color.color_tab_3);
+
+        bottomNavigationItems.add(item1);
+        bottomNavigationItems.add(item2);
+        bottomNavigationItems.add(item3);
+
+        bottomNavigation.setBehaviorTranslationEnabled(true);
+        bottomNavigation.addItems(bottomNavigationItems);
+        bottomNavigation.setTranslucentNavigationEnabled(true);
+        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public boolean onTabSelected(int position, boolean wasSelected) {
+                switch (position) {
+                    case 0:
+                        showFragment(F_SEARCH);
+                        break;
+                    case 1:
+                        showFragment(F_BROW);
+                        break;
+                    case 2:
+                        showFragment(F_SEARCH);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override
@@ -71,43 +102,39 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        _DrawerLayout.closeDrawer(GravityCompat.START);
-        switch (menuItem.getItemId()) {
-            case R.id.navigation_search:
-                _DrawerLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        showFragment(F_SEARCH);
-                    }
-                }, 400);
-                return true;
-            case R.id.navigation_brow:
-                _DrawerLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        showFragment(F_BROW);
-                    }
-                }, 400);
-                return true;
-            case R.id.navigation_notifications:
-                _DrawerLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        showFragment(F_BROW);
-                    }
-                }, 400);
-                return true;
-            default:
-                return true;
-        }
-    }
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//        _DrawerLayout.closeDrawer(GravityCompat.START);
+//        switch (menuItem.getItemId()) {
+//            case R.id.navigation_search:
+//                _DrawerLayout.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        showFragment(F_SEARCH);
+//                    }
+//                }, 400);
+//                return true;
+//            case R.id.navigation_brow:
+//                _DrawerLayout.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        showFragment(F_BROW);
+//                    }
+//                }, 400);
+//                return true;
+//            case R.id.navigation_notifications:
+//                _DrawerLayout.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        showFragment(F_BROW);
+//                    }
+//                }, 400);
+//                return true;
+//            default:
+//                return true;
+//        }
+//    }
 
-    @Override
-    public DrawerLayout provideDrawLayout() {
-        return _DrawerLayout;
-    }
 
     private void requestPermission() {
         new RxPermissions(this)

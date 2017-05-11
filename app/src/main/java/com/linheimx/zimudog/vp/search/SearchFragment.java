@@ -19,7 +19,6 @@ import com.linheimx.lspider.zimuku.bean.Movie;
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.utils.dialog.ZimuDialog;
 import com.linheimx.zimudog.vp.base.BaseFragment;
-import com.linheimx.zimudog.vp.base.Provider;
 
 import java.util.List;
 
@@ -63,7 +62,6 @@ public class SearchFragment extends BaseFragment implements IContract.V {
         super.onViewCreated(view, savedInstanceState);
 
         // search bar
-        searchBar.setDrawerLayout(((Provider) _Ac).provideDrawLayout(), _Ac);
         searchBar.setSearchClickListener(new SearchBar.onSearchClickListener() {
             @Override
             public void onSearchClick(String searchContent) {
