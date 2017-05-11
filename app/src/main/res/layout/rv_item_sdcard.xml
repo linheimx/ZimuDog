@@ -74,11 +74,11 @@
             android:layout_alignRight="@+id/tv_title"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
             android:text="1.2KB"
             android:textSize="@dimen/dp_10"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintLeft_toRightOf="@+id/tv_type"
-            android:layout_marginTop="8dp"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
         <TextView
@@ -89,14 +89,14 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
             android:gravity="left|center_vertical"
             android:maxLines="3"
             android:paddingRight="1dp"
             android:text="hahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             card_view:layout_constraintLeft_toRightOf="@+id/tv_type"
-            android:layout_marginLeft="12dp"
-            card_view:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp" />
+            card_view:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
