@@ -40,7 +40,7 @@
             android:longClickable="false"
             android:maxLines="1"
             android:minHeight="@dimen/square_button_size"
-            android:text="客人"
+            android:text="摔跤吧，爸爸"
             android:textSize="@dimen/search_bar_text_size" />
 
         <ImageView

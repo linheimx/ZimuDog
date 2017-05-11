@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+def supportVersion = "25.3.1"
+
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.0'
@@ -24,8 +26,8 @@ android {
                 || task.name.contains("mockableAndroidJar")
                 || task.name.contains("UnitTest")
                 || task.name.contains("AndroidTest")//用不到NDK和JNI的也关闭掉
-                || task.name.contains("Ndk")
-                || task.name.contains("Jni")
+//                || task.name.contains("Ndk")
+//                || task.name.contains("Jni")
         ) {
             task.enabled = false
         }
@@ -34,14 +36,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:design:25.3.1'
     compile project(':lspider')
     compile project(':lcustom')
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:support-v4:25.3.1'
+    compile "com.android.support:design:$supportVersion"
+    compile "com.android.support:appcompat-v7:$supportVersion"
+    compile "com.android.support:support-v4:$supportVersion"
+    compile "com.android.support:recyclerview-v7:$supportVersion"
     compile 'com.airbnb.android:lottie:2.0.0-beta4'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
@@ -55,5 +56,6 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.15'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.GrenderG:Toasty:1.2.3'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'com.github.rubensousa:bottomsheetbuilder:1.6.0'
+    annotationProcessor "com.jakewharton:butterknife-compiler:8.5.1"
 }
