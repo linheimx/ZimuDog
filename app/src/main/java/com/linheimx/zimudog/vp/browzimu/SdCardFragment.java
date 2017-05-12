@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -30,6 +29,7 @@ import com.linheimx.zimudog.utils.rxbus.RxBus_Behavior;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.concurrent.Callable;
 
@@ -140,6 +140,11 @@ public class SdCardFragment extends TitleFragment {
         File currentDir = _QuickAdapter.getCurrentDir();
         File parent = currentDir.getParentFile();
         if (parent != null) {
+            // 安全检查
+            if (parent.listFiles() == null) {
+                return;
+            }
+
             _QuickAdapter.setCurrentDir(parent);
             _QuickAdapter.filesChanged();
         }
@@ -160,7 +165,21 @@ public class SdCardFragment extends TitleFragment {
 
         public void filesChanged() {
             tv_nav.setText(currentDir.getPath());
-            mData = Arrays.asList(currentDir.listFiles());
+            File[] files = currentDir.listFiles();
+            Arrays.sort(files, new Comparator<File>() {
+                @Override
+                public int compare(File o1, File o2) {
+                    long ret = o1.lastModified() - o2.lastModified();
+                    if (ret > 0) {
+                        return -1;
+                    } else if (ret == 0) {
+                        return 0;
+                    } else {
+                        return 1;
+                    }
+                }
+            });
+            mData = Arrays.asList(files);
             notifyDataSetChanged();
         }
 
@@ -222,32 +241,16 @@ public class SdCardFragment extends TitleFragment {
                     }
                 }
             });
-        }
 
-
-        /**
-         * 获取目录的大小
-         *
-         * @param file
-         * @return
-         */
-        public long getDirSize(File file) {
-            //判断文件是否存在
-            if (file.exists()) {
-                //如果是目录则递归计算其内容的总大小
-                if (file.isDirectory()) {
-                    File[] children = file.listFiles();
-                    long size = 0;
-                    for (File f : children)
-                        size += getDirSize(f);
-                    return size;
-                } else {
-                    //如果是文件则直接返回其大小,以“兆”为单位
-                    return file.length();
+            helper.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (!file.isFile()) {
+                        showMenu(file);
+                    }
+                    return true;
                 }
-            } else {
-                return 0;
-            }
+            });
         }
     }
 

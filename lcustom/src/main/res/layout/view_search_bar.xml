@@ -35,7 +35,7 @@
             android:layout_toRightOf="@+id/iv_nav"
             android:background="@color/transparent"
             android:ellipsize="end"
-            android:hint="输入字幕，去查询"
+            android:hint="输入关键词，然后点击搜索 : )"
             android:imeOptions="actionSearch"
             android:inputType="textNoSuggestions"
             android:longClickable="false"
@@ -50,9 +50,9 @@
             android:layout_height="@dimen/square_button_size"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/oval_btn_selector"
             android:padding="@dimen/square_button_padding"
-            android:src="@drawable/ic_search_black_24dp" />
+            android:src="@drawable/search"
+            android:tint="@color/colorPrimaryDark" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

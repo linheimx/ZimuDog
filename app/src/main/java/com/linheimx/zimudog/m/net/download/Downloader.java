@@ -39,12 +39,6 @@ public class Downloader implements Runnable {
     @Override
     public void run() {
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         Request request = new Request.Builder()
                 .url(_downloadUrl)
                 .get()
@@ -58,10 +52,10 @@ public class Downloader implements Runnable {
                 _state.set_nowAll(contentLength);
                 _state.set_nowDone(done);
 
-                Log.e("--->", "bytesRead:" + bytesRead);
-                Log.e("--->", "contentLength:" + contentLength);
-                Log.e("--->", "done:" + done);
-                Log.e("--->", "%:" + (100 * bytesRead) / contentLength);
+//                Log.e("--->", "bytesRead:" + bytesRead);
+//                Log.e("--->", "contentLength:" + contentLength);
+//                Log.e("--->", "done:" + done);
+//                Log.e("--->", "%:" + (100 * bytesRead) / contentLength);
 
                 notifyStateChanged();
             }
