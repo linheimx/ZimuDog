@@ -138,7 +138,11 @@
    public static *** w(...);
  }
 
+ # model
+ -keep class com.linheimx.zimudog.m.net.api.**{*;}
 
+# jsoup
+-keeppackagenames org.jsoup.nodes
 
 
 

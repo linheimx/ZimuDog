@@ -71,6 +71,9 @@ public class SearchFragment extends BaseFragment implements IContract.V {
 
                 RxBus.getInstance().post(new Event_ShowNav());
 
+                // 隐藏键盘
+                Util.closeSoftKeyboard(_Ac);
+
                 if (!TextUtils.isEmpty(searchContent)) {
 
                     // check
@@ -78,9 +81,6 @@ public class SearchFragment extends BaseFragment implements IContract.V {
                         Toasty.error(App.get(), "请检查您的网络", Toast.LENGTH_SHORT).show();
                         return;
                     }
-
-                    // 隐藏键盘
-                    Util.closeSoftKeyboard(_Ac);
 
                     // 取消上一个搜索
                     _P.cancelSearch();
@@ -187,7 +187,6 @@ public class SearchFragment extends BaseFragment implements IContract.V {
 
         @Override
         protected void convert(final BaseViewHolder helper, Movie item) {
-
             Glide.with(SearchFragment.this)
                     .load(item.getPic_url())
                     .crossFade()

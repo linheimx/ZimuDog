@@ -138,10 +138,19 @@ public class ZimuDialog extends DialogFragment {
         @Override
         protected void convert(final BaseViewHolder helper, final Zimu item) {
             // logo
-            Glide.with(ZimuDialog.this)
-                    .load(item.getPic_url())
-                    .crossFade()
-                    .into((ImageView) helper.getView(R.id.img));
+            String picUrl = item.getPic_url();
+            if (picUrl.contains("jollyroger")) {
+                Glide.with(ZimuDialog.this)
+                        .load(R.drawable.doge1)
+                        .crossFade()
+                        .into((ImageView) helper.getView(R.id.img));
+            } else {
+                Glide.with(ZimuDialog.this)
+                        .load(item.getPic_url())
+                        .crossFade()
+                        .into((ImageView) helper.getView(R.id.img));
+            }
+
 
             // title
             helper.setText(R.id.tv_title, item.getName());
