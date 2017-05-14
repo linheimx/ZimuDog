@@ -1,24 +1,67 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.linheimx.zimudog.vp.about.AboutFragment">
+    android:background="@android:color/white">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation_view"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginBottom="98dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:keepScreenOn="true"
-        app:layout_constraintBottom_toTopOf="@+id/tv_title"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="emoji_tongue.json"
-        app:lottie_loop="true" />
-</FrameLayout>
+    <TextView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="字幕狗 v1.0.0"
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="32dp"
+            android:padding="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civ_my_avatar"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="32dp"
+                    android:src="@drawable/doge1"
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="1dp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/civ_my_avatar"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="作者：木子李 单人健" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView3"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="联系：linheimx@gmail.com" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+</RelativeLayout>

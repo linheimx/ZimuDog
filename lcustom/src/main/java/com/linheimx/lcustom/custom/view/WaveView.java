@@ -2,6 +2,7 @@ package com.linheimx.lcustom.custom.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
@@ -18,8 +19,8 @@ import java.util.List;
 public class WaveView extends View {
     private float mInitialRadius;   // 初始波纹半径
     private float mMaxRadius;   // 最大波纹半径
-    private long mDuration = 2000; // 一个波纹从创建到消失的持续时间
-    private int mSpeed = 1000;   // 波纹的创建速度，每500ms创建一个
+    private long mDuration = 10000; // 一个波纹从创建到消失的持续时间
+    private int mSpeed = 5000;   // 波纹的创建速度，每500ms创建一个
 
     private boolean mIsRunning;
     private long mLastCreateTime;
@@ -60,6 +61,14 @@ public class WaveView extends View {
         mPaint.setColor(color);
     }
 
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+
+        mPaint.setColor(Color.parseColor("#a5537a8f"));
+        start();
+    }
+
     /**
      * 开始
      */
@@ -93,7 +102,7 @@ public class WaveView extends View {
             float radius = circle.getCurrentRadius();
             if (System.currentTimeMillis() - circle.mCreateTime < mDuration) {
                 mPaint.setAlpha(circle.getAlpha());
-                canvas.drawCircle(getWidth() / 2, getHeight(), radius, mPaint);
+                canvas.drawCircle(getWidth(), 0, radius, mPaint);
             } else {
                 iterator.remove();
             }

@@ -23,5 +23,7 @@ public interface IContract {
 
     interface V {
         void showMovies(List<Movie> movies, boolean hasMore);
+
+        void showLoadingError();
     }
 }

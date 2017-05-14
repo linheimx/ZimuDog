@@ -58,7 +58,7 @@ public class P extends BasePresenter implements IContract.P {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        _V.showLoadingError();
                     }
 
                     @Override

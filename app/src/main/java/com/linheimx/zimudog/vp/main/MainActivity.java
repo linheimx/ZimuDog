@@ -1,6 +1,7 @@
 package com.linheimx.zimudog.vp.main;
 
 import android.Manifest;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -18,28 +20,47 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.linheimx.zimudog.App;
 import com.linheimx.zimudog.R;
+import com.linheimx.zimudog.m.bean.event.Event_ShowNav;
 import com.linheimx.zimudog.utils.Utils;
+import com.linheimx.zimudog.utils.rxbus.RxBus;
+import com.linheimx.zimudog.vp.about.AboutFragment;
 import com.linheimx.zimudog.vp.base.BaseFragment;
 import com.linheimx.zimudog.vp.browzimu.BrowZimuFragment;
 import com.linheimx.zimudog.vp.search.SearchFragment;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.message.PushAgent;
 
+import org.json.JSONObject;
+import org.reactivestreams.Subscription;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+
+import static anet.channel.util.Utils.context;
 
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String F_SEARCH = "search";
-    public static final String F_BROW = "about";
+    public static final String F_BROW = "brow";
+    public static final String F_ABOUT = "about";
 
     @BindView(R.id.bottom_navigation)
     AHBottomNavigation bottomNavigation;
+
+    Disposable disposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,12 +104,47 @@ public class MainActivity extends AppCompatActivity {
                         showFragment(F_BROW);
                         break;
                     case 2:
-                        showFragment(F_SEARCH);
+                        showFragment(F_ABOUT);
                         break;
                 }
                 return true;
             }
         });
+
+        disposable = RxBus.getInstance().toFlowable(Event_ShowNav.class)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Event_ShowNav>() {
+                    @Override
+                    public void accept(@io.reactivex.annotations.NonNull Event_ShowNav event_showNav) throws Exception {
+                        bottomNavigation.restoreBottomNavigation(true);
+                    }
+                });
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        PushAgent.getInstance(this).onAppStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        disposable.dispose();
     }
 
     @Override
@@ -102,43 +158,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//        _DrawerLayout.closeDrawer(GravityCompat.START);
-//        switch (menuItem.getItemId()) {
-//            case R.id.navigation_search:
-//                _DrawerLayout.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        showFragment(F_SEARCH);
-//                    }
-//                }, 400);
-//                return true;
-//            case R.id.navigation_brow:
-//                _DrawerLayout.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        showFragment(F_BROW);
-//                    }
-//                }, 400);
-//                return true;
-//            case R.id.navigation_notifications:
-//                _DrawerLayout.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        showFragment(F_BROW);
-//                    }
-//                }, 400);
-//                return true;
-//            default:
-//                return true;
-//        }
-//    }
-
-
     private void requestPermission() {
         new RxPermissions(this)
-                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE)
                 .subscribe(new Consumer<Boolean>() {
                     @Override
                     public void accept(@io.reactivex.annotations.NonNull Boolean aBoolean) throws Exception {
@@ -176,6 +198,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case F_BROW:
                     fragment = new BrowZimuFragment();
+                    break;
+                case F_ABOUT:
+                    fragment = new AboutFragment();
                     break;
             }
             fragmentManager.beginTransaction()

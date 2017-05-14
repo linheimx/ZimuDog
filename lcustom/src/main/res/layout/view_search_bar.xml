@@ -35,7 +35,7 @@
             android:layout_toRightOf="@+id/iv_nav"
             android:background="@color/transparent"
             android:ellipsize="end"
-            android:hint="输入关键词，然后点击搜索 : )"
+            android:hint="搜索字幕..."
             android:imeOptions="actionSearch"
             android:inputType="textNoSuggestions"
             android:longClickable="false"

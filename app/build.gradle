@@ -2,6 +2,18 @@ apply plugin: 'com.android.application'
 
 def supportVersion = "25.3.1"
 
+// 读取定义的属性
+def props = new Properties()
+project.rootProject.file("local.properties").withInputStream { props.load(it) }
+def UMENG_APPKEY = props.getProperty("UMENG_APPKEY")
+def UMENG_MESSAGE_SECRET = props.getProperty("UMENG_MESSAGE_SECRET")
+
+def KEY_ALIAS = props.getProperty("KEY_ALIAS")
+def KEY_PASSWORD = props.getProperty("KEY_PASSWORD")
+def STORE_FILE = props.getProperty("STORE_FILE")
+def STORE_PASSWORD = props.getProperty("STORE_PASSWORD")
+
+
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.0'
@@ -13,9 +25,20 @@ android {
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
     }
+    signingConfigs {//签名
+        release {
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+            storeFile file(STORE_FILE)
+            storePassword STORE_PASSWORD
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -32,7 +55,16 @@ android {
             task.enabled = false
         }
     }
+
+    productFlavors {
+        yingyongbao {}
+        wandoujia {}
+    }
+    productFlavors.all { p ->
+        p.manifestPlaceholders = [UMENG_CHANNEL: name, UMENG_APPKEY: UMENG_APPKEY, UMENG_MESSAGE_SECRET: UMENG_MESSAGE_SECRET,]
+    }
 }
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -58,5 +90,8 @@ dependencies {
     compile 'com.github.GrenderG:Toasty:1.2.3'
     compile 'com.github.rubensousa:bottomsheetbuilder:1.6.0'
     compile 'com.aurelhubert:ahbottomnavigation:2.0.6'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.umeng.analytics:analytics:latest.integration'
     annotationProcessor "com.jakewharton:butterknife-compiler:8.5.1"
+    compile project(':PushSDK')
 }
