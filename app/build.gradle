@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'bugly'
 
 def supportVersion = "25.3.1"
 
@@ -13,6 +14,13 @@ def KEY_PASSWORD = props.getProperty("KEY_PASSWORD")
 def STORE_FILE = props.getProperty("STORE_FILE")
 def STORE_PASSWORD = props.getProperty("STORE_PASSWORD")
 
+def BUGLY_APPID = props.getProperty("BUGLY_APPID")
+def BUGLY_APPKEY = props.getProperty("BUGLY_APPKEY")
+
+bugly {
+    appId = BUGLY_APPID
+    appKey = BUGLY_APPKEY
+}
 
 android {
     compileSdkVersion 25
@@ -22,8 +30,11 @@ android {
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
         vectorDrawables.useSupportLibrary = true
+        ndk {
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
     }
     signingConfigs {//签名
         release {
@@ -57,11 +68,14 @@ android {
     }
 
     productFlavors {
-        wandoujia {}
         _360 {}
+        _yyb{}
     }
     productFlavors.all { p ->
-        p.manifestPlaceholders = [UMENG_CHANNEL: name, UMENG_APPKEY: UMENG_APPKEY, UMENG_MESSAGE_SECRET: UMENG_MESSAGE_SECRET,]
+        p.manifestPlaceholders = [UMENG_CHANNEL       : name,
+                                  UMENG_APPKEY        : UMENG_APPKEY,
+                                  UMENG_MESSAGE_SECRET: UMENG_MESSAGE_SECRET,
+                                  BUGLY_APPID         : BUGLY_APPID]
     }
 }
 
@@ -92,6 +106,8 @@ dependencies {
     compile 'com.aurelhubert:ahbottomnavigation:2.0.6'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
     annotationProcessor "com.jakewharton:butterknife-compiler:8.5.1"
     compile project(':PushSDK')
 }

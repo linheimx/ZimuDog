@@ -1,9 +1,13 @@
 package com.linheimx.zimudog;
 
 import android.app.Application;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 import com.linheimx.zimudog.utils.Utils;
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
@@ -22,6 +26,23 @@ public class App extends Application {
 
         mApp = this;
         Utils.mkRootDir();
+
+        /***************************  bugly  *****************************/
+        try {
+            ApplicationInfo appInfo = getPackageManager()
+                    .getApplicationInfo(getPackageName(),
+                            PackageManager.GET_META_DATA);
+            String bugly_appid = appInfo.metaData.getString("BUGLY_APPID");// appid
+
+            String channel = appInfo.metaData.getString("UMENG_CHANNEL");// channel
+            CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(this);
+            strategy.setAppChannel(channel);
+
+            Bugly.init(getApplicationContext(), bugly_appid, false);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
         /*************************  友盟  **********************/
         MobclickAgent.setDebugMode(true);

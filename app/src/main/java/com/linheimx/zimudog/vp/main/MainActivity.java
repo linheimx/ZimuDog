@@ -28,6 +28,7 @@ import com.linheimx.zimudog.vp.base.BaseFragment;
 import com.linheimx.zimudog.vp.browzimu.BrowZimuFragment;
 import com.linheimx.zimudog.vp.search.SearchFragment;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 

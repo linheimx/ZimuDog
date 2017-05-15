@@ -1,0 +1,7 @@
+file=D:\Android\OpenSrc\linheimx\ZimuDog\app\build\outputs\mapping\wandoujia\release\mapping.txt
+sha1=732fc63524d4c6966524e6f8d2aa1e7edb68038a
+appId=f630d46ce5
+appChannel=wandoujia
+appPackage=com.linheimx.zimudog
+appVersion=1.0.1
+
