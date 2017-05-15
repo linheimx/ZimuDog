@@ -65,7 +65,7 @@ public class WaveView extends View {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        mPaint.setColor(Color.parseColor("#a5537a8f"));
+        mPaint.setColor(Color.parseColor("#b2a1c7db"));
         start();
     }
 

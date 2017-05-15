@@ -57,8 +57,8 @@ android {
     }
 
     productFlavors {
-        yingyongbao {}
         wandoujia {}
+        _360 {}
     }
     productFlavors.all { p ->
         p.manifestPlaceholders = [UMENG_CHANNEL: name, UMENG_APPKEY: UMENG_APPKEY, UMENG_MESSAGE_SECRET: UMENG_MESSAGE_SECRET,]
