@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
@@ -55,9 +56,11 @@ import static com.linheimx.zimudog.utils.Utils.convertFileSize;
 public class SdCardFragment extends TitleFragment {
 
     @BindView(R.id.rv)
-    RecyclerView rv;
+    RecyclerView _rv;
     @BindView(R.id.tv_nav)
-    TextView tv_nav;
+    TextView _tv_nav;
+    @BindView(R.id.srl)
+    SwipeRefreshLayout _srl;
 
     Unbinder unbinder;
     QuickAdapter _QuickAdapter;
@@ -81,13 +84,13 @@ public class SdCardFragment extends TitleFragment {
         super.onViewCreated(view, savedInstanceState);
         _CompositeDisposable = new CompositeDisposable();
 
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        _rv.setHasFixedSize(true);
+        _rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         _QuickAdapter = new QuickAdapter();
+        _QuickAdapter.bindToRecyclerView(_rv);
         _QuickAdapter.openLoadAnimation();
-        rv.setAdapter(_QuickAdapter);
-
+        _QuickAdapter.setEmptyView(R.layout.rv_empty_view_sdcard);
 
         /****************************  观察正在下载的一堆字幕）  *****************************/
         Disposable disposable = RxBus_Behavior.getInstance()
@@ -100,6 +103,20 @@ public class SdCardFragment extends TitleFragment {
                     }
                 });
         _CompositeDisposable.add(disposable);
+
+        _srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                _rv.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        _QuickAdapter.rest2ZimuDog();
+                        Toasty.info(App.get(), "定位到了 手机的内部存储/ZimuDog目录", Toast.LENGTH_LONG).show();
+                        _srl.setRefreshing(false);
+                    }
+                }, 200);
+            }
+        });
     }
 
     @Override
@@ -158,13 +175,18 @@ public class SdCardFragment extends TitleFragment {
         public QuickAdapter() {
             super(R.layout.rv_item_sdcard);
 
+            rest2ZimuDog();
+        }
+
+
+        public void rest2ZimuDog() {
             File dir_zimu = new File(Utils.getRootDirPath());
             currentDir = dir_zimu;
             filesChanged();
         }
 
         public void filesChanged() {
-            tv_nav.setText(currentDir.getPath());
+            _tv_nav.setText(currentDir.getPath());
             File[] files = currentDir.listFiles();
             Arrays.sort(files, new Comparator<File>() {
                 @Override

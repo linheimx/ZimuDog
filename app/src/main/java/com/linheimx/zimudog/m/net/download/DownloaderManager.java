@@ -10,7 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
@@ -22,7 +24,9 @@ import io.reactivex.functions.Consumer;
 public class DownloaderManager {
 
     private static DownloaderManager _Instance;
-    private static ExecutorService executorService = Executors.newFixedThreadPool(2);
+    private static ExecutorService executorService = new ThreadPoolExecutor(2, 4,
+            60L, TimeUnit.MILLISECONDS,
+            new LinkedBlockingQueue<Runnable>());
 
     private DownloaderManager() {
 

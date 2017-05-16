@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -16,10 +15,8 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.linheimx.lcustom.custom.utils.Util;
 import com.linheimx.lcustom.custom.view.SearchBar;
 import com.linheimx.lspider.zimuku.bean.Movie;
-import com.linheimx.zimudog.App;
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.m.bean.event.Event_ShowNav;
-import com.linheimx.zimudog.utils.Utils;
 import com.linheimx.zimudog.utils.dialog.ZimuDialog;
 import com.linheimx.zimudog.utils.rxbus.RxBus;
 import com.linheimx.zimudog.vp.base.BaseFragment;
@@ -27,7 +24,6 @@ import com.linheimx.zimudog.vp.base.BaseFragment;
 import java.util.List;
 
 import butterknife.BindView;
-import es.dmoral.toasty.Toasty;
 
 public class SearchFragment extends BaseFragment implements IContract.V {
 
@@ -68,30 +64,7 @@ public class SearchFragment extends BaseFragment implements IContract.V {
         searchBar.setSearchClickListener(new SearchBar.onSearchClickListener() {
             @Override
             public void onSearchClick(String searchContent) {
-
-                RxBus.getInstance().post(new Event_ShowNav());
-
-                // 隐藏键盘
-                Util.closeSoftKeyboard(_Ac);
-
-                if (!TextUtils.isEmpty(searchContent)) {
-
-                    // check
-                    if (!Utils.isNetConnected()) {
-                        Toasty.error(App.get(), "请检查您的网络", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    // 取消上一个搜索
-                    _P.cancelSearch();
-
-                    showLoadingView();
-
-                    // go
-                    _P.searchMovies(searchContent);
-                } else {
-                    showEmptyView();
-                }
+                searchMovie(searchContent);
             }
         });
 
@@ -100,6 +73,7 @@ public class SearchFragment extends BaseFragment implements IContract.V {
         _rv.setLayoutManager(new LinearLayoutManager(_Ac));
 
         _QuickAdapter = new QuickAdapter();
+        _QuickAdapter.bindToRecyclerView(_rv);
         _QuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
@@ -116,7 +90,6 @@ public class SearchFragment extends BaseFragment implements IContract.V {
             }
         });
 
-        _rv.setAdapter(_QuickAdapter);
         showEmptyView();
     }
 
@@ -160,8 +133,31 @@ public class SearchFragment extends BaseFragment implements IContract.V {
     private void showErrorView() {
         _QuickAdapter.clearData();
         _QuickAdapter.setEmptyView(R.layout.rv_error_view);
+        _QuickAdapter.getEmptyView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchMovie(_lastMovie);
+            }
+        });
 
         RxBus.getInstance().post(new Event_ShowNav());
+    }
+
+    String _lastMovie;
+
+    private void searchMovie(String movie) {
+        _lastMovie = movie;
+
+        RxBus.getInstance().post(new Event_ShowNav());//显示底部栏
+        Util.closeSoftKeyboard(_Ac); // 隐藏键盘
+
+        if (!TextUtils.isEmpty(movie)) {
+            showLoadingView();
+            _P.cancelSearch();// 取消上一个搜索
+            _P.searchMovies(movie);// go
+        } else {
+            showEmptyView();
+        }
     }
 
 

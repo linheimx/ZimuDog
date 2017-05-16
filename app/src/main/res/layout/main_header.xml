@@ -15,6 +15,6 @@
         android:layout_marginBottom="20dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:scaleType="fitStart"
-        android:background="@drawable/doge1" />
+        android:background="@drawable/doge_512_512" />
 
 </LinearLayout>

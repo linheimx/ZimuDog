@@ -1,13 +1,10 @@
 package com.linheimx.zimudog.m.net;
 
-import android.util.Log;
-
 import com.linheimx.lspider.ParserManager;
 import com.linheimx.lspider.zimuku.bean.Page;
 import com.linheimx.zimudog.m.net.api.ZimukuApi;
 
 import java.io.IOException;
-import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -38,7 +35,7 @@ public class ApiManager {
     private ApiManager() {
 
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
 
         _Client = new OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)

@@ -141,7 +141,7 @@ public class ZimuDialog extends DialogFragment {
             String picUrl = item.getPic_url();
             if (picUrl.contains("jollyroger")) {
                 Glide.with(ZimuDialog.this)
-                        .load(R.drawable.doge1)
+                        .load(R.drawable.doge_512_512)
                         .crossFade()
                         .into((ImageView) helper.getView(R.id.img));
             } else {
