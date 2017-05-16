@@ -45,9 +45,9 @@ public class App extends Application {
 
 
         /*************************  友盟  **********************/
-        MobclickAgent.setDebugMode(true);
-        PushAgent mPushAgent = PushAgent.getInstance(this);
-        mPushAgent.register(new IUmengRegisterCallback() {  //注册推送服务，每次调用register方法都会回调该接口
+        MobclickAgent.setDebugMode(false);
+        PushAgent pushAgent = PushAgent.getInstance(this);
+        pushAgent.register(new IUmengRegisterCallback() {  //注册推送服务，每次调用register方法都会回调该接口
 
             @Override
             public void onSuccess(String deviceToken) {

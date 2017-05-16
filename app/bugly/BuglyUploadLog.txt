@@ -5,3 +5,10 @@ appChannel=wandoujia
 appPackage=com.linheimx.zimudog
 appVersion=1.0.1
 
+file=D:\Android\OpenSrc\linheimx\ZimuDog\app\build\outputs\mapping\_360\release\mapping.txt
+sha1=952bbec00b9269da50752f7b87047564f72ec1bb
+appId=f630d46ce5
+appChannel=_360
+appPackage=com.linheimx.zimudog
+appVersion=1.0.2
+
