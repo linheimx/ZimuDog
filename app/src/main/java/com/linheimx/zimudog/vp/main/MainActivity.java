@@ -1,18 +1,10 @@
 package com.linheimx.zimudog.vp.main;
 
 import android.Manifest;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -28,17 +20,9 @@ import com.linheimx.zimudog.vp.base.BaseFragment;
 import com.linheimx.zimudog.vp.browzimu.BrowZimuFragment;
 import com.linheimx.zimudog.vp.search.SearchFragment;
 import com.tbruyelle.rxpermissions2.RxPermissions;
-import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 
-import org.json.JSONObject;
-import org.reactivestreams.Subscription;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,8 +32,6 @@ import es.dmoral.toasty.Toasty;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-
-import static anet.channel.util.Utils.context;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -168,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                         if (!aBoolean) {
                             // 未授予
                             Toasty.warning(App.get(), "读写权限未授予，字幕狗将不会正常运行，请授予其权限！", Toast.LENGTH_SHORT, true).show();
+                            requestPermission();
                         } else {
                             Utils.mkRootDir();
                         }

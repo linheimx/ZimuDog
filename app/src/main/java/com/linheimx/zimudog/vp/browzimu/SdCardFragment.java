@@ -29,6 +29,7 @@ import com.linheimx.zimudog.utils.rxbus.RxBus_Behavior;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
@@ -188,20 +189,25 @@ public class SdCardFragment extends TitleFragment {
         public void filesChanged() {
             _tv_nav.setText(currentDir.getPath());
             File[] files = currentDir.listFiles();
-            Arrays.sort(files, new Comparator<File>() {
-                @Override
-                public int compare(File o1, File o2) {
-                    long ret = o1.lastModified() - o2.lastModified();
-                    if (ret > 0) {
-                        return -1;
-                    } else if (ret == 0) {
-                        return 0;
-                    } else {
-                        return 1;
+            if (files != null && files.length > 0) { // check
+                Arrays.sort(files, new Comparator<File>() {
+                    @Override
+                    public int compare(File o1, File o2) {
+                        long ret = o1.lastModified() - o2.lastModified();
+                        if (ret > 0) {
+                            return -1;
+                        } else if (ret == 0) {
+                            return 0;
+                        } else {
+                            return 1;
+                        }
                     }
-                }
-            });
-            mData = Arrays.asList(files);
+                });
+                mData = Arrays.asList(files);
+            } else {
+                mData = new ArrayList<>();
+            }
+
             notifyDataSetChanged();
         }
 
