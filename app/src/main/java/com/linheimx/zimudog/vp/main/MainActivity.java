@@ -130,13 +130,21 @@ public class MainActivity extends AppCompatActivity {
         disposable.dispose();
     }
 
+    long _lastHitTime = System.currentTimeMillis() - 2001;
+
     @Override
     public void onBackPressed() {
         List fragments = getSupportFragmentManager().getFragments();
         if (fragments != null && fragments.size() > 0) {
             BaseFragment currentFragment = (BaseFragment) fragments.get(fragments.size() - 1);
             if (!currentFragment._OnActivityBackPress()) {
-                super.onBackPressed();
+                long nowHitTime = System.currentTimeMillis();
+                if ((nowHitTime - _lastHitTime) <= 2000) {
+                    finish();
+                } else {
+                    Toasty.info(App.get(), "再按一次返回键退出", Toast.LENGTH_SHORT).show();
+                    _lastHitTime = nowHitTime;
+                }
             }
         }
     }
