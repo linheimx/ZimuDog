@@ -68,7 +68,6 @@ android {
     }
 
     productFlavors {
-        _360 {}
         _yyb{}
     }
     productFlavors.all { p ->

@@ -12,3 +12,10 @@ appChannel=_360
 appPackage=com.linheimx.zimudog
 appVersion=1.0.2
 
+file=D:\Android\OpenSrc\linheimx\ZimuDog\app\build\outputs\mapping\_yyb\release\mapping.txt
+sha1=c5da641daa14d100d21c3219e02459123ceffb1f
+appId=f630d46ce5
+appChannel=_yyb
+appPackage=com.linheimx.zimudog
+appVersion=1.0.3
+
