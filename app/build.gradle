@@ -68,7 +68,7 @@ android {
     }
 
     productFlavors {
-        _yyb{}
+        _kuan{}
     }
     productFlavors.all { p ->
         p.manifestPlaceholders = [UMENG_CHANNEL       : name,
