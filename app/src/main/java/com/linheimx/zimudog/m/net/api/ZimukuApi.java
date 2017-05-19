@@ -16,6 +16,6 @@ public interface ZimukuApi {
     @GET("/search?ad=1")
     Observable<ResponseBody> searchMovie(@Query("q") String movie, @Query("p") int page);
 
-    @GET("{downloadPage}")
-    Observable<ResponseBody> getDownloadPage(@Path("downloadPage") String downloadPageUrl);
+    @GET("{subUrl}")
+    Observable<ResponseBody> getHtmlByUrl(@Path("subUrl") String subUrl);
 }

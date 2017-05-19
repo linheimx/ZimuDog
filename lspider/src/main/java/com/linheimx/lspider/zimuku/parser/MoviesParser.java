@@ -1,7 +1,5 @@
 package com.linheimx.lspider.zimuku.parser;
 
-import android.util.Log;
-
 import com.linheimx.lspider.IParser;
 import com.linheimx.lspider.zimuku.bean.Movie;
 import com.linheimx.lspider.zimuku.bean.Page;
@@ -51,6 +49,22 @@ public class MoviesParser implements IParser<String, Page> {
 
                 // 一堆字幕
                 Element div_sublist = div_title.select("div[class=sublist]").get(0);
+
+                /*************************   先检查有没有更多字幕（要去加载的）  **********************/
+                String urlMore = "";
+                try {
+                    for (Element tr : div_sublist.select("tr")) {
+                        if (tr.attr("class").equals("msub")) {
+                            // 有更多字幕
+                            Element a = tr.select("a").first();
+                            urlMore = a.attr("href");
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                movie.setUrlMore(urlMore);
+
                 for (Element tr : div_sublist.select("tr")) {
 
                     // 命中一个字幕

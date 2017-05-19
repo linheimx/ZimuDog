@@ -1,17 +1,10 @@
 package com.linheimx.lspider.zimuku.parser;
 
 import com.linheimx.lspider.IParser;
-import com.linheimx.lspider.zimuku.bean.Movie;
-import com.linheimx.lspider.zimuku.bean.Page;
-import com.linheimx.lspider.zimuku.bean.Zimu;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 字幕库

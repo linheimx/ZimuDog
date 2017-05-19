@@ -3,11 +3,8 @@ package com.linheimx.zimudog.vp.browzimu;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.vp.base.BaseFragment;
@@ -32,11 +29,6 @@ public class BrowZimuFragment extends BaseFragment {
     @Override
     public void _InitPresenter() {
 
-    }
-
-    @Override
-    public boolean _OnActivityBackPress() {
-        return false;
     }
 
     @Override

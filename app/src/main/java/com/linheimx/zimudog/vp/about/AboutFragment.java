@@ -1,11 +1,7 @@
 package com.linheimx.zimudog.vp.about;
 
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.vp.base.BaseFragment;
@@ -29,10 +25,5 @@ public class AboutFragment extends BaseFragment {
     @Override
     public void _InitPresenter() {
 
-    }
-
-    @Override
-    public boolean _OnActivityBackPress() {
-        return false;
     }
 }

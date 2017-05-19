@@ -2,11 +2,9 @@ package jsouptest;
 
 import com.google.gson.Gson;
 
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,7 +22,7 @@ public class Test_ZimuDog {
 
     public static void main(String[] args) {
         Test_ZimuDog t = new Test_ZimuDog();
-        t.searchKeyWord("金刚");
+        t.searchKeyWord("美国众神");
     }
 
 
@@ -58,6 +56,22 @@ public class Test_ZimuDog {
 
                 // 一堆字幕
                 Element div_sublist = div_title.select("div[class=sublist]").get(0);
+
+                /*************************   先检查有没有更多字幕（要去加载的）  **********************/
+                String urlMore = "";
+                try {
+                    for (Element tr : div_sublist.select("tr")) {
+                        if (tr.attr("class").equals("msub")) {
+                            // 有更多字幕
+                            Element a = tr.select("a").first();
+                            urlMore = BASE_URL + a.attr("href");
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                movie.setUrlMore(urlMore);
+
                 for (Element tr : div_sublist.select("tr")) {
 
                     // 命中一个字幕
@@ -85,12 +99,17 @@ public class Test_ZimuDog {
                     zimu.setDownload_page(download_page);
                     movie.addZimu(zimu);
                 }
+
+                List<Movie.Zimu> zimuList = loadAllZimu(urlMore);
+                movie.setList_zimu(zimuList);
+
                 list_movie.add(movie);
             }
 
             // 判断是否有更多的数据
 //            Element div_page=doc.select("div[class=pagination l clearfix]").first();
 //            Elements pageIndex_a=div_page.select("a");
+
 
             Gson gson = new Gson();
             System.out.print(gson.toJson(list_movie));
@@ -100,6 +119,49 @@ public class Test_ZimuDog {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 将这个电影的字幕都加载出来
+     */
+    private List<Movie.Zimu> loadAllZimu(String hitUrl) {
+
+        try {
+            Document doc = Jsoup
+                    .connect(hitUrl)
+                    .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36")
+                    .get();
+
+            Element tab = doc.select("table[id=subtb] tbody").first();
+
+            List<Movie.Zimu> list_zimu = new ArrayList<>();// 电影下的一堆字幕信息
+            for (Element tr : tab.select("tr")) {
+
+                // 命中一个字幕
+                Movie.Zimu zimu = new Movie.Zimu();
+
+                Element a = tr.select("a").first();
+                if (a == null) {
+                    continue;
+                }
+
+                zimu.setName(a.attr("title"));
+
+                String download_page = BASE_URL + a.attr("href");
+                zimu.setDownload_page(download_page);
+
+                Element img = tr.select("img").first();
+                zimu.setPic_url(BASE_URL + img.attr("src"));
+
+                list_zimu.add(zimu);
+            }
+
+            return list_zimu;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 
@@ -126,6 +188,7 @@ public class Test_ZimuDog {
         private String name;// 电影的名称
         private String name_alias;// 电影的别名
         private List<Zimu> list_zimu = new ArrayList<>();// 电影下的一堆字幕信息
+        private String urlMore;//是否有更多字幕
 
         public void addZimu(Zimu zimu) {
             list_zimu.add(zimu);
@@ -161,6 +224,14 @@ public class Test_ZimuDog {
 
         public void setList_zimu(List<Zimu> list_zimu) {
             this.list_zimu = list_zimu;
+        }
+
+        public String getUrlMore() {
+            return urlMore;
+        }
+
+        public void setUrlMore(String urlMore) {
+            this.urlMore = urlMore;
         }
 
         public static class Zimu {

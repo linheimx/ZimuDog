@@ -245,10 +245,14 @@ public class SdCardFragment extends TitleFragment {
 
             // size
             String size = "";
-            if (file.isFile()) {
-                size = convertFileSize(file.length());
-            } else {
-                size = file.listFiles().length + "项";
+            try {
+                if (file.isFile()) {
+                    size = convertFileSize(file.length());
+                } else {
+                    size = file.listFiles().length + "项";
+                }
+            } catch (Exception e) {
+                
             }
             helper.setText(R.id.tv_size, size);
 

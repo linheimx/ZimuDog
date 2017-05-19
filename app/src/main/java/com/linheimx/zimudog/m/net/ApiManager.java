@@ -2,9 +2,11 @@ package com.linheimx.zimudog.m.net;
 
 import com.linheimx.lspider.ParserManager;
 import com.linheimx.lspider.zimuku.bean.Page;
+import com.linheimx.lspider.zimuku.bean.Zimu;
 import com.linheimx.zimudog.m.net.api.ZimukuApi;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -108,7 +110,7 @@ public class ApiManager {
      */
     public Observable<String> getDownloadUrlForZimu(final String downloadPageUrl) {
         return zimukuApi()
-                .getDownloadPage(downloadPageUrl)
+                .getHtmlByUrl(downloadPageUrl)
                 .flatMap(new Function<ResponseBody, ObservableSource<String>>() {
                     @Override
                     public ObservableSource<String> apply(@NonNull ResponseBody responseBody) throws Exception {
@@ -120,6 +122,18 @@ public class ApiManager {
                 .subscribeOn(Schedulers.io());
     }
 
+    public Observable<List<Zimu>> getAllZimuFromUrl(final String allZimuPageUrl) {
+        return zimukuApi()
+                .getHtmlByUrl(allZimuPageUrl)
+                .flatMap(new Function<ResponseBody, ObservableSource<List<Zimu>>>() {
+                    @Override
+                    public ObservableSource<List<Zimu>> apply(@NonNull ResponseBody responseBody) throws Exception {
+                        List<Zimu> zimuList = ParserManager.getInstance().get__AllZimuParser().parse(responseBody.string());
+                        return Observable.just(zimuList);
+                    }
+                })
+                .subscribeOn(Schedulers.io());
+    }
 
     public class HeaderInterceptor implements Interceptor {
 

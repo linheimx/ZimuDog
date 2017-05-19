@@ -51,12 +51,6 @@ public class SearchFragment extends BaseFragment implements IContract.V {
     }
 
     @Override
-    public boolean _OnActivityBackPress() {
-        return false;
-    }
-
-
-    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 

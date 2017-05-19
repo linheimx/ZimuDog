@@ -13,6 +13,7 @@ public class Movie implements Serializable{
     private String name;// 电影的名称
     private String name_alias;// 电影的别名
     private List<Zimu> list_zimu = new ArrayList<>();// 电影下的一堆字幕信息
+    private String urlMore;//是否有更多字幕
 
     public void addZimu(Zimu zimu) {
         list_zimu.add(zimu);
@@ -48,5 +49,13 @@ public class Movie implements Serializable{
 
     public void setList_zimu(List<Zimu> list_zimu) {
         this.list_zimu = list_zimu;
+    }
+
+    public String getUrlMore() {
+        return urlMore;
+    }
+
+    public void setUrlMore(String urlMore) {
+        this.urlMore = urlMore;
     }
 }

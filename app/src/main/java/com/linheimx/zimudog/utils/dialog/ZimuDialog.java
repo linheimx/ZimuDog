@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,12 +28,14 @@ import com.linheimx.zimudog.utils.Utils;
 
 import java.io.File;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import es.dmoral.toasty.Toasty;
 import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -83,10 +86,38 @@ public class ZimuDialog extends DialogFragment {
         Bundle bundle = getArguments();
         Movie movie = (Movie) bundle.getSerializable("movie");
         _QuickAdapter = new QuickAdapter();
-        _QuickAdapter.openLoadAnimation();
-        _QuickAdapter.addData(movie.getList_zimu());
-        rv.setAdapter(_QuickAdapter);
+        _QuickAdapter.bindToRecyclerView(rv);
+        _QuickAdapter.setEmptyView(R.layout.rv_loding_view2);
 
+        String urlMore = movie.getUrlMore();
+        if (!TextUtils.isEmpty(urlMore)) {
+            ApiManager.getInstence().getAllZimuFromUrl(urlMore)
+                    .delay(1000, TimeUnit.MILLISECONDS)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<List<Zimu>>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+                            _CompositeDisposable.add(d);
+                        }
+
+                        @Override
+                        public void onNext(List<Zimu> zimus) {
+                            _QuickAdapter.setNewData(zimus);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            _QuickAdapter.setEmptyView(R.layout.rv_error_view);
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+        } else {
+            _QuickAdapter.addData(movie.getList_zimu());
+        }
     }
 
     @Override
@@ -187,7 +218,7 @@ public class ZimuDialog extends DialogFragment {
 
                                     @Override
                                     public void onError(Throwable e) {
-                                        Toasty.error(App.get(), "网络好像有点问题哦！", Toast.LENGTH_SHORT, true).show();
+//                                        Toasty.error(App.get(), "网络好像有点问题哦！", Toast.LENGTH_SHORT, true).show();
                                     }
 
                                     @Override

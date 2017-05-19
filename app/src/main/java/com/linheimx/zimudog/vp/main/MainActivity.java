@@ -16,7 +16,6 @@ import com.linheimx.zimudog.m.bean.event.Event_ShowNav;
 import com.linheimx.zimudog.utils.Utils;
 import com.linheimx.zimudog.utils.rxbus.RxBus;
 import com.linheimx.zimudog.vp.about.AboutFragment;
-import com.linheimx.zimudog.vp.base.BaseFragment;
 import com.linheimx.zimudog.vp.browzimu.BrowZimuFragment;
 import com.linheimx.zimudog.vp.search.SearchFragment;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -134,10 +133,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        List fragments = getSupportFragmentManager().getFragments();
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
         if (fragments != null && fragments.size() > 0) {
-            BaseFragment currentFragment = (BaseFragment) fragments.get(fragments.size() - 1);
-            if (!currentFragment._OnActivityBackPress()) {
+            Fragment currentFragment = fragments.get(fragments.size() - 1);
+            if (currentFragment != null) {
                 long nowHitTime = System.currentTimeMillis();
                 if ((nowHitTime - _lastHitTime) <= 2000) {
                     finish();

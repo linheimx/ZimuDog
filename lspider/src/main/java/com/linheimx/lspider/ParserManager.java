@@ -1,5 +1,6 @@
 package com.linheimx.lspider;
 
+import com.linheimx.lspider.zimuku.parser.AllZimuParser;
 import com.linheimx.lspider.zimuku.parser.MoviesParser;
 import com.linheimx.lspider.zimuku.parser.ZimuDownloadPageParser;
 
@@ -38,5 +39,14 @@ public class ParserManager {
             _ZimuDownloadPageParser = new ZimuDownloadPageParser();
         }
         return _ZimuDownloadPageParser;
+    }
+
+    AllZimuParser _AllZimuParser;
+
+    public AllZimuParser get__AllZimuParser() {
+        if (_AllZimuParser == null) {
+            _AllZimuParser = new AllZimuParser();
+        }
+        return _AllZimuParser;
     }
 }

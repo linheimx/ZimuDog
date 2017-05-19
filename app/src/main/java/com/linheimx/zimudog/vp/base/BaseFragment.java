@@ -57,12 +57,4 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
      * 初始化presenter
      */
     public abstract void _InitPresenter();
-
-    /**
-     * 当activity的后退键按下去的时候
-     *
-     * @return 是否消费这个事件
-     */
-    public abstract boolean _OnActivityBackPress();
-
 }
