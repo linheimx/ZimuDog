@@ -2,6 +2,7 @@ package com.linheimx.zimudog.vp.search;
 
 import android.support.annotation.NonNull;
 
+import com.linheimx.lspider.god.IPage;
 import com.linheimx.lspider.zimuku.bean.Page;
 import com.linheimx.zimudog.m.net.ApiManager;
 import com.linheimx.zimudog.vp.base.BasePresenter;
@@ -42,9 +43,9 @@ public class P extends BasePresenter implements IContract.P {
     private void loadMovies(String movie, int page) {
 
         ApiManager.getInstence()
-                .getMoviesByKW(movie, page)
+                .getOnePageByKW(movie, page)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Page>() {
+                .subscribe(new Observer<IPage>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         _Disposable_search = d;
@@ -52,7 +53,7 @@ public class P extends BasePresenter implements IContract.P {
                     }
 
                     @Override
-                    public void onNext(Page page) {
+                    public void onNext(IPage page) {
                         _V.showMovies(page.getMovieList(), page.isHasMore());
                     }
 

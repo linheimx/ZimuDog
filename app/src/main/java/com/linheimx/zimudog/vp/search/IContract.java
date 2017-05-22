@@ -2,6 +2,7 @@ package com.linheimx.zimudog.vp.search;
 
 import android.support.annotation.NonNull;
 
+import com.linheimx.lspider.god.IMovie;
 import com.linheimx.lspider.zimuku.bean.Movie;
 import com.linheimx.zimudog.vp.base.IPresenter;
 
@@ -22,7 +23,7 @@ public interface IContract {
     }
 
     interface V {
-        void showMovies(List<Movie> movies, boolean hasMore);
+        void showMovies(List<IMovie> movies, boolean hasMore);
 
         void showLoadingError();
     }

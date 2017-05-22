@@ -6,17 +6,16 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import static com.linheimx.lspider.zimuku.Contants.BASE_URL;
+
 /**
- * 字幕库
- * ----------------
- * 根据关键词，搜索出来的界面
+ * 字幕的下载页面
+ * -------------------------
  * <p>
  * Created by x1c on 2017/5/1.
  */
 
 public class ZimuDownloadPageParser implements IParser<String, String> {
-
-    public static final String BASE_URL = "http://www.zimuku.net";
 
     @Override
     public String parse(String html) {

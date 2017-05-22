@@ -14,10 +14,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.linheimx.lcustom.custom.utils.Util;
 import com.linheimx.lcustom.custom.view.SearchBar;
-import com.linheimx.lspider.zimuku.bean.Movie;
+import com.linheimx.lspider.god.IMovie;
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.m.bean.event.Event_ShowNav;
-import com.linheimx.zimudog.utils.dialog.ZimuDialog;
 import com.linheimx.zimudog.utils.rxbus.RxBus;
 import com.linheimx.zimudog.vp.base.BaseFragment;
 
@@ -77,8 +76,8 @@ public class SearchFragment extends BaseFragment implements IContract.V {
         _QuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                List<Movie> movieList = _QuickAdapter.getData();
-                Movie movie = movieList.get(position);
+                List<IMovie> movieList = _QuickAdapter.getData();
+                IMovie movie = movieList.get(position);
                 ZimuDialog zimuDialog = ZimuDialog.newInstance(movie);
                 zimuDialog.show(getChildFragmentManager(), null);
             }
@@ -94,7 +93,7 @@ public class SearchFragment extends BaseFragment implements IContract.V {
     }
 
     @Override
-    public void showMovies(List<Movie> movies, boolean hasMore) {
+    public void showMovies(List<IMovie> movies, boolean hasMore) {
         Log.e("--->", "hit size" + movies.size());
         if (movies.size() == 0) {
             showNoDataView();
@@ -155,13 +154,13 @@ public class SearchFragment extends BaseFragment implements IContract.V {
     }
 
 
-    public class QuickAdapter extends BaseQuickAdapter<Movie, BaseViewHolder> {
+    public class QuickAdapter extends BaseQuickAdapter<IMovie, BaseViewHolder> {
 
         public QuickAdapter() {
             super(R.layout.rv_item_movie);
         }
 
-        public void addData(List<Movie> movies) {
+        public void addData(List<IMovie> movies) {
             if (mData == null) {
                 mData = movies;
             } else {
@@ -176,14 +175,14 @@ public class SearchFragment extends BaseFragment implements IContract.V {
         }
 
         @Override
-        protected void convert(final BaseViewHolder helper, Movie item) {
+        protected void convert(final BaseViewHolder helper, IMovie item) {
             Glide.with(SearchFragment.this)
                     .load(item.getPic_url())
                     .crossFade()
                     .into((ImageView) helper.getView(R.id.img));
 
-            helper.setText(R.id.tv_title, item.getName());
-            helper.setText(R.id.tweetText, item.getName_alias());
+            helper.setText(R.id.tv_name, item.getName());
+            helper.setText(R.id.tv_alilas, item.getName_alias());
         }
     }
 

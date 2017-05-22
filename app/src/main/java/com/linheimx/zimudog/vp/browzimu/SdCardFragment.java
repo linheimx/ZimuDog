@@ -241,7 +241,7 @@ public class SdCardFragment extends TitleFragment {
             }
 
             // title
-            helper.setText(R.id.tv_title, file.getName());
+            helper.setText(R.id.tv_name, file.getName());
 
             // size
             String size = "";

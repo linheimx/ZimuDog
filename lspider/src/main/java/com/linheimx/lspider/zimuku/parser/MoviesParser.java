@@ -13,17 +13,17 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.linheimx.lspider.zimuku.Contants.BASE_URL;
+
 /**
- * 字幕库
- * ----------------
- * 根据关键词，搜索出来的界面
+ * 输入电影关键词，展示的页面
+ * ------------------------------
+ * 一个页面：包含了一堆电影
  * <p>
  * Created by x1c on 2017/5/1.
  */
 
 public class MoviesParser implements IParser<String, Page> {
-
-    public static final String BASE_URL = "http://www.zimuku.net";
 
     @Override
     public Page parse(String html) {
@@ -63,7 +63,7 @@ public class MoviesParser implements IParser<String, Page> {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                movie.setUrlMore(urlMore);
+                movie.setAllZimuLink(urlMore);
 
                 for (Element tr : div_sublist.select("tr")) {
 

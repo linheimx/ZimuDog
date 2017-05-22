@@ -1,4 +1,4 @@
-package com.linheimx.zimudog.utils.dialog;
+package com.linheimx.zimudog.vp.search;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.linheimx.lspider.zimuku.bean.Movie;
+import com.linheimx.lspider.god.IMovie;
 import com.linheimx.lspider.zimuku.bean.Zimu;
 import com.linheimx.zimudog.App;
 import com.linheimx.zimudog.R;
@@ -57,7 +57,7 @@ public class ZimuDialog extends DialogFragment {
     QuickAdapter _QuickAdapter;
     CompositeDisposable _CompositeDisposable;
 
-    public static ZimuDialog newInstance(Movie movie) {
+    public static ZimuDialog newInstance(IMovie movie) {
         ZimuDialog dialog = new ZimuDialog();
         Bundle bundle = new Bundle();
         bundle.putSerializable("movie", movie);
@@ -84,14 +84,14 @@ public class ZimuDialog extends DialogFragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         Bundle bundle = getArguments();
-        Movie movie = (Movie) bundle.getSerializable("movie");
+        IMovie movie = (IMovie) bundle.getSerializable("movie");
         _QuickAdapter = new QuickAdapter();
         _QuickAdapter.bindToRecyclerView(rv);
         _QuickAdapter.setEmptyView(R.layout.rv_loding_view2);
 
-        String urlMore = movie.getUrlMore();
-        if (!TextUtils.isEmpty(urlMore)) {
-            ApiManager.getInstence().getAllZimuFromUrl(urlMore)
+        String allZimuLink = movie.getAllZimuLink();
+        if (!TextUtils.isEmpty(allZimuLink)) {
+            ApiManager.getInstence().getAllZimuFromUrl(allZimuLink)
                     .delay(1000, TimeUnit.MILLISECONDS)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<List<Zimu>>() {
@@ -116,7 +116,7 @@ public class ZimuDialog extends DialogFragment {
                         }
                     });
         } else {
-            _QuickAdapter.addData(movie.getList_zimu());
+            _QuickAdapter.addData(movie.getTop5Zimus());
         }
     }
 
@@ -161,11 +161,6 @@ public class ZimuDialog extends DialogFragment {
             notifyDataSetChanged();
         }
 
-        public void clearData() {
-            setNewData(null);
-            notifyDataSetChanged();
-        }
-
         @Override
         protected void convert(final BaseViewHolder helper, final Zimu item) {
             // logo
@@ -184,7 +179,7 @@ public class ZimuDialog extends DialogFragment {
 
 
             // title
-            helper.setText(R.id.tv_title, item.getName());
+            helper.setText(R.id.tv_name, item.getName());
 
             // 点击事件
             helper.itemView.setOnClickListener(new View.OnClickListener() {
@@ -202,12 +197,11 @@ public class ZimuDialog extends DialogFragment {
                                 .subscribe(new Observer<String>() {
                                     @Override
                                     public void onSubscribe(Disposable d) {
-                                        _CompositeDisposable.add(d);
                                     }
 
                                     @Override
                                     public void onNext(String s) {
-                                        if (_Dialog != null && _Dialog.isShowing()) {     // 检测dialog 是否在显示状态
+                                        if (item != null) {
                                             String filePath = Utils.getRootDirPath() + "/" + item.getName();
 
                                             DownloaderManager

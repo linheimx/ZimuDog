@@ -1,6 +1,7 @@
 package com.linheimx.zimudog.m.net;
 
 import com.linheimx.lspider.ParserManager;
+import com.linheimx.lspider.god.IPage;
 import com.linheimx.lspider.zimuku.bean.Page;
 import com.linheimx.lspider.zimuku.bean.Zimu;
 import com.linheimx.zimudog.m.net.api.ZimukuApi;
@@ -82,19 +83,21 @@ public class ApiManager {
 
 
     /**
-     * 通过关键词，获得一堆电影
+     * 通过关键词，获得一个页面
+     * ----------------------------
+     * （一个页面下有一堆电影）
      *
      * @param movie
      * @param page
      * @return
      */
-    public Observable<Page> getMoviesByKW(String movie, int page) {
+    public Observable<IPage> getOnePageByKW(String movie, int page) {
         return zimukuApi()
                 .searchMovie(movie, page)
-                .flatMap(new Function<ResponseBody, ObservableSource<Page>>() {
+                .flatMap(new Function<ResponseBody, ObservableSource<IPage>>() {
                     @Override
-                    public ObservableSource<Page> apply(@io.reactivex.annotations.NonNull ResponseBody responseBody) throws Exception {
-                        Page page =
+                    public ObservableSource<IPage> apply(@io.reactivex.annotations.NonNull ResponseBody responseBody) throws Exception {
+                        IPage page =
                                 ParserManager.getInstance().get_MoviesParser().parse(responseBody.string());
                         return Observable.just(page);
                     }

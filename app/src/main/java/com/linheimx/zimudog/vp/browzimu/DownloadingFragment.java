@@ -135,7 +135,7 @@ public class DownloadingFragment extends TitleFragment {
             progressView.setTag(newDispose);
 
             // title
-            helper.setText(R.id.tv_title, item.getName());
+            helper.setText(R.id.tv_name, item.getName());
         }
     }
 

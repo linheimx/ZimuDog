@@ -1,6 +1,7 @@
 package com.linheimx.lspider.zimuku.parser;
 
 import com.linheimx.lspider.IParser;
+import com.linheimx.lspider.zimuku.Contants;
 import com.linheimx.lspider.zimuku.bean.Zimu;
 
 import org.jsoup.Jsoup;
@@ -10,9 +11,10 @@ import org.jsoup.nodes.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.linheimx.lspider.zimuku.parser.MoviesParser.BASE_URL;
-
 /**
+ * 一个电影下的所有字幕的页面
+ * -----------------------------
+ * <p>
  * Created by LJIAN on 2017/5/19.
  */
 
@@ -43,7 +45,7 @@ public class AllZimuParser implements IParser<String, List<Zimu>> {
                 zimu.setDownload_page(download_page);
 
                 Element img = tr.select("img").first();
-                zimu.setPic_url(BASE_URL + img.attr("src"));
+                zimu.setPic_url(Contants.BASE_URL + img.attr("src"));
 
                 list_zimu.add(zimu);
             }
