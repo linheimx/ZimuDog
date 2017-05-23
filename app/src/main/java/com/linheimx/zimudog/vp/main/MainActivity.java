@@ -133,18 +133,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        List<Fragment> fragments = getSupportFragmentManager().getFragments();
-        if (fragments != null && fragments.size() > 0) {
-            Fragment currentFragment = fragments.get(fragments.size() - 1);
-            if (currentFragment != null) {
-                long nowHitTime = System.currentTimeMillis();
-                if ((nowHitTime - _lastHitTime) <= 2000) {
-                    finish();
-                } else {
-                    Toasty.info(App.get(), "再按一次返回键退出", Toast.LENGTH_SHORT).show();
-                    _lastHitTime = nowHitTime;
-                }
-            }
+        long nowHitTime = System.currentTimeMillis();
+        if ((nowHitTime - _lastHitTime) <= 2000) {
+            finish();
+        } else {
+            Toasty.info(App.get(), "再按一次返回键退出", Toast.LENGTH_SHORT).show();
+            _lastHitTime = nowHitTime;
         }
     }
 
