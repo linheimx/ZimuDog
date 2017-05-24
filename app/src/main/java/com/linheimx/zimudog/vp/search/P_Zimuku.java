@@ -2,10 +2,8 @@ package com.linheimx.zimudog.vp.search;
 
 import android.support.annotation.NonNull;
 
-import com.linheimx.lspider.god.IPage;
-import com.linheimx.lspider.zimuku.bean.Page;
+import com.linheimx.lspider.god.GodPage;
 import com.linheimx.zimudog.m.net.ApiManager;
-import com.linheimx.zimudog.vp.base.BasePresenter;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -15,46 +13,41 @@ import io.reactivex.disposables.Disposable;
  * Created by x1c on 2017/5/1.
  */
 
-public class P extends BasePresenter implements IContract.P {
+public class P_Zimuku extends P_Base implements IContract.P {
 
-    Disposable _Disposable_search;
-
-    IContract.V _V;
-
-    public P(IContract.V v) {
-        this._V = v;
+    public P_Zimuku(IContract.V v) {
+        super(v);
     }
 
     String _movie;
     int _page = 1;
 
     @Override
-    public void searchMovies(@NonNull String movie) {
-        this._movie = movie;
+    public void searchByKW(@NonNull String keyWord) {
+        this._movie = keyWord;
         this._page = 1;
         loadMovies(_movie, _page);
     }
 
     @Override
-    public void loadMoreMovies() {
+    public void loadMore() {
         loadMovies(_movie, ++_page);
     }
 
     private void loadMovies(String movie, int page) {
 
         ApiManager.getInstence()
-                .getOnePageByKW(movie, page)
+                .getPage_Zimuku(movie, page)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<IPage>() {
+                .subscribe(new Observer<GodPage>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        _Disposable_search = d;
                         _Disposables.add(d);
                     }
 
                     @Override
-                    public void onNext(IPage page) {
-                        _V.showMovies(page.getMovieList(), page.isHasMore());
+                    public void onNext(GodPage page) {
+                        _V.showItems(page.getItemList(), page.isHasMore());
                     }
 
                     @Override
@@ -67,13 +60,5 @@ public class P extends BasePresenter implements IContract.P {
 
                     }
                 });
-    }
-
-    @Override
-    public void cancelSearch() {
-        if (_Disposable_search != null) {
-            _Disposable_search.dispose();
-            _Disposables.delete(_Disposable_search);
-        }
     }
 }

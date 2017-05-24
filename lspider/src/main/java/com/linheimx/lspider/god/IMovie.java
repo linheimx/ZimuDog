@@ -1,15 +1,12 @@
 package com.linheimx.lspider.god;
 
-import com.linheimx.lspider.zimuku.bean.Zimu;
-
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by x1c on 2017/5/22.
  */
 
-public interface IMovie<Z extends IZimu> extends Serializable {
+public interface IMovie<Z extends IZimu> extends GodItem {
 
     /**
      * 电影的名称

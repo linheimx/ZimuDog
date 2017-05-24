@@ -6,7 +6,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import static com.linheimx.lspider.zimuku.Contants.BASE_URL;
+import static com.linheimx.lspider.Contants.BASE_URL_ZIMUKU;
 
 /**
  * 字幕的下载页面
@@ -22,7 +22,7 @@ public class ZimuDownloadPageParser implements IParser<String, String> {
         try {
             Document document = Jsoup.parse(html);
             Element a = document.select("a[href~=/download/.*]").get(0);
-            return BASE_URL + a.attr("href");
+            return BASE_URL_ZIMUKU + a.attr("href");
         } catch (Exception e) {
             e.printStackTrace();
         }

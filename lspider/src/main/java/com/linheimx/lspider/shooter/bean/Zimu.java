@@ -1,21 +1,21 @@
-package com.linheimx.lspider.zimuku.bean;
+package com.linheimx.lspider.shooter.bean;
 
 import com.linheimx.lspider.god.IZimu;
-
-import java.io.Serializable;
 
 /**
  * Created by x1c on 2017/5/1.
  */
 
 public class Zimu implements IZimu {
-    private String pic_url;// 字幕的头像（国家名称）
+
     private String name;
+    private String alias;
+    private String format;
     private String download_page;// 下载链接的界面
 
     @Override
     public String getPic_url() {
-        return pic_url;
+        return "";
     }
 
     @Override
@@ -30,16 +30,12 @@ public class Zimu implements IZimu {
 
     @Override
     public String getAlias() {
-        return "";
+        return alias;
     }
 
     @Override
     public String getFormat() {
-        return "'";
-    }
-
-    public void setPic_url(String pic_url) {
-        this.pic_url = pic_url;
+        return format;
     }
 
     public void setName(String name) {
@@ -48,5 +44,13 @@ public class Zimu implements IZimu {
 
     public void setDownload_page(String download_page) {
         this.download_page = download_page;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
     }
 }

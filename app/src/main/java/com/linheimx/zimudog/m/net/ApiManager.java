@@ -1,9 +1,9 @@
 package com.linheimx.zimudog.m.net;
 
 import com.linheimx.lspider.ParserManager;
-import com.linheimx.lspider.god.IPage;
-import com.linheimx.lspider.zimuku.bean.Page;
+import com.linheimx.lspider.god.GodPage;
 import com.linheimx.lspider.zimuku.bean.Zimu;
+import com.linheimx.zimudog.m.net.api.ShooterApi;
 import com.linheimx.zimudog.m.net.api.ZimukuApi;
 
 import java.io.IOException;
@@ -82,6 +82,28 @@ public class ApiManager {
     }
 
 
+    ShooterApi _ShooterApi;
+
+    /**
+     * 射手相关的api
+     *
+     * @return
+     */
+    private ShooterApi shooterApi() {
+        if (_ShooterApi == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .client(_Client)
+                    .baseUrl(ShooterApi.BASE_URL)
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            _ShooterApi = retrofit.create(ShooterApi.class);
+        }
+
+        return _ShooterApi;
+    }
+
+
     /**
      * 通过关键词，获得一个页面
      * ----------------------------
@@ -91,14 +113,37 @@ public class ApiManager {
      * @param page
      * @return
      */
-    public Observable<IPage> getOnePageByKW(String movie, int page) {
+    public Observable<GodPage> getPage_Zimuku(String movie, int page) {
         return zimukuApi()
                 .searchMovie(movie, page)
-                .flatMap(new Function<ResponseBody, ObservableSource<IPage>>() {
+                .flatMap(new Function<ResponseBody, ObservableSource<GodPage>>() {
                     @Override
-                    public ObservableSource<IPage> apply(@io.reactivex.annotations.NonNull ResponseBody responseBody) throws Exception {
-                        IPage page =
-                                ParserManager.getInstance().get_MoviesParser().parse(responseBody.string());
+                    public ObservableSource<GodPage> apply(@io.reactivex.annotations.NonNull ResponseBody responseBody) throws Exception {
+                        GodPage page =
+                                ParserManager.getInstance().get_PageParserZimuku().parse(responseBody.string());
+                        return Observable.just(page);
+                    }
+                })
+                .subscribeOn(Schedulers.io());
+    }
+
+    /**
+     * 通过关键词，获得一个页面
+     * ----------------------------
+     * （一个页面下有一堆字幕）
+     *
+     * @param zimu
+     * @param page
+     * @return
+     */
+    public Observable<GodPage> getPage_Shooter(String zimu, int page) {
+        return shooterApi()
+                .searchZimu(zimu, page)
+                .flatMap(new Function<ResponseBody, ObservableSource<GodPage>>() {
+                    @Override
+                    public ObservableSource<GodPage> apply(@io.reactivex.annotations.NonNull ResponseBody responseBody) throws Exception {
+                        GodPage page =
+                                ParserManager.getInstance().get_PageParserShooter().parse(responseBody.string());
                         return Observable.just(page);
                     }
                 })

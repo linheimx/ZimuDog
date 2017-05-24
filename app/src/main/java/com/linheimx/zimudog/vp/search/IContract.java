@@ -2,8 +2,8 @@ package com.linheimx.zimudog.vp.search;
 
 import android.support.annotation.NonNull;
 
+import com.linheimx.lspider.god.GodItem;
 import com.linheimx.lspider.god.IMovie;
-import com.linheimx.lspider.zimuku.bean.Movie;
 import com.linheimx.zimudog.vp.base.IPresenter;
 
 import java.util.List;
@@ -15,15 +15,17 @@ import java.util.List;
 public interface IContract {
 
     interface P extends IPresenter {
-        void searchMovies(@NonNull String movie);
+        void searchByKW(@NonNull String keyWord);
 
-        void loadMoreMovies();
+        void loadMore();
 
         void cancelSearch();
+
+        void release();
     }
 
     interface V {
-        void showMovies(List<IMovie> movies, boolean hasMore);
+        void showItems(List<GodItem> movies, boolean hasMore);
 
         void showLoadingError();
     }

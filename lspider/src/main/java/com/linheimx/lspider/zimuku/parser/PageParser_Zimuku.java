@@ -13,7 +13,7 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.linheimx.lspider.zimuku.Contants.BASE_URL;
+import static com.linheimx.lspider.Contants.BASE_URL_ZIMUKU;
 
 /**
  * 输入电影关键词，展示的页面
@@ -23,7 +23,7 @@ import static com.linheimx.lspider.zimuku.Contants.BASE_URL;
  * Created by x1c on 2017/5/1.
  */
 
-public class MoviesParser implements IParser<String, Page> {
+public class PageParser_Zimuku implements IParser<String, Page> {
 
     @Override
     public Page parse(String html) {
@@ -77,7 +77,7 @@ public class MoviesParser implements IParser<String, Page> {
                     }
 
                     Element td_img = td.child(0);
-                    zimu.setPic_url(BASE_URL + td_img.attr("src"));
+                    zimu.setPic_url(BASE_URL_ZIMUKU + td_img.attr("src"));
                     Element td_a = td.child(1);
                     zimu.setName(td_a.attr("title"));
 

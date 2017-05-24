@@ -1,4 +1,4 @@
-package com.linheimx.lspider.zimuku.bean;
+package com.linheimx.lspider.shooter.bean;
 
 import com.linheimx.lspider.god.GodPage;
 
@@ -11,16 +11,16 @@ import java.util.List;
 
 public class Page implements GodPage {
 
-    List<Movie> movieList = new ArrayList<>();
+    List<Zimu> movieList = new ArrayList<>();
     boolean hasMore;
 
-    public Page(List<Movie> movieList, boolean hasMore) {
-        this.movieList = movieList;
+    public Page(List<Zimu> zimuList, boolean hasMore) {
+        this.movieList = zimuList;
         this.hasMore = hasMore;
     }
 
     @Override
-    public List<Movie> getItemList() {
+    public List<Zimu> getItemList() {
         return movieList;
     }
 

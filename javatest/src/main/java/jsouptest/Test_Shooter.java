@@ -73,6 +73,12 @@ public class Test_Shooter {
                 }
             }
 
+//            Element divLink = doc.select("div.pagelinkcard").first();
+//            Element a = divLink.select("a#pl-current").first();
+//            Element nextA = a.nextElementSibling();
+//            if (nextA != null) {
+//                // has more
+//            }
             Zimu first = zimuList.get(0);
             getDownloadUrl(first.detailPageUrl);
 

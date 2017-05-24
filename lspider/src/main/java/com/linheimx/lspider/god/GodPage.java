@@ -1,7 +1,5 @@
 package com.linheimx.lspider.god;
 
-import com.linheimx.lspider.zimuku.bean.Movie;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,15 +7,15 @@ import java.util.List;
  * Created by x1c on 2017/5/22.
  */
 
-public interface IPage<M extends IMovie> extends Serializable {
+public interface GodPage<M extends GodItem> extends Serializable {
 
 
     /**
-     * 获得该页的一堆电影
+     * 获得该页的一堆 item
      *
      * @return
      */
-    List<M> getMovieList();
+    List<M> getItemList();
 
     /**
      * 是否有更多的数据（更多的页）

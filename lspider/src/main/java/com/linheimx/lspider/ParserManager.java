@@ -1,7 +1,8 @@
 package com.linheimx.lspider;
 
+import com.linheimx.lspider.shooter.parser.PageParserShooter;
 import com.linheimx.lspider.zimuku.parser.AllZimuParser;
-import com.linheimx.lspider.zimuku.parser.MoviesParser;
+import com.linheimx.lspider.zimuku.parser.PageParser_Zimuku;
 import com.linheimx.lspider.zimuku.parser.ZimuDownloadPageParser;
 
 /**
@@ -23,14 +24,24 @@ public class ParserManager {
         return _ParserManager;
     }
 
-    MoviesParser _MoviesParser;
+    PageParser_Zimuku _PageParserZimuku;
 
-    public MoviesParser get_MoviesParser() {
-        if (_MoviesParser == null) {
-            _MoviesParser = new MoviesParser();
+    public PageParser_Zimuku get_PageParserZimuku() {
+        if (_PageParserZimuku == null) {
+            _PageParserZimuku = new PageParser_Zimuku();
         }
-        return _MoviesParser;
+        return _PageParserZimuku;
     }
+
+    PageParserShooter _PageParserShooter;
+
+    public PageParserShooter get_PageParserShooter() {
+        if (_PageParserShooter == null) {
+            _PageParserShooter = new PageParserShooter();
+        }
+        return _PageParserShooter;
+    }
+
 
     ZimuDownloadPageParser _ZimuDownloadPageParser;
 

@@ -27,11 +27,6 @@ public class BrowZimuFragment extends BaseFragment {
     }
 
     @Override
-    public void _InitPresenter() {
-
-    }
-
-    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 

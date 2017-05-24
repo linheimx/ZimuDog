@@ -33,7 +33,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         _Ac = getActivity();
-        _InitPresenter();
     }
 
     @Override
@@ -52,9 +51,4 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment {
      * @return
      */
     public abstract int _ProvideLayout();
-
-    /**
-     * 初始化presenter
-     */
-    public abstract void _InitPresenter();
 }

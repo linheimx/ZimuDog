@@ -1,7 +1,6 @@
 package com.linheimx.lspider.zimuku.bean;
 
 import com.linheimx.lspider.god.IMovie;
-import com.linheimx.lspider.god.IZimu;
 
 import java.util.ArrayList;
 import java.util.List;

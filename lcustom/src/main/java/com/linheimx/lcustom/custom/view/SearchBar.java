@@ -1,12 +1,9 @@
 package com.linheimx.lcustom.custom.view;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -14,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.linheimx.lcustom.R;
-import com.linheimx.lcustom.custom.utils.Util;
 
 /**
  * Created by x1c on 2017/4/24.
@@ -29,7 +25,7 @@ public class SearchBar extends FrameLayout {
 
     DrawerArrowDrawable _arrowDrawable;
 
-    onSearchClickListener _listener;
+    onSearchBarClickListener _listener;
 
     public SearchBar(@NonNull Context context) {
         super(context);
@@ -57,6 +53,14 @@ public class SearchBar extends FrameLayout {
         _arrowDrawable = new DrawerArrowDrawable(context);
         _nav.setImageDrawable(_arrowDrawable);
 
+        _nav.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (_listener != null) {
+                    _listener.onMenuClick();
+                }
+            }
+        });
 
         _et.setOnSearchKeyListener(new SearchInputView.OnKeyboardSearchKeyClickListener() {
             @Override
@@ -76,12 +80,14 @@ public class SearchBar extends FrameLayout {
         });
     }
 
-    public void setSearchClickListener(onSearchClickListener listener) {
+    public void setSearchClickListener(onSearchBarClickListener listener) {
         this._listener = listener;
     }
 
-    public interface onSearchClickListener {
+    public interface onSearchBarClickListener {
         void onSearchClick(String searchContent);
+
+        void onMenuClick();
     }
 
 }

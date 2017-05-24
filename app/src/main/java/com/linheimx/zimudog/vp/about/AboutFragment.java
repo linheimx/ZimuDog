@@ -21,9 +21,4 @@ public class AboutFragment extends BaseFragment {
     public int _ProvideLayout() {
         return R.layout.fragment_about;
     }
-
-    @Override
-    public void _InitPresenter() {
-
-    }
 }

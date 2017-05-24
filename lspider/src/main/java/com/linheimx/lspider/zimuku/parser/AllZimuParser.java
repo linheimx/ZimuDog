@@ -1,7 +1,7 @@
 package com.linheimx.lspider.zimuku.parser;
 
 import com.linheimx.lspider.IParser;
-import com.linheimx.lspider.zimuku.Contants;
+import com.linheimx.lspider.Contants;
 import com.linheimx.lspider.zimuku.bean.Zimu;
 
 import org.jsoup.Jsoup;
@@ -45,7 +45,7 @@ public class AllZimuParser implements IParser<String, List<Zimu>> {
                 zimu.setDownload_page(download_page);
 
                 Element img = tr.select("img").first();
-                zimu.setPic_url(Contants.BASE_URL + img.attr("src"));
+                zimu.setPic_url(Contants.BASE_URL_ZIMUKU + img.attr("src"));
 
                 list_zimu.add(zimu);
             }

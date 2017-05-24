@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by x1c on 2017/5/22.
  */
 
-public interface IZimu extends Serializable {
+public interface IZimu extends GodItem {
 
     /**
      * 字幕的头像
@@ -22,6 +22,19 @@ public interface IZimu extends Serializable {
      */
     String getName();
 
+    /**
+     * 字幕的别名
+     *
+     * @return
+     */
+    String getAlias();
+
+    /**
+     * 字幕的格式
+     *
+     * @return
+     */
+    String getFormat();
 
     /**
      * 这个字幕的下载页面
