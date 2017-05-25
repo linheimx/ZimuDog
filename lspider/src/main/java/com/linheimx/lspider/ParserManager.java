@@ -1,6 +1,7 @@
 package com.linheimx.lspider;
 
 import com.linheimx.lspider.shooter.parser.PageParserShooter;
+import com.linheimx.lspider.shooter.parser.ShooterDownloadPageParser;
 import com.linheimx.lspider.zimuku.parser.AllZimuParser;
 import com.linheimx.lspider.zimuku.parser.PageParser_Zimuku;
 import com.linheimx.lspider.zimuku.parser.ZimuDownloadPageParser;
@@ -51,6 +52,16 @@ public class ParserManager {
         }
         return _ZimuDownloadPageParser;
     }
+
+    ShooterDownloadPageParser _ShooterDownloadPageParser;
+
+    public ShooterDownloadPageParser get__ShooterDownloadPageParser() {
+        if (_ShooterDownloadPageParser == null) {
+            _ShooterDownloadPageParser = new ShooterDownloadPageParser();
+        }
+        return _ShooterDownloadPageParser;
+    }
+
 
     AllZimuParser _AllZimuParser;
 

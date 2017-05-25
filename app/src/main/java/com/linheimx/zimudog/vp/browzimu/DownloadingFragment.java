@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.linheimx.lcustom.custom.view.SnackProgressView;
+import com.linheimx.lspider.god.IZimu;
 import com.linheimx.lspider.zimuku.bean.Zimu;
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.m.net.download.Downloader;
@@ -89,14 +90,14 @@ public class DownloadingFragment extends TitleFragment {
     }
 
 
-    public class QuickAdapter extends BaseQuickAdapter<Zimu, BaseViewHolder> {
+    public class QuickAdapter extends BaseQuickAdapter<IZimu, BaseViewHolder> {
 
         public QuickAdapter() {
             super(R.layout.rv_item_zimu_download);
         }
 
         @Override
-        protected void convert(final BaseViewHolder helper, final Zimu item) {
+        protected void convert(final BaseViewHolder helper, final IZimu item) {
 
             /***********************************  进度条 ***********************************/
             final SnackProgressView progressView = helper.getView(R.id.progress);

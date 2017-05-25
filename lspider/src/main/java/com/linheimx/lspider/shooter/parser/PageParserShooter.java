@@ -62,13 +62,16 @@ public class PageParserShooter implements IParser<String, Page> {
 
             boolean haMore = false;
             Element divLink = doc.select("div.pagelinkcard").first();
-            Element a = divLink.select("a#pl-current").first();
-            Element nextA = a.nextElementSibling();
-            if (nextA != null) {
-                if (!TextUtils.isEmpty(nextA.attr("href"))) {
-                    haMore = true;
+            if (divLink != null) {
+                Element a = divLink.select("a#pl-current").first();
+                Element nextA = a.nextElementSibling();
+                if (nextA != null) {
+                    if (!TextUtils.isEmpty(nextA.attr("href"))) {
+                        haMore = true;
+                    }
                 }
             }
+
             Page page = new Page(zimuList, haMore);
             return page;
 

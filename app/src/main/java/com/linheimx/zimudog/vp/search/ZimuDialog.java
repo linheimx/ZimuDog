@@ -192,7 +192,7 @@ public class ZimuDialog extends DialogFragment {
                         Toasty.success(getActivity(), "已加入下载队列", Toast.LENGTH_SHORT, true).show();
 
                         ApiManager.getInstence()
-                                .getDownloadUrlForZimu(item.getDownload_page())
+                                .getDownloadUrl4Zimu(item.getDownload_page())
                                 .observeOn(Schedulers.io())
                                 .subscribe(new Observer<String>() {
                                     @Override
@@ -202,7 +202,9 @@ public class ZimuDialog extends DialogFragment {
                                     @Override
                                     public void onNext(String s) {
                                         if (item != null) {
-                                            String filePath = Utils.getRootDirPath() + "/" + item.getName();
+                                            String fileName = item.getName();// 名字中可能包含 /
+                                            fileName = fileName.replace('/', '_');
+                                            String filePath = Utils.getRootDirPath() + "/" + fileName;
 
                                             DownloaderManager
                                                     .getInstance()

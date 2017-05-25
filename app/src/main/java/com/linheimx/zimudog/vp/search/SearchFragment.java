@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -24,14 +25,22 @@ import com.linheimx.lspider.god.IZimu;
 import com.linheimx.zimudog.App;
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.m.bean.event.Event_ShowNav;
+import com.linheimx.zimudog.m.net.ApiManager;
+import com.linheimx.zimudog.m.net.download.DownloaderManager;
 import com.linheimx.zimudog.utils.ContantUtil;
+import com.linheimx.zimudog.utils.Utils;
 import com.linheimx.zimudog.utils.rxbus.RxBus;
 import com.linheimx.zimudog.vp.base.BaseFragment;
 
+import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
 import es.dmoral.prefs.Prefs;
+import es.dmoral.toasty.Toasty;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class SearchFragment extends BaseFragment implements IContract.V {
 
@@ -127,15 +136,6 @@ public class SearchFragment extends BaseFragment implements IContract.V {
                 _P.loadMore();
             }
         }, _rv);
-        _QuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-//                List<IMovie> movieList = _QuickAdapter.getData();
-//                IMovie movie = movieList.get(position);
-//                ZimuDialog zimuDialog = ZimuDialog.newInstance(movie);
-//                zimuDialog.show(getChildFragmentManager(), null);
-            }
-        });
     }
 
     @Override
@@ -250,13 +250,61 @@ public class SearchFragment extends BaseFragment implements IContract.V {
         }
 
         @Override
-        protected void convert(final BaseViewHolder helper, IZimu item) {
+        protected void convert(final BaseViewHolder helper, final IZimu item) {
             helper.setText(R.id.tv_name, item.getName());
             helper.setText(R.id.tv_alilas, item.getAlias());
             helper.setText(R.id.tv_format, item.getFormat());
-        }
-    }
 
+            // 点击事件
+            helper.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!Utils.isNetConnected()) {
+                        Toasty.info(App.get(), "请检查您的网络！", Toast.LENGTH_SHORT, true).show();
+                    } else {
+                        Toasty.success(getActivity(), "已加入下载队列", Toast.LENGTH_SHORT, true).show();
+
+                        ApiManager.getInstence()
+                                .getDownloadUrl4Shooter(item.getDownload_page())
+                                .observeOn(Schedulers.io())
+                                .subscribe(new Observer<String>() {
+                                    @Override
+                                    public void onSubscribe(Disposable d) {
+                                    }
+
+                                    @Override
+                                    public void onNext(String s) {
+                                        if (item != null) {
+
+                                            String fileName = item.getName();// 名字中可能包含 /
+                                            fileName = fileName.replace('/', '_');
+                                            String filePath = Utils.getRootDirPath() + "/" + fileName;
+
+                                            DownloaderManager
+                                                    .getInstance()
+                                                    .startDownload(item.getDownload_page(), item, s, new File(filePath));
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+//                                        Toasty.error(App.get(), "网络好像有点问题哦！", Toast.LENGTH_SHORT, true).show();
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+
+                                    }
+
+                                });
+
+                    }
+
+                }
+            });
+        }
+
+    }
 
     private void showMenu() {
 
@@ -289,6 +337,5 @@ public class SearchFragment extends BaseFragment implements IContract.V {
                 }).createDialog();
         dialog.show();
     }
-
 
 }

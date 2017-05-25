@@ -1,5 +1,6 @@
 package com.linheimx.zimudog.m.net.download;
 
+import com.linheimx.lspider.god.IZimu;
 import com.linheimx.lspider.zimuku.bean.Zimu;
 import com.linheimx.zimudog.m.net.download.event.EventZimuChanged;
 import com.linheimx.zimudog.utils.rxbus.RxBus_Behavior;
@@ -52,7 +53,7 @@ public class DownloaderManager {
      * @param downalodUrl
      * @param outFile
      */
-    public void startDownload(final String pageKey, Zimu zimu, String downalodUrl, File outFile) {
+    public void startDownload(final String pageKey, IZimu zimu, String downalodUrl, File outFile) {
 
         if (_map.keySet().contains(pageKey)) {
             return;
@@ -86,8 +87,8 @@ public class DownloaderManager {
      *
      * @return
      */
-    private List<Zimu> getDownloadingZimuList() {
-        List<Zimu> list = new ArrayList<>();
+    private List<IZimu> getDownloadingZimuList() {
+        List<IZimu> list = new ArrayList<>();
         for (Wrapper wrapper : _map.values()) {
             list.add(wrapper.zimu);
         }
@@ -103,10 +104,10 @@ public class DownloaderManager {
     }
 
     class Wrapper {
-        Zimu zimu;
+        IZimu zimu;
         Downloader downloader;
 
-        public Wrapper(Zimu zimu, Downloader downloader) {
+        public Wrapper(IZimu zimu, Downloader downloader) {
             this.zimu = zimu;
             this.downloader = downloader;
         }

@@ -52,10 +52,10 @@ public class Downloader implements Runnable {
                 _state.set_nowAll(contentLength);
                 _state.set_nowDone(done);
 
-//                Log.e("--->", "bytesRead:" + bytesRead);
-//                Log.e("--->", "contentLength:" + contentLength);
-//                Log.e("--->", "done:" + done);
-//                Log.e("--->", "%:" + (100 * bytesRead) / contentLength);
+                Log.e("--->", "bytesRead:" + bytesRead);
+                Log.e("--->", "contentLength:" + contentLength);
+                Log.e("--->", "done:" + done);
+                Log.e("--->", "%:" + (100 * bytesRead) / contentLength);
 
                 notifyStateChanged();
             }
@@ -77,6 +77,9 @@ public class Downloader implements Runnable {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful()) {
                 Log.e("--->", "下载成功：" + _outFile.getAbsolutePath());
+                if (!_outFile.exists()) {
+                    _outFile.createNewFile();
+                }
                 FileOutputStream fileOutputStream = new FileOutputStream(_outFile);
                 fileOutputStream.write(response.body().bytes());
             } else {

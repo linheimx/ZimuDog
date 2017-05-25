@@ -156,7 +156,7 @@ public class ApiManager {
      * @param downloadPageUrl
      * @return
      */
-    public Observable<String> getDownloadUrlForZimu(final String downloadPageUrl) {
+    public Observable<String> getDownloadUrl4Zimu(final String downloadPageUrl) {
         return zimukuApi()
                 .getHtmlByUrl(downloadPageUrl)
                 .flatMap(new Function<ResponseBody, ObservableSource<String>>() {
@@ -164,6 +164,26 @@ public class ApiManager {
                     public ObservableSource<String> apply(@NonNull ResponseBody responseBody) throws Exception {
                         String downloadUrl =
                                 ParserManager.getInstance().get__ZimuDownloadPageParser().parse(responseBody.string());
+                        return Observable.just(downloadUrl);
+                    }
+                })
+                .subscribeOn(Schedulers.io());
+    }
+
+    /**
+     * 获取字幕的下载链接
+     *
+     * @param downloadPageUrl
+     * @return
+     */
+    public Observable<String> getDownloadUrl4Shooter(final String downloadPageUrl) {
+        return shooterApi()
+                .getHtmlByUrl(downloadPageUrl)
+                .flatMap(new Function<ResponseBody, ObservableSource<String>>() {
+                    @Override
+                    public ObservableSource<String> apply(@NonNull ResponseBody responseBody) throws Exception {
+                        String downloadUrl =
+                                ParserManager.getInstance().get__ShooterDownloadPageParser().parse(responseBody.string());
                         return Observable.just(downloadUrl);
                     }
                 })
