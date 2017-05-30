@@ -75,7 +75,8 @@ public class HowToDialog extends DialogFragment {
 
 //        String path = Utils.getRootDirPath() + "/doge1.jpg";
 //
-//        RichText.fromMarkdown("## hello ![asd](" + path + ")").into(_tv);
+        String c = Utils.getStringFromAssetFile(getActivity().getAssets(), "howto.md");
+        RichText.fromMarkdown(c).into(_tv);
     }
 
     @Override
