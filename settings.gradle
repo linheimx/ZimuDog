@@ -1,1 +1,1 @@
-include ':app', ':javatest', ':lspider', ':lcustom', ':PushSDK'
+include ':app', ':javatest', ':lspider', ':lcustom', ':richtext'
