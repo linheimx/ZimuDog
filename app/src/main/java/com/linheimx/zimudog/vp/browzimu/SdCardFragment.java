@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import com.github.rubensousa.bottomsheetbuilder.adapter.BottomSheetItemClickList
 import com.hu.p7zip.ZipUtils;
 import com.linheimx.zimudog.App;
 import com.linheimx.zimudog.R;
+import com.linheimx.zimudog.m.net.download.Downloader;
 import com.linheimx.zimudog.m.net.download.event.EventZimuChanged;
 import com.linheimx.zimudog.utils.Utils;
 import com.linheimx.zimudog.utils.rxbus.RxBus_Behavior;
@@ -33,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.Callable;
 
 import butterknife.BindView;
@@ -95,14 +98,18 @@ public class SdCardFragment extends TitleFragment {
 
         /****************************  观察正在下载的一堆字幕）  *****************************/
         Disposable disposable = RxBus_Behavior.getInstance()
-                .toFlowable(EventZimuChanged.class)
+                .toFlowable(Downloader.State.class)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<EventZimuChanged>() {
+                .subscribe(new Consumer<Downloader.State>() {
                     @Override
-                    public void accept(@NonNull EventZimuChanged eventZimuChanged) throws Exception {
-                        _QuickAdapter.filesChanged();
+                    public void accept(@NonNull Downloader.State state) throws Exception {
+                        if (state.is_nowDone()) {  // 这个任务完成了,移除！
+                            Log.e("===>", "这个任务完成了,移除！");
+                            _QuickAdapter.filesChanged();
+                        }
                     }
                 });
+
         _CompositeDisposable.add(disposable);
 
         _srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -203,7 +210,22 @@ public class SdCardFragment extends TitleFragment {
                         }
                     }
                 });
-                mData = Arrays.asList(files);
+                List<File> fileList = Arrays.asList(files);
+
+                if (mData != null) {
+                    mData.clear();
+                }
+                // make sure length > 0
+                try {
+                    for (File file : fileList) {
+                        if (file.length() > 0) {
+                            mData.add(file);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             } else {
                 mData = new ArrayList<>();
             }
@@ -252,7 +274,7 @@ public class SdCardFragment extends TitleFragment {
                     size = file.listFiles().length + "项";
                 }
             } catch (Exception e) {
-                
+
             }
             helper.setText(R.id.tv_size, size);
 
