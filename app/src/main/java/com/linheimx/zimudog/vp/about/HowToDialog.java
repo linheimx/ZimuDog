@@ -73,8 +73,6 @@ public class HowToDialog extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        String path = Utils.getRootDirPath() + "/doge1.jpg";
-//
         String c = Utils.getStringFromAssetFile(getActivity().getAssets(), "howto.md");
         RichText.fromMarkdown(c).into(_tv);
     }
