@@ -162,8 +162,10 @@ public class ApiManager {
                 .flatMap(new Function<ResponseBody, ObservableSource<String>>() {
                     @Override
                     public ObservableSource<String> apply(@NonNull ResponseBody responseBody) throws Exception {
+//                        Log.e("--->", "downloadPageUrl:" + downloadPageUrl);
                         String downloadUrl =
                                 ParserManager.getInstance().get__ZimuDownloadPageParser().parse(responseBody.string());
+//                        Log.e("--->", "downloadUrl:" + downloadUrl);
                         return Observable.just(downloadUrl);
                     }
                 })

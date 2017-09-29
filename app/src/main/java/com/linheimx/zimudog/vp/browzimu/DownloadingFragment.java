@@ -13,7 +13,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.linheimx.lcustom.custom.view.SnackProgressView;
 import com.linheimx.lspider.god.IZimu;
-import com.linheimx.lspider.zimuku.bean.Zimu;
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.m.net.download.Downloader;
 import com.linheimx.zimudog.m.net.download.event.EventZimuChanged;

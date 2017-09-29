@@ -25,7 +25,6 @@ import com.hu.p7zip.ZipUtils;
 import com.linheimx.zimudog.App;
 import com.linheimx.zimudog.R;
 import com.linheimx.zimudog.m.net.download.Downloader;
-import com.linheimx.zimudog.m.net.download.event.EventZimuChanged;
 import com.linheimx.zimudog.utils.Utils;
 import com.linheimx.zimudog.utils.rxbus.RxBus_Behavior;
 
@@ -105,7 +104,12 @@ public class SdCardFragment extends TitleFragment {
                     public void accept(@NonNull Downloader.State state) throws Exception {
                         if (state.is_nowDone()) {  // 这个任务完成了,移除！
                             Log.e("===>", "这个任务完成了,移除！");
-                            _QuickAdapter.filesChanged();
+                            _rv.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    _QuickAdapter.filesChanged();
+                                }
+                            }, 200);
                         }
                     }
                 });
@@ -196,6 +200,9 @@ public class SdCardFragment extends TitleFragment {
         public void filesChanged() {
             _tv_nav.setText(currentDir.getPath());
             File[] files = currentDir.listFiles();
+
+            Log.e("===>", "查看文件：" + files.length);
+
             if (files != null && files.length > 0) { // check
                 Arrays.sort(files, new Comparator<File>() {
                     @Override
@@ -229,6 +236,8 @@ public class SdCardFragment extends TitleFragment {
             } else {
                 mData = new ArrayList<>();
             }
+
+            Log.e("===>", "查看文件：---" + mData.size());
 
             notifyDataSetChanged();
         }

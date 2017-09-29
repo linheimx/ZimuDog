@@ -21,8 +21,8 @@ public class ZimuDownloadPageParser implements IParser<String, String> {
     public String parse(String html) {
         try {
             Document document = Jsoup.parse(html);
-            Element a = document.select("a[dlurl~=/download/.*]").get(0);
-            return BASE_URL_ZIMUKU + a.attr("dlurl");
+            Element a = document.select("a[href~=/download/.*]").get(0);
+            return BASE_URL_ZIMUKU + a.attr("href");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -11,7 +11,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimaryDark"
         android:gravity="center"
-        android:text="字幕狗 v1.0.6"
+        android:text="字幕狗 v1.0.7"
         android:textColor="@android:color/white"
         android:textSize="20dp" />
 
@@ -87,7 +87,7 @@
                         android:layout_centerVertical="true"
                         android:gravity="center"
                         android:padding="8dp"
-                        android:text="垂死病中惊坐起，谈笑风生又一年 : ）" />
+                        android:text="如遇到下载问题，请到酷市场更新下App" />
 
                 </LinearLayout>
 

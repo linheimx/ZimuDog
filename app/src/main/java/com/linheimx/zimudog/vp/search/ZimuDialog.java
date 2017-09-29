@@ -9,6 +9,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -164,7 +165,7 @@ public class ZimuDialog extends DialogFragment {
         @Override
         protected void convert(final BaseViewHolder helper, final Zimu item) {
             // logo
-            String picUrl = item.getPic_url();
+            final String picUrl = item.getPic_url();
             if (picUrl.contains("jollyroger")) {
                 Glide.with(ZimuDialog.this)
                         .load(R.drawable.doge_512_512)
@@ -205,6 +206,8 @@ public class ZimuDialog extends DialogFragment {
                                             String fileName = item.getName();// 名字中可能包含 /
                                             fileName = fileName.replace('/', '_');
                                             String filePath = Utils.getRootDirPath() + "/" + fileName;
+
+                                            Log.e("--->", "url:" + s);
 
                                             DownloaderManager
                                                     .getInstance()
