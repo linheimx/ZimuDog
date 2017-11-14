@@ -164,117 +164,58 @@ object Utils {
         return result
     }
 
-    fun getDeviceInfo(context: Context): String? {
-        try {
-            val json = org.json.JSONObject()
-            val tm = context
-                    .getSystemService(Context.TELEPHONY_SERVICE) as android.telephony.TelephonyManager
-            var device_id: String? = null
-            if (checkPermission(context, Manifest.permission.READ_PHONE_STATE)) {
-                device_id = tm.deviceId
-            }
-            var mac: String? = null
-            var fstream: FileReader? = null
-            try {
-                fstream = FileReader("/sys/class/net/wlan0/address")
-            } catch (e: FileNotFoundException) {
-                fstream = FileReader("/sys/class/net/eth0/address")
-            }
+//    @Throws(IOException::class)
+//    fun getStringFromInputStream(`is`: InputStream?): String {
+//        val baos = ByteArrayOutputStream()
+//        val buffer = ByteArray(1024)
+//        var length: Int
+//        while ((length = `is`!!.read(buffer)) != -1) {
+//            baos.write(buffer, 0, length)
+//        }
+//        return baos.toString("UTF-8")
+//    }
 
-            var `in`: BufferedReader? = null
-            if (fstream != null) {
-                try {
-                    `in` = BufferedReader(fstream, 1024)
-                    mac = `in`.readLine()
-                } catch (e: IOException) {
-                } finally {
-                    if (fstream != null) {
-                        try {
-                            fstream.close()
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
+//    fun getStringFromAssetFile(asset: AssetManager, filename: String): String {
+//        var `is`: InputStream? = null
+//
+//        try {
+//            `is` = asset.open(filename)
+//            return getStringFromInputStream(`is`)
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//            return ""
+//        } finally {
+//            if (`is` != null) {
+//                try {
+//                    `is`.close()
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
+//
+//            }
+//        }
+//    }
 
-                    }
-                    if (`in` != null) {
-                        try {
-                            `in`.close()
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-
-                    }
-                }
-            }
-            json.put("mac", mac)
-            if (TextUtils.isEmpty(device_id)) {
-                device_id = mac
-            }
-            if (TextUtils.isEmpty(device_id)) {
-                device_id = android.provider.Settings.Secure.getString(context.contentResolver,
-                        android.provider.Settings.Secure.ANDROID_ID)
-            }
-            json.put("device_id", device_id)
-            return json.toString()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
-        return null
-    }
-
-    @Throws(IOException::class)
-    fun getStringFromInputStream(`is`: InputStream?): String {
-        val baos = ByteArrayOutputStream()
-        val buffer = ByteArray(1024)
-        var length: Int
-        while ((length = `is`!!.read(buffer)) != -1) {
-            baos.write(buffer, 0, length)
-        }
-        return baos.toString("UTF-8")
-    }
-
-    fun getStringFromAssetFile(asset: AssetManager, filename: String): String {
-        var `is`: InputStream? = null
-
-        try {
-            `is` = asset.open(filename)
-            return getStringFromInputStream(`is`)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return ""
-        } finally {
-            if (`is` != null) {
-                try {
-                    `is`.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-
-            }
-        }
-    }
-
-    fun getStringFromFile(file: File): String {
-        var `is`: InputStream? = null
-
-        try {
-            `is` = FileInputStream(file)
-            return getStringFromInputStream(`is`)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return ""
-        } finally {
-            if (`is` != null) {
-                try {
-                    `is`.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-
-            }
-        }
-    }
+//    fun getStringFromFile(file: File): String {
+//        var `is`: InputStream? = null
+//
+//        try {
+//            `is` = FileInputStream(file)
+//            return getStringFromInputStream(`is`)
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//            return ""
+//        } finally {
+//            if (`is` != null) {
+//                try {
+//                    `is`.close()
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
+//
+//            }
+//        }
+//    }
 
 
 }

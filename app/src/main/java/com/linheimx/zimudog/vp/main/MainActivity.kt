@@ -12,10 +12,10 @@ import com.linheimx.zimudog.App
 import com.linheimx.zimudog.R
 import com.linheimx.zimudog.utils.Utils
 import com.linheimx.zimudog.vp.about.AboutFragment
-import com.linheimx.zimudog.vp.browzimu.BrowZimuFragment
 import com.linheimx.zimudog.vp.search.SearchFragment
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.linheimx.zimudog.utils.bindView
+import com.linheimx.zimudog.vp.browzimu.SdCardFragment
 import es.dmoral.toasty.Toasty
 import io.reactivex.functions.Consumer
 
@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBottomNav() {
-
 
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -93,12 +92,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         var fragment: Fragment? = fragmentManager.findFragmentByTag(tag)
         if (fragment == null) {
             when (tag) {
                 F_SEARCH -> fragment = SearchFragment()
-                F_BROW -> fragment = BrowZimuFragment()
+                F_BROW -> fragment = SdCardFragment()
                 F_ABOUT -> fragment = AboutFragment()
             }
             fragmentManager.beginTransaction()

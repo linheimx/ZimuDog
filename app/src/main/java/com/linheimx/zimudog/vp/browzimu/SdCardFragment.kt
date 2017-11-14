@@ -18,9 +18,7 @@ import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder
 import com.hu.p7zip.ZipUtils
 import com.linheimx.zimudog.App
 import com.linheimx.zimudog.R
-import com.linheimx.zimudog.m.net.download.Downloader
 import com.linheimx.zimudog.utils.Utils
-import com.linheimx.zimudog.utils.rxbus.RxBus_Behavior
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.ArrayList
@@ -29,7 +27,6 @@ import java.util.Date
 import es.dmoral.toasty.Toasty
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 import com.linheimx.zimudog.utils.Utils.convertFileSize
@@ -67,18 +64,18 @@ class SdCardFragment : TitleFragment() {
         _QuickAdapter.openLoadAnimation()
         _QuickAdapter.setEmptyView(R.layout.rv_empty_view_sdcard)
 
-        /****************************  观察正在下载的一堆字幕）   */
-        val disposable = RxBus_Behavior.instance!!
-                .toFlowable(Downloader.State::class.java)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(Consumer<Downloader.State> { state ->
-                    if (state.is_nowDone) {  // 这个任务完成了,移除！
-                        Log.e("===>", "这个任务完成了,移除！")
-                        _rv!!.postDelayed({ _QuickAdapter.filesChanged() }, 200)
-                    }
-                })
-
-        _CompositeDisposable.add(disposable)
+//        /****************************  观察正在下载的一堆字幕）   */
+//        val disposable = RxBus_Behavior.instance!!
+//                .toFlowable(Downloader.State::class.java)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(Consumer<Downloader.State> { state ->
+//                    if (state.is_nowDone) {  // 这个任务完成了,移除！
+//                        Log.e("===>", "这个任务完成了,移除！")
+//                        _rv!!.postDelayed({ _QuickAdapter.filesChanged() }, 200)
+//                    }
+//                })
+//
+//        _CompositeDisposable.add(disposable)
 
         _srl!!.setOnRefreshListener {
             _rv!!.postDelayed({
@@ -319,7 +316,7 @@ class SdCardFragment : TitleFragment() {
                         cmd.append(" " + tmpFile.path)    //7z x 'aaa/bbb.zip'
                         cmd.append(" -o" + tmpDir.path + "")    //7z x 'a.zip' '-o/out/'
 
-                        ret = ZipUtils.executeCommand(cmd.toString())
+//                        ret = ZipUtils.executeCommand(cmd.toString())
 
 
                         // 恢复名称

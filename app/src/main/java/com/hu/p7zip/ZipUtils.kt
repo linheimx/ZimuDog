@@ -5,17 +5,17 @@ package com.hu.p7zip
  */
 object ZipUtils {
 
-    /**
-     * Execute a command
-     * @param command command string
-     * @return return code
-     */
-    external fun executeCommand(command: String): Int
-
-    /**
-     * load native library
-     */
-    init {
-        System.loadLibrary("p7zip")
-    }
+//    /**
+//     * Execute a command
+//     * @param command command string
+//     * @return return code
+//     */
+//    external fun executeCommand(command: String): Int
+//
+//    /**
+//     * load native library
+//     */
+//    init {
+//        System.loadLibrary("p7zip")
+//    }
 }

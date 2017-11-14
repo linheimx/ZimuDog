@@ -2,7 +2,9 @@ package com.linheimx.zimudog.vp.base
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -13,6 +15,11 @@ import io.reactivex.disposables.Disposable
 abstract class BaseFragment : Fragment() {
 
     lateinit var _CompositeDisposable: CompositeDisposable
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        var view: View = inflater.inflate(_ProvideLayout(), null)
+        return view
+    }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
