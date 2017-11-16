@@ -6,6 +6,6 @@ package com.linheimx.zimudog.m.bean
 
 data class Movie(val name: String, val avatar_url: String, val detail_url: String)
 
-data class PageMovie(val movies: List<Movie>, val currentIndex: Int, val haveNext: Int)
+data class PageMovie(val movies: List<Movie>, val currentIndex: Int, val haveNext: Boolean)
 
-data class Resp(val success: Boolean, val errorMsg: String?, val obj: Any)
+data class Resp_Movies(val success: Boolean, val errorMsg: String?, val obj: PageMovie?)

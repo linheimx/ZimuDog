@@ -1,0 +1,34 @@
+package com.linheimx.zimudog.m.net
+
+import com.linheimx.zimudog.m.bean.Resp_Movies
+import io.reactivex.Observable
+import okhttp3.ResponseBody
+import retrofit2.http.*
+
+/**
+ * Created by x1c on 2017/5/1.
+ */
+
+interface ZimukuApi {
+
+    @GET("/search?ad=1")
+    fun getHtml_MovieList(@Query("q") movie: String, @Query("p") page: Int): Observable<ResponseBody>
+
+    @GET("{subUrl}")
+    fun getHtmlByUrl(@Path("subUrl") subUrl: String): Observable<ResponseBody>
+
+    companion object {
+        val BASE_URL = "http://www.zimuku.cn"
+    }
+}
+
+interface ZimukuParse {
+
+    @FormUrlEncoded
+    @POST("api/movielist")
+    fun parse_MovieList(@Field("html") html: String): Observable<Resp_Movies>
+
+    companion object {
+        val BASE_URL = "http://192.168.0.101:5000/"
+    }
+}

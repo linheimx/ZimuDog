@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'bugly'
 
 def supportVersion = "25.3.1"
+def anko_version = "0.10.1"
 
 // 读取定义的属性
 def props = new Properties()
@@ -67,6 +68,9 @@ dependencies {
     compile "com.android.support:appcompat-v7:$supportVersion"
     compile "com.android.support:support-v4:$supportVersion"
     compile "com.android.support:recyclerview-v7:$supportVersion"
+
+    compile "org.jetbrains.anko:anko:$anko_version"
+    compile "org.jetbrains.anko:anko-commons:$anko_version"
 
     compile 'com.airbnb.android:lottie:2.0.0-beta4'
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'

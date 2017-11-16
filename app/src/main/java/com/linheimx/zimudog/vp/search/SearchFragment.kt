@@ -43,26 +43,25 @@ class SearchFragment : BaseFragment(), IContract.V {
             }
         })
 
-        // _rv
-//        _rv.setHasFixedSize(true)
-//        _rv.layoutManager = LinearLayoutManager(activity)
-//        showEmptyView()
-
-
-//        setAdapter4zimuku()
-//        _P = P_Zimuku(this)
+        setAdapter4zimuku()
+        _P = P_Zimuku(this)
     }
 
     private fun setAdapter4zimuku() {
+
         _QuickAdapter = QuickAdapter_ZimuKu()
         _QuickAdapter.bindToRecyclerView(_rv)
-        _QuickAdapter.setOnLoadMoreListener({ _P!!.loadMore() }, _rv)
+        _QuickAdapter.setOnLoadMoreListener({ _P.loadMore() }, _rv)
         _QuickAdapter.setOnItemClickListener { adapter, view, position ->
-//            val movieList = _QuickAdapter.data
+            //            val movieList = _QuickAdapter.data
 //            val movie = movieList[position]
 //            val zimuDialog = ZimuDialog.newInstance(movie)
 //            zimuDialog.show(childFragmentManager, null)
         }
+
+        _rv.setHasFixedSize(true)
+        _rv.layoutManager = LinearLayoutManager(activity)
+        showEmptyView()
     }
 
     override fun showLoadingError() {
@@ -94,7 +93,7 @@ class SearchFragment : BaseFragment(), IContract.V {
         _QuickAdapter.setEmptyView(R.layout.rv_loding_view)
     }
 
-    private fun showNoDataView() {
+    override fun showNoDataView() {
         _QuickAdapter.setNewData(null)
         _QuickAdapter.setEmptyView(R.layout.rv_nodata_view)
     }
