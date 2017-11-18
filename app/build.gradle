@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'bugly'
 
-def supportVersion = "25.3.1"
+def supportVersion = "26.1.0"
 def anko_version = "0.10.1"
 
 // 读取定义的属性
@@ -15,7 +15,7 @@ def STORE_FILE = props.getProperty("STORE_FILE")
 def STORE_PASSWORD = props.getProperty("STORE_PASSWORD")
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.linheimx.zimudog"
@@ -68,20 +68,19 @@ dependencies {
     compile "com.android.support:appcompat-v7:$supportVersion"
     compile "com.android.support:support-v4:$supportVersion"
     compile "com.android.support:recyclerview-v7:$supportVersion"
+    compile "com.android.support:support-vector-drawable:$supportVersion"
 
     compile "org.jetbrains.anko:anko:$anko_version"
     compile "org.jetbrains.anko:anko-commons:$anko_version"
 
     compile 'com.airbnb.android:lottie:2.0.0-beta4'
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
-    compile 'zlc.season:rxdownload2:2.0.4'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'io.reactivex.rxjava2:rxjava:2.0.8'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-    compile 'com.android.support:support-vector-drawable:25.3.1'
     compile 'org.jsoup:jsoup:1.10.2'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.15'
     compile 'com.github.bumptech.glide:glide:3.7.0'
@@ -92,7 +91,10 @@ dependencies {
     compile 'com.zzhoujay.richtext:richtext:2.5.4'
     annotationProcessor "com.jakewharton:butterknife-compiler:8.5.1"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    compile 'zlc.season:rxdownload3:1.1.9'
 }
 repositories {
     mavenCentral()
+    google()
 }

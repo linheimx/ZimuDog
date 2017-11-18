@@ -19,7 +19,7 @@ interface IContract {
     interface V {
         fun showItems(movies: List<com.linheimx.zimudog.m.bean.Movie>, hasMore: Boolean)
 
-        fun showLoadingError()
+        fun showLoadingError(ex: Throwable)
 
         fun showNoDataView()
     }

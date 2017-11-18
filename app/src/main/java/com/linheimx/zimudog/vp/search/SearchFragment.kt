@@ -5,8 +5,11 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -21,6 +24,7 @@ class SearchFragment : BaseFragment(), IContract.V {
 
     lateinit var _QuickAdapter: QuickAdapter_ZimuKu
     lateinit var _P: IContract.P
+    lateinit var _errorView: View
 
     val searchBar: SearchBar by bindView(R.id.search_bar)
     val _rv: RecyclerView by bindView(R.id.rv)
@@ -43,8 +47,15 @@ class SearchFragment : BaseFragment(), IContract.V {
             }
         })
 
+        _errorView = LayoutInflater.from(context).inflate(R.layout.rv_error_view, null)
+
         setAdapter4zimuku()
         _P = P_Zimuku(this)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _P.release()
     }
 
     private fun setAdapter4zimuku() {
@@ -53,10 +64,10 @@ class SearchFragment : BaseFragment(), IContract.V {
         _QuickAdapter.bindToRecyclerView(_rv)
         _QuickAdapter.setOnLoadMoreListener({ _P.loadMore() }, _rv)
         _QuickAdapter.setOnItemClickListener { adapter, view, position ->
-            //            val movieList = _QuickAdapter.data
-//            val movie = movieList[position]
-//            val zimuDialog = ZimuDialog.newInstance(movie)
-//            zimuDialog.show(childFragmentManager, null)
+            val movieList = _QuickAdapter.data
+            val movie = movieList[position]
+            val zimuDialog = ZimuDialog.newInstance(movie)
+            zimuDialog.show(childFragmentManager, null)
         }
 
         _rv.setHasFixedSize(true)
@@ -64,7 +75,9 @@ class SearchFragment : BaseFragment(), IContract.V {
         showEmptyView()
     }
 
-    override fun showLoadingError() {
+    override fun showLoadingError(ex: Throwable) {
+        var txt: TextView = _errorView.findViewById<TextView>(R.id.tv_msg)
+        txt.setText(ex.message)
         showErrorView()
     }
 
@@ -100,7 +113,7 @@ class SearchFragment : BaseFragment(), IContract.V {
 
     private fun showErrorView() {
         _QuickAdapter.setNewData(null)
-        _QuickAdapter.setEmptyView(R.layout.rv_error_view)
+        _QuickAdapter.setEmptyView(_errorView)
         _QuickAdapter.emptyView.setOnClickListener { searchKeyWord(_lastKw) }
     }
 
@@ -138,7 +151,6 @@ class SearchFragment : BaseFragment(), IContract.V {
                     .into(helper.getView<View>(R.id.img) as ImageView)
 
             helper.setText(R.id.tv_name, item.name)
-            helper.setText(R.id.tv_alilas, item.name)
         }
     }
 }

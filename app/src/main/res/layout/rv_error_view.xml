@@ -12,9 +12,17 @@
         android:src="@drawable/ac" />
 
     <TextView
+        android:id="@+id/tv_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="5dp"
-        android:text="网络有点问题,点击重试～" />
+        android:text="" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="3dp"
+        android:text="点击重试～" />
 </LinearLayout>

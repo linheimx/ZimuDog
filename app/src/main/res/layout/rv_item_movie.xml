@@ -30,26 +30,13 @@
             style="@style/tweetName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="23dp"
+            android:layout_toEndOf="@+id/img"
             android:layout_toRightOf="@+id/img"
             android:paddingLeft="@dimen/dp_10"
             android:text="haha" />
-
-        <TextView
-            android:id="@+id/tv_alilas"
-            style="@style/tweetText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/tv_name"
-            android:layout_toRightOf="@+id/img"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="@dimen/dp_10"
-            android:paddingLeft="@dimen/dp_10"
-            android:paddingRight="@dimen/dp_10"
-            android:text="Hello world!"
-            android:textColor="@android:color/darker_gray" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

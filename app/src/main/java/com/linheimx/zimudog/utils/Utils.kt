@@ -1,6 +1,7 @@
 package com.linheimx.zimudog.utils
 
 import android.Manifest
+import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.AssetManager
@@ -15,6 +16,7 @@ import android.util.Log
 import android.view.View
 
 import com.linheimx.zimudog.App
+import zlc.season.rxdownload3.core.DownloadConfig
 
 import java.io.BufferedReader
 import java.io.ByteArrayOutputStream
@@ -66,11 +68,22 @@ object Utils {
             if (!file.exists()) {
                 file.mkdir()
             }
+            initRxDownloader(App.get()!!, filePath)
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
+
+    fun initRxDownloader(context: Application, basePath: String) {
+        val builder = DownloadConfig.Builder.create(context)
+                .enableDb(true)
+                .enableAutoStart(true)
+                .enableNotification(true)
+                .enableService(true)
+                .setDefaultPath(basePath)
+        DownloadConfig.init(builder)
+    }
+
 
     /**
      * 文件大小---》显示
