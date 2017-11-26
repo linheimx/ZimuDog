@@ -8,12 +8,12 @@
 
     <item
         android:id="@+id/navigation_brow"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_maps_local_bar"
         android:title="查看" />
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_maps_local_restaurant"
         android:title="关于" />
 
 </menu>

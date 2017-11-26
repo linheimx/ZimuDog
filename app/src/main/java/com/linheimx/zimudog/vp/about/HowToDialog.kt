@@ -36,8 +36,8 @@ class HowToDialog : DialogFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val c = Utils.getStringFromAssetFile(activity.assets, "howto.md")
-//        RichText.fromMarkdown(c).into(_tv)
+        val c = Utils.getStringFromAssetFile(activity.assets, "howto.md")
+        RichText.fromMarkdown(c).into(_tv)
     }
 
     override fun onResume() {

@@ -4,7 +4,6 @@ import android.Manifest
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
 import android.widget.Toast
@@ -72,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                         Toasty.warning(App.get()!!, "读写权限未授予，字幕狗将不会正常运行，请授予其权限！", Toast.LENGTH_SHORT, true).show()
                         requestPermission()
                     } else {
-                        Utils.mkRootDir()
+                        Utils.init()
                     }
                 })
     }

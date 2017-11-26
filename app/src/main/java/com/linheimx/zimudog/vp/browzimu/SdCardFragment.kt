@@ -18,6 +18,7 @@ import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder
 import com.hu.p7zip.ZipUtils
 import com.linheimx.zimudog.App
 import com.linheimx.zimudog.R
+import com.linheimx.zimudog.m.bean.Ok
 import com.linheimx.zimudog.utils.Utils
 import java.io.File
 import java.text.SimpleDateFormat
@@ -31,6 +32,8 @@ import io.reactivex.schedulers.Schedulers
 
 import com.linheimx.zimudog.utils.Utils.convertFileSize
 import com.linheimx.zimudog.utils.bindView
+import com.linheimx.zimudog.utils.rxbus.RxBus_Behavior
+import io.reactivex.functions.Consumer
 
 /**
  * Created by LJIAN on 2017/5/9.
@@ -64,18 +67,11 @@ class SdCardFragment : TitleFragment() {
         _QuickAdapter.openLoadAnimation()
         _QuickAdapter.setEmptyView(R.layout.rv_empty_view_sdcard)
 
-//        /****************************  观察正在下载的一堆字幕）   */
-//        val disposable = RxBus_Behavior.instance!!
-//                .toFlowable(Downloader.State::class.java)
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(Consumer<Downloader.State> { state ->
-//                    if (state.is_nowDone) {  // 这个任务完成了,移除！
-//                        Log.e("===>", "这个任务完成了,移除！")
-//                        _rv!!.postDelayed({ _QuickAdapter.filesChanged() }, 200)
-//                    }
-//                })
-//
-//        _CompositeDisposable.add(disposable)
+        RxBus_Behavior.toFlowable(Ok::class.java)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _rv.postDelayed({ _QuickAdapter.filesChanged() }, 200)
+                })
 
         _srl!!.setOnRefreshListener {
             _rv!!.postDelayed({
@@ -130,7 +126,6 @@ class SdCardFragment : TitleFragment() {
             rest2ZimuDog()
         }
 
-
         fun rest2ZimuDog() {
             val dir_zimu = File(Utils.rootDirPath)
             currentDir = dir_zimu
@@ -171,8 +166,6 @@ class SdCardFragment : TitleFragment() {
             } else {
                 mData = ArrayList()
             }
-
-            Log.e("===>", "查看文件：---" + mData.size)
 
             notifyDataSetChanged()
         }
@@ -331,6 +324,7 @@ class SdCardFragment : TitleFragment() {
                         tmpDir.renameTo(finalDir)
 
                     } catch (e: InterruptedException) {
+                        Log.e("===>",e.message)
                         e.printStackTrace()
                     }
 

@@ -1,10 +1,15 @@
 package com.linheimx.zimudog.vp.search
 
 import android.app.Dialog
+import android.app.Notification
+import android.app.PendingIntent
+import android.content.ComponentName
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
+import android.support.v4.app.NotificationCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
@@ -12,7 +17,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -20,22 +24,27 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.linheimx.zimudog.App
 import com.linheimx.zimudog.R
-import com.linheimx.zimudog.m.bean.Movie
-import com.linheimx.zimudog.m.bean.Resp_Zimus
-import com.linheimx.zimudog.m.bean.Resp_Zimus_DURL
-import com.linheimx.zimudog.m.bean.Zimu
+import com.linheimx.zimudog.m.bean.*
 import com.linheimx.zimudog.m.net.ApiManger
 import com.linheimx.zimudog.utils.Utils
 import java.util.concurrent.TimeUnit
 import com.linheimx.zimudog.utils.bindView
+import com.linheimx.zimudog.utils.rxbus.RxBus
+import com.linheimx.zimudog.utils.rxbus.RxBus_Behavior
+import com.linheimx.zimudog.vp.main.MainActivity
+import com.liulishuo.filedownloader.BaseDownloadTask
+import com.liulishuo.filedownloader.FileDownloader
+import com.liulishuo.filedownloader.model.FileDownloadStatus
+import com.liulishuo.filedownloader.notification.BaseNotificationItem
+import com.liulishuo.filedownloader.notification.FileDownloadNotificationHelper
+import com.liulishuo.filedownloader.notification.FileDownloadNotificationListener
+import com.liulishuo.filedownloader.util.FileDownloadHelper
 import es.dmoral.toasty.Toasty
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import zlc.season.rxdownload3.RxDownload
-import zlc.season.rxdownload3.core.Mission
 
 
 /**
@@ -162,15 +171,15 @@ class ZimuDialog : DialogFragment() {
                                 }
 
                                 override fun onNext(t: Resp_Zimus_DURL) {
-                                    Log.e("===>", "" + t)
+                                    if (t.success) {
+                                        var fileName = item.name// 名字中可能包含 /
+                                        fileName = fileName.replace('/', '_')
+                                        val filePath = Utils.rootDirPath + "/" + fileName
 
-                                    var fileName = item.name// 名字中可能包含 /
-                                    fileName = fileName.replace('/', '_')
-                                    val filePath = Utils.rootDirPath + "/" + fileName
-
-                                    RxDownload
-                                            .create(Mission(t.obj!!, fileName, filePath))
-                                            .subscribeOn(Schedulers.io()).subscribe()
+                                        download(t.obj!!, filePath)
+                                    } else {
+                                        Toasty.error(activity, "下载失败：" + t.errorMsg, Toast.LENGTH_SHORT, true).show()
+                                    }
                                 }
 
                                 override fun onError(e: Throwable) {
@@ -180,38 +189,17 @@ class ZimuDialog : DialogFragment() {
                                 override fun onComplete() {
                                 }
                             })
-
-//                    ApiManager2222.instence
-//                            .getDownloadUrl4Zimu(item.download_page)
-//                            .observeOn(Schedulers.io())
-//                            .subscribe(object : Observer<String> {
-//                                override fun onSubscribe(d: Disposable) {}
-//
-//                                override fun onNext(s: String) {
-//                                    if (item != null) {
-//                                        var fileName = item.name// 名字中可能包含 /
-//                                        fileName = fileName.replace('/', '_')
-//                                        val filePath = Utils.rootDirPath + "/" + fileName
-//
-//                                        Log.e("--->", "url:" + s)
-//
-//                                        DownloaderManager
-//                                                .instance
-//                                                .startDownload(item.download_page, item, s, File(filePath))
-//                                    }
-//                                }
-//
-//                                override fun onError(e: Throwable) {
-//                                    //                                        Toasty.error(App.get(), "网络好像有点问题哦！", Toast.LENGTH_SHORT, true).show();
-//                                }
-//
-//                                override fun onComplete() {
-//
-//                                }
-//                            })
                 }
             }
         }
+    }
+
+    fun download(url: String, path: String) {
+        FileDownloader.getImpl().create(url)
+                .setPath(path)
+                .setAutoRetryTimes(2)
+                .setListener(NotificationListener(FileDownloadNotificationHelper<NotificationItem>()))
+                .start()
     }
 
     companion object {
@@ -223,5 +211,58 @@ class ZimuDialog : DialogFragment() {
             dialog.arguments = bundle
             return dialog
         }
+    }
+}
+
+
+class NotificationListener(helper: FileDownloadNotificationHelper<*>) : FileDownloadNotificationListener(helper) {
+
+    override fun create(task: BaseDownloadTask): BaseNotificationItem {
+        return NotificationItem(task.id,
+                task.filename, "(゜-゜)つロ")
+    }
+
+    override fun completed(task: BaseDownloadTask?) {
+        super.completed(task)
+        RxBus_Behavior.post(Ok())
+    }
+}
+
+class NotificationItem constructor(id: Int, title: String, desc: String) : BaseNotificationItem(id, title, desc) {
+
+    var pendingIntent: PendingIntent
+    var builder: NotificationCompat.Builder
+
+    init {
+        val intents = arrayOfNulls<Intent>(1)
+        intents[0] = Intent(App.get(), MainActivity::class.java)
+
+        this.pendingIntent = PendingIntent.getActivities(App.get(), 0, intents,
+                PendingIntent.FLAG_UPDATE_CURRENT)
+
+        builder = NotificationCompat.Builder(FileDownloadHelper.getAppContext())
+
+        builder.setDefaults(Notification.DEFAULT_LIGHTS)
+                .setOngoing(true)
+                .setPriority(NotificationCompat.PRIORITY_MIN)
+                .setContentTitle(getTitle())
+                .setContentText(desc)
+                .setContentIntent(pendingIntent)
+                .setSmallIcon(R.drawable.doge1)
+    }
+
+    override fun show(statusChanged: Boolean, status: Int, isShowProgress: Boolean) {
+
+        var desc = desc
+
+        builder.setContentTitle(title)
+                .setContentText(desc)
+
+        if (statusChanged) {
+            builder.setTicker(desc)
+        }
+
+        builder.setProgress(total, sofar, !isShowProgress)
+        manager.notify(id, builder.build())
     }
 }

@@ -9,7 +9,7 @@ import io.reactivex.subscribers.SerializedSubscriber
  * Created by x1c on 2017/5/6.
  */
 
-class RxBus private constructor() {
+object RxBus {
 
     private val _Bus: FlowableProcessor<Any>
 
@@ -45,22 +45,6 @@ class RxBus private constructor() {
      */
     fun hasSubscribers(): Boolean {
         return _Bus.hasSubscribers()
-    }
-
-    companion object {
-        @Volatile private var sRxBus: RxBus? = null
-
-        val instance: RxBus?
-            @Synchronized get() {
-                if (sRxBus == null) {
-                    synchronized(RxBus::class.java) {
-                        if (sRxBus == null) {
-                            sRxBus = RxBus()
-                        }
-                    }
-                }
-                return sRxBus
-            }
     }
 
 }

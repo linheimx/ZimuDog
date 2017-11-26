@@ -8,7 +8,7 @@ import io.reactivex.processors.FlowableProcessor
  * Created by x1c on 2017/5/6.
  */
 
-class RxBus_Behavior private constructor() {
+object RxBus_Behavior {
 
     private val _Bus: FlowableProcessor<Any>
 
@@ -44,22 +44,6 @@ class RxBus_Behavior private constructor() {
      */
     fun hasSubscribers(): Boolean {
         return _Bus.hasSubscribers()
-    }
-
-    companion object {
-        @Volatile private var sRxBus: RxBus_Behavior? = null
-
-        val instance: RxBus_Behavior?
-            @Synchronized get() {
-                if (sRxBus == null) {
-                    synchronized(RxBus_Behavior::class.java) {
-                        if (sRxBus == null) {
-                            sRxBus = RxBus_Behavior()
-                        }
-                    }
-                }
-                return sRxBus
-            }
     }
 
 }

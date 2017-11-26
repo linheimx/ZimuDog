@@ -92,7 +92,7 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:8.5.1"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
-    compile 'zlc.season:rxdownload3:1.1.9'
+    compile 'com.liulishuo.filedownloader:library:1.6.8'
 }
 repositories {
     mavenCentral()

@@ -16,7 +16,8 @@ import android.util.Log
 import android.view.View
 
 import com.linheimx.zimudog.App
-import zlc.season.rxdownload3.core.DownloadConfig
+import com.liulishuo.filedownloader.FileDownloader
+import com.liulishuo.filedownloader.connection.FileDownloadUrlConnection
 
 import java.io.BufferedReader
 import java.io.ByteArrayOutputStream
@@ -27,6 +28,7 @@ import java.io.FileReader
 import java.io.IOException
 import java.io.InputStream
 import java.lang.reflect.Method
+import java.net.Proxy
 
 /**
  * Created by x1c on 2017/5/4.
@@ -61,7 +63,7 @@ object Utils {
         }
 
 
-    fun mkRootDir() {
+    fun init() {
         try {
             val filePath = Environment.getExternalStorageDirectory().toString() + "/ZimuDog"
             val file = File(filePath)
@@ -75,13 +77,14 @@ object Utils {
     }
 
     fun initRxDownloader(context: Application, basePath: String) {
-        val builder = DownloadConfig.Builder.create(context)
-                .enableDb(true)
-                .enableAutoStart(true)
-                .enableNotification(true)
-                .enableService(true)
-                .setDefaultPath(basePath)
-        DownloadConfig.init(builder)
+
+        FileDownloader.setupOnApplicationOnCreate(context)
+                .connectionCreator(FileDownloadUrlConnection.Creator(FileDownloadUrlConnection.Configuration()
+                        .connectTimeout(15000) // set connection timeout.
+                        .readTimeout(15000) // set read timeout.
+                        .proxy(Proxy.NO_PROXY) // set proxy
+                ))
+                .commit()
     }
 
 
@@ -177,58 +180,59 @@ object Utils {
         return result
     }
 
-//    @Throws(IOException::class)
-//    fun getStringFromInputStream(`is`: InputStream?): String {
-//        val baos = ByteArrayOutputStream()
-//        val buffer = ByteArray(1024)
-//        var length: Int
-//        while ((length = `is`!!.read(buffer)) != -1) {
-//            baos.write(buffer, 0, length)
-//        }
-//        return baos.toString("UTF-8")
-//    }
+    @Throws(IOException::class)
+    fun getStringFromInputStream(ins: InputStream): String {
+        val baos = ByteArrayOutputStream()
+        val buffer = ByteArray(1024)
+        var length: Int = ins.read(buffer)
+        while (length != -1) {
+            length = ins.read(buffer)
+            baos.write(buffer, 0, length)
+        }
+        return baos.toString("UTF-8")
+    }
 
-//    fun getStringFromAssetFile(asset: AssetManager, filename: String): String {
-//        var `is`: InputStream? = null
-//
-//        try {
-//            `is` = asset.open(filename)
-//            return getStringFromInputStream(`is`)
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//            return ""
-//        } finally {
-//            if (`is` != null) {
-//                try {
-//                    `is`.close()
-//                } catch (e: IOException) {
-//                    e.printStackTrace()
-//                }
-//
-//            }
-//        }
-//    }
+    fun getStringFromAssetFile(asset: AssetManager, filename: String): String {
+        var `is`: InputStream? = null
 
-//    fun getStringFromFile(file: File): String {
-//        var `is`: InputStream? = null
-//
-//        try {
-//            `is` = FileInputStream(file)
-//            return getStringFromInputStream(`is`)
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//            return ""
-//        } finally {
-//            if (`is` != null) {
-//                try {
-//                    `is`.close()
-//                } catch (e: IOException) {
-//                    e.printStackTrace()
-//                }
-//
-//            }
-//        }
-//    }
+        try {
+            `is` = asset.open(filename)
+            return getStringFromInputStream(`is`)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return ""
+        } finally {
+            if (`is` != null) {
+                try {
+                    `is`.close()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+
+            }
+        }
+    }
+
+    fun getStringFromFile(file: File): String {
+        var `is`: InputStream? = null
+
+        try {
+            `is` = FileInputStream(file)
+            return getStringFromInputStream(`is`)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return ""
+        } finally {
+            if (`is` != null) {
+                try {
+                    `is`.close()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+
+            }
+        }
+    }
 
 
 }

@@ -21,6 +21,7 @@
 
         <activity
             android:name=".vp.main.MainActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".vp.splash.SplashActivity"

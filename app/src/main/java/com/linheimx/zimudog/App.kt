@@ -13,7 +13,7 @@ class App : Application() {
         super.onCreate()
 
         mApp = this
-        Utils.mkRootDir()
+        Utils.init()
     }
 
     companion object {

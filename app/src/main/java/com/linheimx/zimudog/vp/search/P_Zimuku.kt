@@ -57,7 +57,6 @@ class P_Zimuku(var v: IContract.V) : BasePresenter(), IContract.P {
                     }
 
                     override fun onNext(it: Resp_Movies) {
-                        Log.e("--->", "ret:" + Gson().toJson(it))
                         var page = it.obj
                         if (page == null) {
                             v.showNoDataView()
@@ -67,7 +66,6 @@ class P_Zimuku(var v: IContract.V) : BasePresenter(), IContract.P {
                     }
 
                     override fun onError(it: Throwable) {
-                        Log.e("--->", "load error:" + it)
                         v.showLoadingError(it)
                     }
                 })
