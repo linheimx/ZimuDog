@@ -45,3 +45,7 @@ captures/
 app/src/main/java/com/linheimx/zimudog/zimudog/m/
 src/main/java/com/linheimx/zimudog/m/
 src/main/java/com/linheimx/zimudog/vp/base/
+/.idea/
+app/src/main/java/com/linheimx/zimudog/m/db/
+diagonallayout/
+lcustom/libs/

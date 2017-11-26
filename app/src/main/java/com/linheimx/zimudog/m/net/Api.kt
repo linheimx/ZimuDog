@@ -40,6 +40,6 @@ interface ZimukuParse {
 
 
     companion object {
-        val BASE_URL = "http://192.168.0.101:5000/"
+        val BASE_URL = "http://111.230.140.111:80/"
     }
 }

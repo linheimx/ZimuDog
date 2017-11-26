@@ -315,9 +315,7 @@ class SdCardFragment : TitleFragment() {
                         val cmd = StringBuilder("7z x")
                         cmd.append(" " + tmpFile.path)    //7z x 'aaa/bbb.zip'
                         cmd.append(" -o" + tmpDir.path + "")    //7z x 'a.zip' '-o/out/'
-
-//                        ret = ZipUtils.executeCommand(cmd.toString())
-
+                        ret = ZipUtils.executeCommand(cmd.toString())
 
                         // 恢复名称
                         val finalFile = File(parentPath + "/" + originFileName)
