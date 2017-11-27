@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
 import android.widget.Toast
+import com.afollestad.materialdialogs.folderselector.FolderChooserDialog
 import com.linheimx.zimudog.App
 import com.linheimx.zimudog.R
 import com.linheimx.zimudog.utils.Utils
@@ -17,9 +18,10 @@ import com.linheimx.zimudog.utils.bindView
 import com.linheimx.zimudog.vp.browzimu.SdCardFragment
 import es.dmoral.toasty.Toasty
 import io.reactivex.functions.Consumer
+import java.io.File
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),FolderChooserDialog.FolderCallback {
 
     val bottomNavigation: BottomNavigationView by bindView(R.id.bottom_navigation)
 
@@ -108,6 +110,14 @@ class MainActivity : AppCompatActivity() {
                         .commit()
             }
         }
+    }
+
+    override fun onFolderSelection(dialog: FolderChooserDialog, folder: File) {
+
+    }
+
+    override fun onFolderChooserDismissed(dialog: FolderChooserDialog) {
+
     }
 
     companion object {

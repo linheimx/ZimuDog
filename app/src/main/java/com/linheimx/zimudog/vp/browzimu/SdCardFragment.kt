@@ -1,6 +1,7 @@
 package com.linheimx.zimudog.vp.browzimu
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.widget.SwipeRefreshLayout
@@ -11,6 +12,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import com.afollestad.materialdialogs.folderselector.FolderChooserDialog
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -33,7 +35,7 @@ import io.reactivex.schedulers.Schedulers
 import com.linheimx.zimudog.utils.Utils.convertFileSize
 import com.linheimx.zimudog.utils.bindView
 import com.linheimx.zimudog.utils.rxbus.RxBus_Behavior
-import io.reactivex.functions.Consumer
+import org.jetbrains.anko.support.v4.toast
 
 /**
  * Created by LJIAN on 2017/5/9.
@@ -44,6 +46,7 @@ class SdCardFragment : TitleFragment() {
     val _rv: RecyclerView by bindView(R.id.rv)
     val _tv_nav: TextView by bindView(R.id.tv_nav)
     val _srl: SwipeRefreshLayout by bindView(R.id.srl)
+    val _menu: View by bindView(R.id.tv_setting)
 
     lateinit var _QuickAdapter: QuickAdapter
 
@@ -54,7 +57,7 @@ class SdCardFragment : TitleFragment() {
 
     override fun _ProvideLayout(): Int = R.layout.fragment_sdcard
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _tv_nav.setOnClickListener { onNav() }
@@ -80,6 +83,21 @@ class SdCardFragment : TitleFragment() {
                 _srl!!.isRefreshing = false
             }, 200)
         }
+
+        _menu.setOnClickListener {
+            FolderChooserDialog.Builder(activity!!)
+                    .chooseButton(R.string.md_choose_label)  // changes label of the choose button
+                    .initialPath("/sdcard/")  // changes initial path, defaults to external storage directory
+                    .tag("optional-identifier")
+                    .goUpLabel("Up") // custom go up label, default label is "..."
+                    .show(activity)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        toast("h")
     }
 
     override fun onResume() {
@@ -175,7 +193,7 @@ class SdCardFragment : TitleFragment() {
             // type
             val tv = helper.getView<TextView>(R.id.tv_type)
             if (file.isFile) {
-                tv.setBackgroundColor(ContextCompat.getColor(activity, R.color.tv_file))
+                tv.setBackgroundColor(ContextCompat.getColor(activity!!.applicationContext, R.color.tv_file))
                 val name = file.name
                 try {
                     val types = name.split("\\.".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
@@ -187,7 +205,7 @@ class SdCardFragment : TitleFragment() {
                 }
 
             } else {
-                tv.setBackgroundColor(ContextCompat.getColor(activity, R.color.tv_dir))
+                tv.setBackgroundColor(ContextCompat.getColor(activity!!.applicationContext, R.color.tv_dir))
                 tv.text = ""
             }
 
@@ -324,7 +342,7 @@ class SdCardFragment : TitleFragment() {
                         tmpDir.renameTo(finalDir)
 
                     } catch (e: InterruptedException) {
-                        Log.e("===>",e.message)
+                        Log.e("===>", e.message)
                         e.printStackTrace()
                     }
 

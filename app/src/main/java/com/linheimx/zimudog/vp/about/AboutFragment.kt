@@ -21,7 +21,7 @@ class AboutFragment : BaseFragment() {
         return R.layout.fragment_about
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tv_howto.setOnClickListener {
             val dialog = HowToDialog()

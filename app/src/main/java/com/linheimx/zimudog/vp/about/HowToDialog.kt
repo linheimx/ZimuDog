@@ -27,16 +27,16 @@ class HowToDialog : DialogFragment() {
     val _tv: TextView by bindView(R.id.tv)
     lateinit var _view: View
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _view = inflater!!.inflate(R.layout.dialog_howto, null)
         _view.y = -2500f
         return _view
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val c = Utils.getStringFromAssetFile(activity.assets, "howto.md")
+        val c = Utils.getStringFromAssetFile(activity!!.assets, "howto.md")
         RichText.fromMarkdown(c).into(_tv)
     }
 

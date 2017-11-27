@@ -33,7 +33,7 @@ class SearchFragment : BaseFragment(), IContract.V {
 
     override fun _ProvideLayout(): Int = R.layout.fragment_search
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // search bar

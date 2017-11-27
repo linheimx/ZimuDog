@@ -60,13 +60,13 @@ class ZimuDialog : DialogFragment() {
     lateinit var _QuickAdapter: QuickAdapter
     lateinit var _CompositeDisposable: CompositeDisposable
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _view = inflater!!.inflate(R.layout.dialog_zimu, null)
         _view.y = -2500f
         return _view
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         _CompositeDisposable = CompositeDisposable()
@@ -75,7 +75,7 @@ class ZimuDialog : DialogFragment() {
         rv.layoutManager = LinearLayoutManager(activity)
 
         val bundle = arguments
-        val movie = bundle.getSerializable("movie") as Movie
+        val movie = bundle!!.getSerializable("movie") as Movie
         _QuickAdapter = QuickAdapter()
         _QuickAdapter.bindToRecyclerView(rv)
         _QuickAdapter.setEmptyView(R.layout.rv_loding_view2)
@@ -159,7 +159,7 @@ class ZimuDialog : DialogFragment() {
                 if (!Utils.isNetConnected) {
                     Toasty.info(App.get()!!, "请检查您的网络！", Toast.LENGTH_SHORT, true).show()
                 } else {
-                    Toasty.success(activity, "已加入下载队列", Toast.LENGTH_SHORT, true).show()
+                    Toasty.success(App.get()!!, "已加入下载队列", Toast.LENGTH_SHORT, true).show()
 
                     ApiManger.api.getHtml(item.detail_url)
                             .subscribeOn(Schedulers.io())
@@ -178,7 +178,7 @@ class ZimuDialog : DialogFragment() {
 
                                         download(t.obj!!, filePath)
                                     } else {
-                                        Toasty.error(activity, "下载失败：" + t.errorMsg, Toast.LENGTH_SHORT, true).show()
+                                        Toasty.error(App.get()!!, "下载失败：" + t.errorMsg, Toast.LENGTH_SHORT, true).show()
                                     }
                                 }
 
