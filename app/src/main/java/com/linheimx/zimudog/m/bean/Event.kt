@@ -5,3 +5,5 @@ package com.linheimx.zimudog.m.bean
  */
 
 class Ok
+
+class DirChange

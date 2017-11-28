@@ -21,7 +21,7 @@ import io.reactivex.functions.Consumer
 import java.io.File
 
 
-class MainActivity : AppCompatActivity(),FolderChooserDialog.FolderCallback {
+class MainActivity : AppCompatActivity(), FolderChooserDialog.FolderCallback {
 
     val bottomNavigation: BottomNavigationView by bindView(R.id.bottom_navigation)
 
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(),FolderChooserDialog.FolderCallback {
                         Toasty.warning(App.get()!!, "读写权限未授予，字幕狗将不会正常运行，请授予其权限！", Toast.LENGTH_SHORT, true).show()
                         requestPermission()
                     } else {
-                        Utils.init()
+                        Utils.init(application)
                     }
                 })
     }
@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity(),FolderChooserDialog.FolderCallback {
     }
 
     override fun onFolderSelection(dialog: FolderChooserDialog, folder: File) {
-
+        Utils.setDefaultPath(application, folder.absolutePath)
     }
 
     override fun onFolderChooserDismissed(dialog: FolderChooserDialog) {

@@ -3,6 +3,7 @@ package com.linheimx.zimudog.utils
 import android.Manifest
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.content.res.AssetManager
 import android.graphics.Bitmap
@@ -16,6 +17,8 @@ import android.util.Log
 import android.view.View
 
 import com.linheimx.zimudog.App
+import com.linheimx.zimudog.m.bean.DirChange
+import com.linheimx.zimudog.utils.rxbus.RxBus_Behavior
 import com.liulishuo.filedownloader.FileDownloader
 import com.liulishuo.filedownloader.connection.FileDownloadUrlConnection
 
@@ -36,8 +39,7 @@ import java.net.Proxy
 
 object Utils {
 
-    val rootDirPath: String
-        get() = Environment.getExternalStorageDirectory().toString() + "/ZimuDog"
+    lateinit var rootDirPath: String
 
     /**
      * 检测网络是否连接
@@ -62,10 +64,20 @@ object Utils {
             return false
         }
 
+    fun setDefaultPath(context: Application, filePath: String) {
+        val sp = context.getSharedPreferences("default_path", Context.MODE_PRIVATE)
+        sp.edit().putString("root_dir", filePath).commit()
+        rootDirPath = filePath
+        RxBus_Behavior.post(DirChange())
+    }
 
-    fun init() {
+    fun init(context: Application) {
         try {
-            val filePath = Environment.getExternalStorageDirectory().toString() + "/ZimuDog"
+            val dp = Environment.getExternalStorageDirectory().toString() + "/ZimuDog"
+            val sp = context.getSharedPreferences("default_path", Context.MODE_PRIVATE)
+            val filePath = sp.getString("root_dir", dp)
+            rootDirPath = filePath
+            Log.e("===>", filePath)
             val file = File(filePath)
             if (!file.exists()) {
                 file.mkdir()

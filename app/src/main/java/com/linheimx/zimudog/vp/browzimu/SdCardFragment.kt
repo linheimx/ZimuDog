@@ -20,6 +20,7 @@ import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder
 import com.hu.p7zip.ZipUtils
 import com.linheimx.zimudog.App
 import com.linheimx.zimudog.R
+import com.linheimx.zimudog.m.bean.DirChange
 import com.linheimx.zimudog.m.bean.Ok
 import com.linheimx.zimudog.utils.Utils
 import java.io.File
@@ -76,6 +77,12 @@ class SdCardFragment : TitleFragment() {
                     _rv.postDelayed({ _QuickAdapter.filesChanged() }, 200)
                 })
 
+        RxBus_Behavior.toFlowable(DirChange::class.java)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _rv.postDelayed({ _QuickAdapter.filesChanged() }, 200)
+                })
+
         _srl!!.setOnRefreshListener {
             _rv!!.postDelayed({
                 _QuickAdapter.rest2ZimuDog()
@@ -86,18 +93,11 @@ class SdCardFragment : TitleFragment() {
 
         _menu.setOnClickListener {
             FolderChooserDialog.Builder(activity!!)
-                    .chooseButton(R.string.md_choose_label)  // changes label of the choose button
+                    .chooseButton(R.string.choose)  // changes label of the choose button
                     .initialPath("/sdcard/")  // changes initial path, defaults to external storage directory
-                    .tag("optional-identifier")
-                    .goUpLabel("Up") // custom go up label, default label is "..."
+                    .goUpLabel("上一级") // custom go up label, default label is "..."
                     .show(activity)
         }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        toast("h")
     }
 
     override fun onResume() {
