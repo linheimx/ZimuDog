@@ -205,18 +205,18 @@ object Utils {
     }
 
     fun getStringFromAssetFile(asset: AssetManager, filename: String): String {
-        var `is`: InputStream? = null
+        var ins: InputStream? = null
 
         try {
-            `is` = asset.open(filename)
-            return getStringFromInputStream(`is`)
+            ins = asset.open(filename)
+            return  ins.bufferedReader().readText()
         } catch (e: Exception) {
             e.printStackTrace()
             return ""
         } finally {
-            if (`is` != null) {
+            if (ins != null) {
                 try {
-                    `is`.close()
+                    ins.close()
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }

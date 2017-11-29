@@ -9,20 +9,8 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_above="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="45dp"
         android:src="@drawable/ac" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="213dp"
-        android:gravity="center"
-        android:text="提示：下载的字幕被存储到\n手机的内部存储下ZimuDog目录中"
-        android:textSize="16dp" />
 
 </RelativeLayout>

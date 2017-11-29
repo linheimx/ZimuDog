@@ -80,13 +80,13 @@ class SdCardFragment : TitleFragment() {
         RxBus_Behavior.toFlowable(DirChange::class.java)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    _rv.postDelayed({ _QuickAdapter.filesChanged() }, 200)
+                    _rv.postDelayed({ _QuickAdapter.rest2ZimuDog() }, 200)
                 })
 
         _srl!!.setOnRefreshListener {
             _rv!!.postDelayed({
                 _QuickAdapter.rest2ZimuDog()
-                Toasty.info(App.get()!!, "定位到了 手机的内部存储/ZimuDog目录", Toast.LENGTH_LONG).show()
+                Toasty.info(App.get()!!, "定位到了默认目录", Toast.LENGTH_LONG).show()
                 _srl!!.isRefreshing = false
             }, 200)
         }
@@ -147,6 +147,7 @@ class SdCardFragment : TitleFragment() {
         fun rest2ZimuDog() {
             val dir_zimu = File(Utils.rootDirPath)
             currentDir = dir_zimu
+            Log.e("===>",currentDir.toString())
             filesChanged()
         }
 
